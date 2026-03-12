@@ -1,0 +1,177 @@
+/* SECTION */
+
+.rgm-markets {
+  padding: 120px 90px;
+  background: #050e17;
+  font-family: "Inconsolata", monospace;
+}
+
+/* LAYOUT */
+
+.rgm-container {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 100px;
+  align-items: center;
+}
+
+/* GRID */
+
+.rgm-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* CARD */
+
+.rgm-card {
+  height: 200px;
+  perspective: 1200px;
+  position: relative;
+}
+
+.rgm-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s ease;
+  transform-style: preserve-3d;
+}
+
+.rgm-card:hover .rgm-inner {
+  transform: rotateY(180deg);
+}
+
+/* SIDES */
+
+.rgm-front,
+.rgm-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  backface-visibility: hidden;
+}
+
+/* FRONT */
+
+.rgm-front {
+  background: #0f2a42;
+}
+
+.rgm-front img {
+  width: 52px;
+  margin-bottom: 10px;
+}
+
+.rgm-front h4 {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.rgm-front p {
+  color: #7fd7a7;
+  font-size: 14px;
+}
+
+/* BACK */
+
+.rgm-back {
+  background: linear-gradient(135deg, #79f2c0, #27d3e2);
+  color: #001018;
+  transform: rotateY(180deg);
+}
+
+.rgm-back h4 {
+  margin-bottom: 10px;
+}
+
+/* TEXT */
+
+.rgm-tag {
+  color: #7fd7a7;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.rgm-text h2 {
+  font-size: 44px;
+  margin: 18px 0 20px;
+  line-height: 1.2;
+  color: white;
+}
+
+.rgm-text h2 span {
+  color: #7fd7a7;
+}
+
+.rgm-text p {
+  color: #a9b6c6;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+/* BUTTON */
+
+.rgm-btn {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 12px 30px;
+  border-radius: 40px;
+  border: 1px solid #7fd7a7;
+  color: #7fd7a7;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.rgm-btn:hover {
+  background: #7fd7a7;
+  color: #001018;
+}
+/* GLOW BALL */
+
+.rgm-text {
+  position: relative;
+  z-index: 2;
+}
+
+/* glowing orb */
+
+.rgm-text::before {
+  content: "";
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  right: -120px;
+  top: -80px;
+  background: radial-gradient(
+    circle,
+    rgb(121 242 192 / 28%) 0%,
+    rgb(39 211 226 / 25%) 40%,
+    transparent 70%
+  );
+  filter: blur(70px);
+  z-index: -1;
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+  .rgm-container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .rgm-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
