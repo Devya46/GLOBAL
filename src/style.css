@@ -2,7 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Inter, sans-serif;
+  font-family: "Roboto", sans-serif;
+}
+html,
+body {
+  overflow-x: hidden;
 }
 
 /* HERO */
@@ -35,6 +39,7 @@
 
   z-index: 100;
   transition: 0.4s;
+  overflow: hidden;
 }
 
 .header.scrolled {
@@ -43,7 +48,7 @@
 }
 
 .logo {
-  height: 40px;
+  height: 45px;
 }
 
 /* NAV */
@@ -225,4 +230,29 @@
     opacity: 1;
     transform: rotateX(0);
   }
+}
+.cube-text {
+  display: inline-block;
+  animation: cubeFlip 0.9s ease;
+  transform-origin: bottom;
+}
+
+@keyframes cubeFlip {
+  0% {
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+
+  50% {
+    transform: rotateX(-10deg);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+.flip-box {
+  perspective: 800px;
 }

@@ -1,34 +1,27 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
 import MarketsSection from "./MarketsSection";
+import TradeView from "./TradeView";
+import Footer from "./Footer";
 
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [index, setIndex] = useState(0);
 
-  const slides = [
-    {
-      title: (
-        <>
-          New to Trading? We're Here
-          <br />
-          Learn-Trade-Grow
-        </>
-      ),
-      desc: "Start with a demo account and explore the markets risk-free while learning how trading works in real market conditions.",
-      btn: "Try Now",
-    },
-    {
-      title: "Essential Tools for Every Trader's Success",
-      desc: "Access advanced charts, real-time market insights and powerful tools designed to help you analyse trends and trade smarter.",
-      btn: "Start Now",
-    },
-    {
-      title: "Fast, Secure & Transparent Trading",
-      desc: "Trade global markets with lightning-fast execution, secure transactions and a transparent trading environment.",
-      btn: "Start Trading",
-    },
+  const titles = [
+    <>
+      New to Trading? We're Here
+      <br />
+      Learn-Trade-Grow
+    </>,
+    "Essential Tools for Every Trader's Success",
+    "Fast, Secure & Transparent Trading",
   ];
+
+  const desc =
+    "Start with a demo account and explore global markets risk-free. Access advanced charts, real-time market insights and powerful tools designed to help you analyse trends and trade smarter.";
+
+  const btn = "Start Trading";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,19 +34,17 @@ export default function App() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % slides.length);
-    }, 5000);
+      setIndex((prev) => (prev + 1) % titles.length);
+    }, 7000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [titles.length]);
 
   return (
     <div>
       {/* HERO SECTION */}
-
       <div className="hero">
         {/* HEADER */}
-
         <header className={scrolled ? "header scrolled" : "header"}>
           <img
             src="https://rimglobal.trade/assets/logo/logo.svg"
@@ -73,7 +64,6 @@ export default function App() {
               <span className="dropdown-trigger">
                 Accounts <span className="arrow">▾</span>
               </span>
-
               <div className="dropdown-menu">
                 <a href="#">Account Type</a>
                 <a href="#">Demo Account</a>
@@ -85,7 +75,6 @@ export default function App() {
               <span className="dropdown-trigger">
                 Partners <span className="arrow">▾</span>
               </span>
-
               <div className="dropdown-menu">
                 <a href="#">Partner Types</a>
                 <a href="#">Partner Program</a>
@@ -106,23 +95,23 @@ export default function App() {
         </header>
 
         {/* HERO CONTENT */}
-
         <div className="hero-content">
           <p className="tag">SMART TRADING SOLUTION</p>
 
-          <div key={index} className="flip-box">
-            <h1>{slides[index].title}</h1>
-
-            <p className="desc">{slides[index].desc}</p>
-
-            <button className="cta">{slides[index].btn}</button>
+          <div className="flip-box">
+            <h1 key={index} className="cube-text">
+              {titles[index]}
+            </h1>
+            <p className="desc">{desc}</p>
+            <button className="cta">{btn}</button>
           </div>
         </div>
       </div>
 
       {/* NEXT SECTION */}
-
+      <TradeView />
       <MarketsSection />
+      <Footer />
     </div>
   );
 }
