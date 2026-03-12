@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/GLOBAL/static/css/main.cd3f4bde.css",
+    "main.js": "/GLOBAL/static/js/main.c40cd7ca.js",
+    "static/js/453.08bc0f3f.chunk.js": "/GLOBAL/static/js/453.08bc0f3f.chunk.js",
+    "static/media/RIM global Background.png": "/GLOBAL/static/media/RIM global Background.cf9a7d1ab305bc0c323d.png",
+    "index.html": "/GLOBAL/index.html",
+    "main.cd3f4bde.css.map": "/GLOBAL/static/css/main.cd3f4bde.css.map",
+    "main.c40cd7ca.js.map": "/GLOBAL/static/js/main.c40cd7ca.js.map",
+    "453.08bc0f3f.chunk.js.map": "/GLOBAL/static/js/453.08bc0f3f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cd3f4bde.css",
+    "static/js/main.c40cd7ca.js"
+  ]
+}
