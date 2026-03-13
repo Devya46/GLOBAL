@@ -27,12 +27,12 @@
 
 /* social icons */
 
-.social-icons {
+.Footer-social-icons {
   display: flex;
   gap: 15px;
 }
 
-.social-icons a {
+.Footer-social-icons a {
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -45,7 +45,7 @@
   transition: 0.3s;
 }
 
-.social-icons a:hover {
+.Footer-social-icons a:hover {
   background: #1c9f63;
 }
 
@@ -79,7 +79,7 @@
   margin-bottom: 10px;
 }
 
-.icon {
+.Footer-social-icons {
   color: #1c9f63;
 }
 

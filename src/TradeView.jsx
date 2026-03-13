@@ -20,7 +20,7 @@ const TradeView = () => {
         { proName: "NASDAQ:AAPL", title: "Apple" },
         { proName: "NASDAQ:TSLA", title: "Tesla" },
         { proName: "BINANCE:XRPUSDT", title: "XRP" },
-        { proName: "NSE:NIFTY", title: "Nifty 50" },
+        // { proName: "NSE:NIFTY", title: "Nifty 50" },
       ],
       showSymbolLogo: true,
       isTransparent: false,

@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./style.css";
 import MarketsSection from "./MarketsSection";
 import TradeView from "./TradeView";
+import LeadingBroker from "./LeadingBroker";
+import Features from "./Features";
+import Pricing from "./Pricing";
 import Footer from "./Footer";
 
 export default function App() {
@@ -35,7 +38,7 @@ export default function App() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % titles.length);
-    }, 7000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [titles.length]);
@@ -108,9 +111,12 @@ export default function App() {
         </div>
       </div>
 
-      {/* NEXT SECTION */}
+      {/* NEXT SECTIONS */}
       <TradeView />
       <MarketsSection />
+      <LeadingBroker />
+      <Features />
+      <Pricing />
       <Footer />
     </div>
   );

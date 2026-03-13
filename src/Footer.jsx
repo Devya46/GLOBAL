@@ -22,7 +22,7 @@ export default function Footer() {
             transparent brokers in the forex industry and other trading markets.
           </p>
 
-          <div className="social-icons">
+          <div className="Footer-social-icons">
             <a
               href="https://www.facebook.com/people/RIM-Global/61584644503217/"
               target="_blank"

@@ -182,7 +182,7 @@ body {
 /* HEADING FONT */
 
 .hero h1 {
-  font-family: "Inconsolata", monospace !important;
+  /* font-family: "Inconsolata", monospace !important; */
   font-size: 52px;
   font-weight: 700;
   line-height: 1.2;
