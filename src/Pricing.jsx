@@ -1,242 +1,133 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import "./Pricing.css";
-import {
-  FaChartLine,
-  FaCoins,
-  FaBalanceScale,
-  FaRobot,
-  FaExchangeAlt,
-} from "react-icons/fa";
 
-export default function Pricing() {
+const accounts = [
+  {
+    title: "CLASSIC",
+    price: "$100",
+    deposit: "CLASSIC ACCOUNT",
+    features: [
+      "Spread : 2 Pips",
+      "Commission : No",
+      "Leverage : 1:1000",
+      "EA Allowed : No",
+      "Swap Charges : No",
+    ],
+  },
+  {
+    title: "ECN",
+    price: "$500",
+    deposit: "ECN ACCOUNT",
+    features: [
+      "Spread : 1.5 Pips",
+      "Commission : No",
+      "Leverage : 1:800",
+      "EA Allowed : No",
+      "Swap Charges : No",
+    ],
+  },
+  {
+    title: "STANDARD",
+    price: "$2500",
+    deposit: "STANDARD ACCOUNT",
+    features: [
+      "Spread : 1 Pips",
+      "Commission : No",
+      "Leverage : 1:600",
+      "EA Allowed : No",
+      "Swap Charges : No",
+    ],
+  },
+  {
+    title: "VIP",
+    price: "$5000",
+    deposit: "VIP ACCOUNT",
+    features: [
+      "Spread : 0.2 Pips",
+      "Commission : No",
+      "Leverage : 1:400",
+      "EA Allowed : No",
+      "Swap Charges : No",
+    ],
+  },
+];
+
+export default function ForexPricing() {
+  const gridRef = useRef(null);
+
   useEffect(() => {
-    const cards = document.querySelectorAll(".pricing-card");
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    const cards = grid.querySelectorAll(".account-card");
 
     const observer = new IntersectionObserver(
-      (entries) => {
+      (entries, observer) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             cards.forEach((card, index) => {
               setTimeout(() => {
-                card.classList.add("show");
-              }, index * 200);
+                card.classList.add("animate-in");
+              }, index * 120);
             });
-          } else {
-            cards.forEach((card) => {
-              card.classList.remove("show");
-            });
+            observer.unobserve(grid);
           }
         });
       },
-      { threshold: 0.35 },
+      {
+        threshold: 0.2,
+        rootMargin: "0px 0px -30px 0px",
+      },
     );
 
-    const grid = document.querySelector(".pricing-grid");
+    observer.observe(grid);
 
-    if (grid) observer.observe(grid);
+    // fallback
+    if (grid.getBoundingClientRect().top < window.innerHeight - 80) {
+      setTimeout(() => {
+        cards.forEach((card, idx) => {
+          setTimeout(() => {
+            card.classList.add("animate-in");
+          }, idx * 120);
+        });
+      }, 150);
+    }
 
-    return () => {
-      if (grid) observer.unobserve(grid);
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section className="rim-pricing">
-      <div className="pricing-header">
-        <h2>PRICING PLAN</h2>
-        <p>Start Your Trading Account Now!</p>
-
-        <span>
+    <section className="forex-pricing">
+      <div className="section-badge">
+        <h2>Start Your Trading Account Now!</h2>
+        <p>
           We are equipped with four types of trading accounts to suit the
           different needs and risk tolerances of trader.
-        </span>
+        </p>
       </div>
 
-      <div className="pricing-grid">
-        {/* CLASSIC */}
-        <div className="pricing-card">
-          <div className="card-top">
-            <div className="text">
-              <h3>CLASSIC</h3>
-              <div className="price">$100</div>
-              <span className="deposit">Per Min Deposit</span>
+      <div className="cards-grid" ref={gridRef}>
+        {accounts.map((acc, index) => (
+          <div className="account-card" key={index}>
+            <div className="card-title">{acc.title}</div>
+
+            <div className="price">
+              {acc.price} <small>/per Min Deposit</small>
             </div>
+
+            <span className="deposit-badge">{acc.deposit}</span>
+
+            <ul className="features">
+              {acc.features.map((f, i) => (
+                <li key={i}>{f}</li>
+              ))}
+            </ul>
+
+            <a href="#" className="open-btn">
+              Open Account
+            </a>
           </div>
-
-          <div className="plan-divider">
-            <span>CLASSIC ACCOUNT</span>
-          </div>
-
-          <ul className="features-list">
-            <li>
-              <FaChartLine className="feature-icon" />
-              Spread : 2 Pips
-            </li>
-
-            <li>
-              <FaCoins className="feature-icon" />
-              Commission : No
-            </li>
-
-            <li>
-              <FaBalanceScale className="feature-icon" />
-              Leverage : 1:1000
-            </li>
-
-            <li>
-              <FaRobot className="feature-icon" />
-              EA Allowed : No
-            </li>
-
-            <li>
-              <FaExchangeAlt className="feature-icon" />
-              Swap Charges : No
-            </li>
-          </ul>
-
-          <a href="#" className="price-btn">
-            Open Account
-          </a>
-        </div>
-
-        {/* ECN */}
-
-        <div className="pricing-card featured">
-          <div className="card-top">
-            <h3>ECN</h3>
-            <div className="price">$500</div>
-            <span className="deposit">Per Min Deposit</span>
-          </div>
-
-          <div className="plan-divider">
-            <span>ECN ACCOUNT</span>
-          </div>
-
-          <ul className="features-list">
-            <li>
-              <FaChartLine className="feature-icon" />
-              Spread : 1.5 Pips
-            </li>
-
-            <li>
-              <FaCoins className="feature-icon" />
-              Commission : No
-            </li>
-
-            <li>
-              <FaBalanceScale className="feature-icon" />
-              Leverage : 1:800
-            </li>
-
-            <li>
-              <FaRobot className="feature-icon" />
-              EA Allowed : No
-            </li>
-
-            <li>
-              <FaExchangeAlt className="feature-icon" />
-              Swap Charges : No
-            </li>
-          </ul>
-
-          <a href="#" className="price-btn">
-            Open Account
-          </a>
-        </div>
-
-        {/* STANDARD */}
-
-        <div className="pricing-card">
-          <div className="card-top">
-            <div className="text">
-              <h3>STANDARD</h3>
-              <div className="price">$2500</div>
-              <span className="deposit">Per Min Deposit</span>
-            </div>
-          </div>
-
-          <div className="plan-divider">
-            <span>STANDARD ACCOUNT</span>
-          </div>
-
-          <ul className="features-list">
-            <li>
-              <FaChartLine className="feature-icon" />
-              Spread : 1 Pips
-            </li>
-
-            <li>
-              <FaCoins className="feature-icon" />
-              Commission : No
-            </li>
-
-            <li>
-              <FaBalanceScale className="feature-icon" />
-              Leverage : 1:600
-            </li>
-
-            <li>
-              <FaRobot className="feature-icon" />
-              EA Allowed : No
-            </li>
-
-            <li>
-              <FaExchangeAlt className="feature-icon" />
-              Swap Charges : No
-            </li>
-          </ul>
-
-          <a href="#" className="price-btn">
-            Open Account
-          </a>
-        </div>
-
-        {/* VIP */}
-
-        <div className="pricing-card">
-          <div className="card-top">
-            <div className="text">
-              <h3>VIP</h3>
-              <div className="price">$5000</div>
-              <span className="deposit">Per Min Deposit</span>
-            </div>
-          </div>
-
-          <div className="plan-divider">
-            <span>VIP ACCOUNT</span>
-          </div>
-
-          <ul className="features-list">
-            <li>
-              <FaChartLine className="feature-icon" />
-              Spread : 0.2 Pips
-            </li>
-
-            <li>
-              <FaCoins className="feature-icon" />
-              Commission : No
-            </li>
-
-            <li>
-              <FaBalanceScale className="feature-icon" />
-              Leverage : 1:400
-            </li>
-
-            <li>
-              <FaRobot className="feature-icon" />
-              EA Allowed : No
-            </li>
-
-            <li>
-              <FaExchangeAlt className="feature-icon" />
-              Swap Charges : No
-            </li>
-          </ul>
-
-          <a href="#" className="price-btn">
-            Open Account
-          </a>
-        </div>
+        ))}
       </div>
     </section>
   );

@@ -5,6 +5,8 @@ import TradeView from "./TradeView";
 import LeadingBroker from "./LeadingBroker";
 import Features from "./Features";
 import Pricing from "./Pricing";
+import AccountSteps from "./AccountSteps";
+
 import Footer from "./Footer";
 
 export default function App() {
@@ -117,6 +119,7 @@ export default function App() {
       <LeadingBroker />
       <Features />
       <Pricing />
+      <AccountSteps />
       <Footer />
     </div>
   );
