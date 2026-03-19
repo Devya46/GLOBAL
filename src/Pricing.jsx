@@ -123,7 +123,7 @@ export default function ForexPricing() {
               ))}
             </ul>
 
-            <a href="#" className="open-btn">
+            <a href="/" className="open-btn">
               Open Account
             </a>
           </div>

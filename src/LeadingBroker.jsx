@@ -84,7 +84,7 @@ export default function LeadingBroker() {
             Gain Your Trading Advantage With Rim Global
           </h4>
 
-          <a href="#" className="rim-btn">
+          <a href="/" className="rim-btn">
             Start Trading
           </a>
         </div>

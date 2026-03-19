@@ -86,7 +86,7 @@ export default function MarketsSection() {
             and execute strategies with confidence.
           </p>
 
-          <a href="#" className="market-cta">
+          <a href="/" className="market-cta">
             Explore All Markets
           </a>
         </div>
