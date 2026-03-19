@@ -25,8 +25,8 @@ body.menu-open {
 
 /* HERO SECTION with background image */
 .hero {
-  min-height: 125vh;
-  background: url("assets/RIM\ global\ Background.png");
+  min-height: 105vh;
+  background: url("assets/RIM-global-Background.png");
   background-size: cover;
   background-position: center 30%;
   display: flex;
@@ -79,11 +79,16 @@ body.menu-open {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* 🔥 FIX: allow buttons same style as links */
+.nav button {
+  background: none;
+  border: none;
+}
+
 .nav-item,
 .dropdown-trigger {
   color: #f2f6fd;
-  text-decoration: none;
-  font-size: 1rem;
+  font-size: 18px;
   font-weight: 500;
   letter-spacing: 0.3px;
   cursor: pointer;
@@ -139,7 +144,9 @@ body.menu-open {
   transform: translateY(0);
 }
 
-.dropdown-menu a {
+/* 🔥 FIX: support button instead of a */
+.dropdown-menu a,
+.dropdown-menu button {
   display: block;
   padding: 12px 24px;
   color: #1a2a3c;
@@ -149,15 +156,47 @@ body.menu-open {
   border-left: 4px solid transparent;
   border-radius: 7px;
   transition: 0.15s;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
 }
 
-.dropdown-menu a:hover {
+.dropdown-menu a:hover,
+.dropdown-menu button:hover {
   background: #f2f8ff;
   border-left: 6px solid #1f4f7a;
   color: #0b1d31;
 }
 
-/* desktop buttons */
+/* mobile */
+.mobile-nav a,
+.mobile-nav button,
+.mobile-dropdown-trigger {
+  color: #eaf1fc;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 400;
+  border-bottom: 1px solid #253e5c;
+  padding-bottom: 12px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-align: left;
+}
+
+.mobile-dropdown-menu a,
+.mobile-dropdown-menu button {
+  font-size: 1.1rem;
+  border-bottom: none;
+  padding-bottom: 6px;
+  color: #c2d2ec;
+  background: none;
+  border: none;
+  text-align: left;
+}
+/* BUTTONS */
 .buttons {
   display: flex;
   gap: 16px;
@@ -180,7 +219,6 @@ body.menu-open {
   background: white;
   transform: scale(1.02);
 }
-
 .contact {
   background: #3de39f;
   border: none;
@@ -189,16 +227,13 @@ body.menu-open {
   font-weight: 600;
   font-size: 0.9rem;
   color: #0c1f30;
-  cursor: pointer;
-  /* box-shadow: 0 8px 20px rgba(61, 227, 159, 0.3); */
+  cursor: pointer; /* box-shadow: 0 8px 20px rgba(61, 227, 159, 0.3); */
   transition: 0.2s;
 }
 .contact:hover {
   background: #2ed18c;
   transform: scale(1.02);
-}
-
-/* HAMBURGER (mobile only) */
+} /* HAMBURGER (mobile only) */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -220,9 +255,7 @@ body.menu-open {
   margin: 4px 0;
   border-radius: 6px;
   transition: 0.2s;
-}
-
-/* mobile slide-out menu */
+} /* mobile slide-out menu */
 .mobile-nav {
   position: fixed;
   top: 0;
@@ -241,11 +274,9 @@ body.menu-open {
   gap: 20px;
   overflow-y: auto; /* allow scrolling inside menu if needed */
 }
-
 .mobile-nav.open {
   right: 0;
 }
-
 .close-btn {
   position: absolute;
   top: 20px;
@@ -261,7 +292,6 @@ body.menu-open {
   justify-content: center;
   z-index: 1060;
 }
-
 .mobile-nav a,
 .mobile-dropdown-trigger {
   color: #eaf1fc;
@@ -272,11 +302,9 @@ body.menu-open {
   padding-bottom: 12px;
   cursor: pointer;
 }
-
 .mobile-dropdown {
   margin-bottom: 10px;
 }
-
 .mobile-dropdown-menu {
   display: none;
   flex-direction: column;
@@ -284,18 +312,15 @@ body.menu-open {
   margin-top: 15px;
   gap: 15px;
 }
-
 .mobile-dropdown-menu.show {
   display: flex;
 }
-
 .mobile-dropdown-menu a {
   font-size: 1.1rem;
   border-bottom: none;
   padding-bottom: 6px;
   color: #c2d2ec;
 }
-
 .mobile-nav .buttons {
   flex-direction: column;
   margin-top: 20px;
@@ -306,9 +331,7 @@ body.menu-open {
   width: 100%;
   text-align: center;
   padding: 12px;
-}
-
-/* overlay when menu is open */
+} /* overlay when menu is open */
 .menu-overlay {
   position: fixed;
   top: 0;
@@ -324,13 +347,10 @@ body.menu-open {
     opacity 0.3s,
     visibility 0.3s;
 }
-
 .menu-overlay.show {
   opacity: 1;
   visibility: visible;
-}
-
-/* HERO CONTENT */
+} /* HERO CONTENT */
 .hero-content {
   max-width: 670px;
   margin-left: 10%;
@@ -339,7 +359,6 @@ body.menu-open {
   z-index: 20;
   margin-top: 30px;
 }
-
 .tag {
   color: #b3ffd9;
   letter-spacing: 5px;
@@ -349,15 +368,13 @@ body.menu-open {
   margin-bottom: 16px;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
-
 .hero h1 {
   font-size: clamp(2.2rem, 10vw, 50px);
-  line-height: 50px;
+  line-height: 59px;
   color: white;
   text-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
   margin: 0;
 }
-
 .desc {
   margin-top: 24px;
   color: rgba(255, 255, 255, 0.9);
@@ -366,7 +383,6 @@ body.menu-open {
   max-width: 560px;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
-
 .cta {
   margin-top: 36px;
   background: #3de39f;
@@ -385,15 +401,12 @@ body.menu-open {
   background: #4cecb0;
   transform: translateY(-3px);
   box-shadow: 0 22px 35px -5px #3de39f;
-}
-
-/* flip animation */
+} /* flip animation */
 .cube-text {
   display: inline-block;
   animation: cubeFlip 0.9s ease;
   transform-origin: bottom;
 }
-
 @keyframes cubeFlip {
   0% {
     transform: rotateX(90deg);
@@ -407,9 +420,7 @@ body.menu-open {
     transform: rotateX(0);
     opacity: 1;
   }
-}
-
-/* RESPONSIVE BREAKPOINTS */
+} /* RESPONSIVE BREAKPOINTS */
 @media (max-width: 900px) {
   .nav,
   .header .buttons {
@@ -426,11 +437,10 @@ body.menu-open {
     margin-left: 5%;
     max-width: 550px;
   }
-  .hero h2 {
+  .hero h1 {
     font-size: 46px;
   }
 }
-
 @media (max-width: 600px) {
   .header,
   .header.scrolled {
@@ -443,7 +453,7 @@ body.menu-open {
     margin-left: 20px;
     margin-right: 20px;
   }
-  .hero h2 {
+  .hero h1 {
     font-size: 38px;
   }
   .desc {

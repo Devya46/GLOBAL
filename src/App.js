@@ -20,7 +20,8 @@ export default function App() {
 
   const titles = [
     <>
-      New to Trading? We're Here
+      New to Trading?
+      <br /> We're Here
       <br />
       Learn-Trade-Grow
     </>,
@@ -33,7 +34,7 @@ export default function App() {
 
   const btn = "Start Trading";
 
-  // 🔹 Scroll effect
+  // Scroll effect
   useEffect(() => {
     const handleScroll = () => {
       if (!menuOpen) {
@@ -45,16 +46,16 @@ export default function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [menuOpen]);
 
-  // 🔹 Title rotation
+  // Title rotation (FIXED)
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % titles.length);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [titles.length]);
 
-  // 🔹 Lock body scroll when menu open
+  // Lock body scroll
   useEffect(() => {
     if (menuOpen) {
       document.body.classList.add("menu-open");
@@ -78,7 +79,7 @@ export default function App() {
         onClick={() => setMenuOpen(false)}
       ></div>
 
-      {/* HERO SECTION */}
+      {/* HERO */}
       <div className="hero">
         {/* HEADER */}
         <header className={scrolled ? "header scrolled" : "header"}>
@@ -90,17 +91,17 @@ export default function App() {
 
           {/* DESKTOP NAV */}
           <nav className="nav">
-            <a className="nav-item">Home</a>
-            <a className="nav-item">About</a>
+            <button className="nav-item">Home</button>
+            <button className="nav-item">About</button>
 
             <div className="dropdown nav-item">
               <span className="dropdown-trigger">
                 Accounts <span className="arrow">▾</span>
               </span>
               <div className="dropdown-menu">
-                <a>Account Type</a>
-                <a>Demo Account</a>
-                <a>Withdrawal & Deposits</a>
+                <button>Account Type</button>
+                <button>Demo Account</button>
+                <button>Withdrawal & Deposits</button>
               </div>
             </div>
 
@@ -109,14 +110,14 @@ export default function App() {
                 Partners <span className="arrow">▾</span>
               </span>
               <div className="dropdown-menu">
-                <a>Partner Types</a>
-                <a>Partner Program</a>
-                <a>Investor</a>
-                <a>Become a Partner</a>
+                <button>Partner Types</button>
+                <button>Partner Program</button>
+                <button>Investor</button>
+                <button>Become a Partner</button>
               </div>
             </div>
 
-            <a className="nav-item">Blogs</a>
+            <button className="nav-item">Blogs</button>
           </nav>
 
           {/* BUTTONS */}
@@ -139,10 +140,9 @@ export default function App() {
             &times;
           </span>
 
-          <a onClick={() => setMenuOpen(false)}>Home</a>
-          <a onClick={() => setMenuOpen(false)}>About</a>
+          <button onClick={() => setMenuOpen(false)}>Home</button>
+          <button onClick={() => setMenuOpen(false)}>About</button>
 
-          {/* Accounts */}
           <div className="mobile-dropdown">
             <span onClick={() => toggleDropdown("accounts")}>
               Accounts {dropdowns.accounts ? "▴" : "▾"}
@@ -153,13 +153,14 @@ export default function App() {
                 dropdowns.accounts ? "show" : ""
               }`}
             >
-              <a onClick={() => setMenuOpen(false)}>Account Type</a>
-              <a onClick={() => setMenuOpen(false)}>Demo Account</a>
-              <a onClick={() => setMenuOpen(false)}>Withdrawal & Deposits</a>
+              <button onClick={() => setMenuOpen(false)}>Account Type</button>
+              <button onClick={() => setMenuOpen(false)}>Demo Account</button>
+              <button onClick={() => setMenuOpen(false)}>
+                Withdrawal & Deposits
+              </button>
             </div>
           </div>
 
-          {/* Partners */}
           <div className="mobile-dropdown">
             <span onClick={() => toggleDropdown("partners")}>
               Partners {dropdowns.partners ? "▴" : "▾"}
@@ -170,14 +171,18 @@ export default function App() {
                 dropdowns.partners ? "show" : ""
               }`}
             >
-              <a onClick={() => setMenuOpen(false)}>Partner Types</a>
-              <a onClick={() => setMenuOpen(false)}>Partner Program</a>
-              <a onClick={() => setMenuOpen(false)}>Investor</a>
-              <a onClick={() => setMenuOpen(false)}>Become a Partner</a>
+              <button onClick={() => setMenuOpen(false)}>Partner Types</button>
+              <button onClick={() => setMenuOpen(false)}>
+                Partner Program
+              </button>
+              <button onClick={() => setMenuOpen(false)}>Investor</button>
+              <button onClick={() => setMenuOpen(false)}>
+                Become a Partner
+              </button>
             </div>
           </div>
 
-          <a onClick={() => setMenuOpen(false)}>Blogs</a>
+          <button onClick={() => setMenuOpen(false)}>Blogs</button>
 
           <div className="buttons">
             <button className="login">LOG IN</button>
@@ -200,7 +205,7 @@ export default function App() {
         </div>
       </div>
 
-      {/* NEXT SECTIONS */}
+      {/* SECTIONS */}
       <TradeView />
       <MarketsSection />
       <LeadingBroker />
