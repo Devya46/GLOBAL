@@ -80,7 +80,7 @@ export default function LeadingBroker() {
               <span>Countries</span>
             </div>
           </div>
-          <h4 class="rim-highlight">
+          <h4 className="rim-highlight">
             Gain Your Trading Advantage With Rim Global
           </h4>
 

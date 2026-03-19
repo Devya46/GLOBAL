@@ -26,22 +26,32 @@ export default function Footer() {
             <a
               href="https://www.facebook.com/people/RIM-Global/61584644503217/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <FaFacebookF />
             </a>
 
-            <a href="https://x.com/rimglobaltrade" target="_blank">
+            <a
+              href="https://x.com/rimglobaltrade"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaXTwitter />
             </a>
 
             <a
               href="https://www.linkedin.com/company/rim-global/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <FaLinkedinIn />
             </a>
 
-            <a href="https://www.youtube.com/@RIM_Global" target="_blank">
+            <a
+              href="https://www.youtube.com/@RIM_Global"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaYoutube />
             </a>
           </div>
@@ -120,6 +130,8 @@ export default function Footer() {
           <a
             className="RiskDisclosure"
             href="https://rimglobal.trade/legal-risk-disclosure"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Risk Disclosure
           </a>
