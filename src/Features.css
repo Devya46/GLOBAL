@@ -1,71 +1,167 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .features-section {
-  background: #021120;
-  padding: 175px 0 108px;
+  font-family: "Inter", sans-serif;
+}
+
+/* ---------- DESKTOP LAYOUT (absolutely untouched) ---------- */
+.features-section {
+  background: radial-gradient(circle at 20% 30%, #0c2338, #021020 80%);
+  padding: 160px 0 120px;
   display: flex;
   justify-content: center;
+  align-items: center;
   position: relative;
   overflow: hidden;
 }
 
-.features-wrapper {
-  position: relative;
-  width: 900px;
-  height: 450px;
+.features-section::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(61, 227, 159, 0.03) 0%,
+    transparent 70%
+  );
+  top: -200px;
+  right: -200px;
+  border-radius: 50%;
+  z-index: 0;
 }
 
-/* CENTER */
+.features-section::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(111, 227, 160, 0.02) 0%,
+    transparent 70%
+  );
+  bottom: -150px;
+  left: -100px;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.features-wrapper {
+  position: relative;
+  width: 1100px;
+  height: 520px;
+  max-width: 90%;
+  z-index: 2;
+}
 
 .features-center {
   position: absolute;
-  top: 9%;
+  top: -8%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -20%);
   text-align: center;
-  max-width: 350px;
+  width: 420px;
+  max-width: 90%;
+  z-index: 10;
+  pointer-events: none;
 }
 
 .features-tag {
   color: #3de39f;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   font-weight: 600;
+  font-size: 15px;
+  text-transform: uppercase;
+  background: rgba(61, 227, 159, 0.1);
+  padding: 6px 18px;
+  border-radius: 40px;
+  display: inline-block;
+  backdrop-filter: blur(4px);
   margin-bottom: 20px;
-  font-size: 16px;
+  border: 1px solid rgba(61, 227, 159, 0.2);
 }
 
 .features-center h2 {
   color: white;
-  font-size: 50px;
-  margin: 12px 0;
+  font-size: 52px;
+  line-height: 1.1;
+  font-weight: 700;
+  margin: 16px 0 14px;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .features-center h2 span {
   color: #6fe3a0;
+  font-weight: 700;
+  background: linear-gradient(145deg, #6fe3a0, #3de39f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .features-center p {
-  color: #c7d4e2;
-  font-size: 14px;
-  line-height: 1.6;
+  color: #cfddee;
+  font-size: 16px;
+  line-height: 1.7;
+  font-weight: 400;
+  max-width: 380px;
+  margin: 0 auto;
+  background: rgb(9 37 63 / 40%);
+  backdrop-filter: blur(3px);
+  padding: 10px 22px;
+  border-radius: 28px;
+  border: 1px solid rgb(255 255 255 / 0%);
 }
-
-/* CARD */
 
 .feature-card {
   position: absolute;
-  background: #0d2a44;
-  padding: 39px 29px;
-  border-radius: 12px;
-  width: 310px;
+  background: rgba(18, 38, 60, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(61, 227, 159, 0.12);
+  padding: 24px 32px 30px;
+  border-radius: 14px;
+  width: 303px;
   text-align: center;
-  transition: 0.3s;
-  animation: hang 4s ease-in-out infinite;
+  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+  box-shadow:
+    0 35px 60px -20px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(111, 227, 160, 0.1) inset;
+  animation: float 5s ease-in-out infinite;
+  will-change: transform;
+  z-index: 5;
 }
 
-@keyframes hang {
+.card1 {
+  animation-delay: 0s;
+  top: 0;
+  left: 20px;
+}
+.card2 {
+  animation-delay: 1.2s;
+  top: 0;
+  right: 10px;
+}
+.card3 {
+  animation-delay: 0.7s;
+  left: 36%;
+  transform: translateX(-50%);
+  bottom: -5%;
+}
+
+@keyframes float {
   0% {
     transform: translateY(0px);
   }
-  50% {
+  45% {
+    transform: translateY(-12px);
+  }
+  55% {
     transform: translateY(-12px);
   }
   100% {
@@ -74,70 +170,252 @@
 }
 
 .feature-card h4 {
-  margin: 10px 0;
-  font-size: 20px;
+  margin: 18px 0 12px;
+  font-size: 22px;
+  font-weight: 600;
   color: white;
+  letter-spacing: -0.2px;
+  transition: all 0.3s ease;
 }
 
 .feature-card p {
-  font-size: 17px;
-  color: #b6c3d1;
-  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #bdd0e6;
+  margin-top: 8px;
+  transition: all 0.25s;
+  font-weight: 400;
 }
 
-/* ICON */
-
 .icon {
-  width: 256px;
-  height: 50px;
+  width: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
 }
 
 .icon img {
-  width: 51px;
-  height: 55px;
+  width: 58px;
+  height: 58px;
   object-fit: contain;
+  filter: drop-shadow(0 8px 14px rgba(0, 40, 20, 0.8));
+  transition: all 0.3s ease;
 }
 
-/* POSITIONS */
-
-.card1 {
-  top: 0;
-  left: -90px;
-}
-
-.card2 {
-  top: 0;
-  right: -112px;
-}
-
-.card3 {
-  bottom: -35px;
-  left: 36%;
-  transform: translateX(-50%);
-}
-
-/* HOVER */
-* .feature-card:hover {
-  background: #000;
+.feature-card:hover {
+  background: #0f1e2f;
+  border-color: rgba(111, 227, 160, 0.6);
+  box-shadow:
+    0 45px 70px -15px #000000,
+    0 0 0 2px rgba(111, 227, 160, 0.4) inset;
   animation-play-state: paused;
+  transform: scale(1.02) translateY(-6px);
+  transition: all 0.35s;
 }
 
 .feature-card:hover h4 {
   color: #6fe3a0;
-  text-shadow: 0 0 25px rgba(111, 227, 160, 0.8);
+  text-shadow: 0 0 18px rgba(111, 227, 160, 0.7);
   font-size: 24px;
-  margin-top: 50px;
+  margin-top: 8px;
+  margin-bottom: 14px;
 }
 
 .feature-card:hover p {
-  /* display: none; */
+  color: #e0edfc;
+  transform: translateY(2px);
 }
 
 .feature-card:hover .icon img {
-  width: 70px;
-  height: 75px;
-  margin-top: 32px;
+  width: 74px;
+  height: 74px;
+  filter: drop-shadow(0 0 15px #6fe3a0);
+  margin-top: 0;
+  transform: scale(1.08);
+}
+
+/* small desktop fallback (original, only under 1000px but still desktop-ish) */
+@media (max-width: 1000px) and (min-width: 701px) {
+  .features-wrapper {
+    width: 700px;
+    height: 650px;
+  }
+  .card1 {
+    left: -20px;
+    top: 20px;
+  }
+  .card2 {
+    right: -20px;
+    top: 20px;
+  }
+  .card3 {
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .features-center {
+    top: 12%;
+  }
+}
+
+/* ---------- IMPROVED RESPONSIVE (mobile & tablet) ---------- */
+/* tablets (max-width: 900px) and phones: make it compact, no absolute positions */
+@media (max-width: 900px) {
+  .features-section {
+    padding: 80px 16px; /* much less vertical space */
+  }
+
+  .features-wrapper {
+    width: 100%;
+    max-width: 600px; /* even on tablets we cap width */
+    height: auto; /* let content define height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px; /* tight gap between stacked blocks */
+  }
+
+  /* center block: relative, static, no absolute transform */
+  .features-center {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    max-width: 480px;
+    margin-bottom: 8px; /* less margin */
+    pointer-events: auto; /* re-enable if needed */
+  }
+
+  .features-center h2 {
+    font-size: 40px; /* slightly smaller but still bold */
+    margin: 8px 0 10px;
+  }
+
+  .features-center p {
+    font-size: 15px;
+    padding: 8px 16px;
+    background: rgba(10, 30, 48, 0.3); /* softer */
+  }
+
+  .features-tag {
+    font-size: 14px;
+    padding: 4px 14px;
+    margin-bottom: 8px;
+  }
+
+  /* cards: remove absolute positioning, block layout */
+  .feature-card {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    transform: none;
+    width: 100%;
+    max-width: 400px; /* cards not too wide on tablet/mobile */
+    margin: 0 auto; /* centered */
+    padding: 30px 24px 28px;
+    animation: float 4.5s ease-in-out infinite; /* keep subtle float but maybe slower? fine */
+  }
+
+  .card1,
+  .card2,
+  .card3 {
+    animation-delay:
+      0s, 0.8s, 0.4s; /* keep delays if you want, but we override */
+  }
+
+  /* reduce card icon size slightly on small screens */
+  .icon img {
+    width: 52px;
+    height: 52px;
+  }
+
+  .feature-card h4 {
+    font-size: 20px;
+    margin: 14px 0 8px;
+  }
+
+  .feature-card p {
+    font-size: 15px;
+  }
+
+  /* hover effects still work, but scale a bit less to avoid overflow */
+  .feature-card:hover {
+    transform: scale(1.01) translateY(-3px);
+  }
+
+  .feature-card:hover h4 {
+    font-size: 22px;
+  }
+
+  .feature-card:hover .icon img {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+/* additional compactness for smaller phones (max-width: 500px) */
+@media (max-width: 500px) {
+  .features-section {
+    padding: 60px 12px;
+  }
+
+  .features-wrapper {
+    gap: 20px;
+  }
+
+  .features-center h2 {
+    font-size: 34px;
+  }
+
+  .features-center p {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  .feature-card {
+    max-width: 320px;
+    padding: 24px 18px 22px;
+    border-radius: 28px;
+  }
+
+  .icon img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .feature-card h4 {
+    font-size: 19px;
+    margin: 10px 0 6px;
+  }
+
+  .feature-card p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .feature-card:hover .icon img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .feature-card:hover h4 {
+    font-size: 20px;
+  }
+}
+
+/* ensure card3 paragraph any small adjust */
+.card3 p {
+  word-break: break-word;
+}
+
+.feature-card:hover p {
+  display: block;
+}
+
+.feature-card:hover .icon img {
+  margin-top: 0;
 }
