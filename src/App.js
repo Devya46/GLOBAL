@@ -7,6 +7,11 @@ import Features from "./Features";
 import Pricing from "./Pricing";
 import AccountSteps from "./AccountSteps";
 import AutoTrading from "./AutoTrading";
+import BlogSlider from "./BlogSlider";
+import TradingTerminals from "./TradingTerminals";
+import StatsSection from "./StatsSection";
+import Testimonials from "./Testimonials";
+import VideoGallery from "./VideoGallery";
 import Footer from "./Footer";
 
 export default function App() {
@@ -213,6 +218,11 @@ export default function App() {
       <Pricing />
       <AccountSteps />
       <AutoTrading />
+      <BlogSlider />
+      <TradingTerminals />
+      <StatsSection />
+      <Testimonials />
+      <VideoGallery />
       <Footer />
     </div>
   );

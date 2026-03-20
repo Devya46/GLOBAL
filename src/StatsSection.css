@@ -1,0 +1,127 @@
+/* ===== WRAPPER (NO GLOBAL OVERRIDE) ===== */
+.stats-wrapper {
+  background: #eef2ef;
+  color: #0b1d13;
+  padding: 100px 20px;
+  /* background: url(https://images.unsplash.com/photo-1770719269462-d3c1ed7e184f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D); */
+  background-image:
+    linear-gradient(rgb(0 0 0 / 31%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(0 0 0 / 28%) 1px, #00000000 1px);
+  background-size: 60px 60px;
+}
+
+.stats-wrapper * {
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* GRID */
+.stats-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 30px;
+}
+
+/* SIDE */
+.stats-side {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* CARD */
+.stats-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 25px;
+}
+
+/* TEXT */
+.stats-big {
+  font-size: 38px;
+  font-weight: 700;
+}
+
+.stats-small {
+  color: #6b6f6d;
+  margin-top: 5px;
+}
+
+/* FOOTER */
+.stats-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.stats-footer i {
+  color: #22c55e;
+  font-size: 20px;
+}
+
+/* CENTER */
+.stats-center {
+  background: #fff;
+  border-radius: 20px;
+  text-align: center;
+  padding: 25px 40px;
+}
+
+.stats-tag {
+  display: inline-block;
+  background: #22c55e;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+.stats-center h2 {
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+/* PROGRESS */
+.progress-item {
+  margin-bottom: 25px;
+}
+
+.progress-item h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* BAR */
+.progress-bar {
+  display: flex;
+  height: 30px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #e5e7eb;
+}
+
+.progress-label {
+  width: 90px;
+  background: #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.progress-fill {
+  width: 0;
+  background: #22c55e;
+  transition: width 1.5s ease;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .stats-container {
+    grid-template-columns: 1fr;
+  }
+}

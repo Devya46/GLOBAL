@@ -1,0 +1,229 @@
+/* ===== WRAPPER (prevents global override) ===== */
+.blog-section-wrapper {
+  background: #e6edf5;
+  padding: 40px 30px;
+}
+
+.blog-section-wrapper * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+}
+
+/* ===== MAIN LAYOUT ===== */
+.blog-section-wrapper .blog-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ===== LEFT PANEL ===== */
+.blog-section-wrapper .blog-left {
+  flex: 0 0 280px;
+  background: linear-gradient(145deg, #061c2e, #01121f);
+  color: white;
+  padding: 36px 28px;
+  border-radius: 28px;
+}
+
+.blog-section-wrapper .blog-label {
+  font-size: 0.9rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.65;
+  font-weight: 500;
+}
+
+.blog-section-wrapper .blog-title {
+  margin-top: 24px;
+  font-size: 2.2rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* COLORS */
+.blog-section-wrapper .green {
+  color: #3ddc84;
+}
+.blog-section-wrapper .orange {
+  color: #ffb347;
+}
+.blog-section-wrapper .sky {
+  color: #6ac9ff;
+}
+
+/* ===== SLIDER ===== */
+.blog-section-wrapper .blog-slider {
+  flex: 1;
+  min-width: 280px;
+  position: relative;
+  border-radius: 24px;
+}
+
+.blog-section-wrapper .slider-wrapper {
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.blog-section-wrapper .blog-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+/* ===== CARD ===== */
+.blog-section-wrapper .blog-card {
+  width: 280px;
+  background: #113b57;
+  color: white;
+  border-radius: 24px;
+  padding: 20px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: 0.2s;
+}
+
+.blog-section-wrapper .blog-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.blog-section-wrapper .blog-card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  transition: 0.2s;
+}
+
+.blog-section-wrapper .blog-card:hover h3 {
+  color: #ffb347;
+}
+
+.blog-section-wrapper .blog-card p {
+  font-size: 0.9rem;
+  opacity: 0.75;
+  line-height: 1.5;
+  margin-bottom: 22px;
+  flex-grow: 1;
+}
+
+.blog-section-wrapper .blog-card:hover {
+  background: #154561;
+}
+
+/* ===== FOOTER ===== */
+.blog-section-wrapper .card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  opacity: 0.9;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 14px;
+}
+
+/* ===== SMALL ARROW IN CARD ===== */
+.blog-section-wrapper .arrow {
+  background: #1c5c7d;
+  padding: 8px 14px;
+  border-radius: 60px;
+  font-size: 1.4rem;
+  transition: 0.25s;
+}
+
+.blog-section-wrapper .blog-card:hover .arrow {
+  transform: rotate(45deg) scale(1.1);
+  background: #2e7a9c;
+}
+
+/* ===== NAV ARROWS ===== */
+.blog-section-wrapper .slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s;
+  z-index: 10;
+  font-size: 3rem;
+  color: #01121f;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.blog-section-wrapper .slider-arrow:hover {
+  background: #1c4e6e;
+}
+
+.blog-section-wrapper .arrow-left {
+  left: -20px;
+}
+
+.blog-section-wrapper .arrow-right {
+  right: -20px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 700px) {
+  .blog-section-wrapper .blog-section {
+    flex-direction: column;
+    padding: 20px 15px;
+  }
+
+  .blog-section-wrapper .blog-left {
+    width: 100%;
+  }
+
+  .blog-section-wrapper .slider-arrow {
+    width: 44px;
+    height: 44px;
+    font-size: 2rem;
+    background: #1c5c7d;
+  }
+
+  .blog-section-wrapper .arrow-left {
+    left: -5px;
+  }
+
+  .blog-section-wrapper .arrow-right {
+    right: -5px;
+  }
+
+  .blog-section-wrapper .blog-track {
+    gap: 16px;
+  }
+
+  .blog-section-wrapper .blog-card {
+    min-width: 260px;
+  }
+}
+
+@media (max-width: 500px) {
+  .blog-section-wrapper .blog-card {
+    min-width: 240px;
+  }
+
+  .blog-section-wrapper .blog-title {
+    font-size: 1.8rem;
+  }
+}
