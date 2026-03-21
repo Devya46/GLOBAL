@@ -216,11 +216,7 @@ body {
 }
 
 .auto-right h2 {
-  font-size: clamp(
-    28px,
-    3.2vw,
-    42px
-  ); /* responsive but smaller due to section height */
+  font-size: 42px !important;
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.02em;

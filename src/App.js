@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import Header from "./Header";
 import MarketsSection from "./MarketsSection";
 import TradeView from "./TradeView";
 import LeadingBroker from "./LeadingBroker";
@@ -12,16 +15,23 @@ import TradingTerminals from "./TradingTerminals";
 import StatsSection from "./StatsSection";
 import Testimonials from "./Testimonials";
 import VideoGallery from "./VideoGallery";
+import Contact from "./Contact";
 import Footer from "./Footer";
+import AccountType from "./Account/Account_type";
+import DEMOAccount from "./Account/DEMO_Account";
 
-export default function App() {
-  const [scrolled, setScrolled] = useState(false);
+// 👉 CREATE TEMP PAGES (or import real ones)
+function Home() {
+  return (
+    <>
+      <MainHome />
+    </>
+  );
+}
+
+// 👉 YOUR MAIN HOME CONTENT MOVED HERE
+function MainHome() {
   const [index, setIndex] = useState(0);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [dropdowns, setDropdowns] = useState({
-    accounts: false,
-    partners: false,
-  });
 
   const titles = [
     <>
@@ -39,19 +49,6 @@ export default function App() {
 
   const btn = "Start Trading";
 
-  // Scroll effect
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!menuOpen) {
-        setScrolled(window.scrollY > 80);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [menuOpen]);
-
-  // Title rotation (FIXED)
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % titles.length);
@@ -60,142 +57,11 @@ export default function App() {
     return () => clearInterval(interval);
   }, [titles.length]);
 
-  // Lock body scroll
-  useEffect(() => {
-    if (menuOpen) {
-      document.body.classList.add("menu-open");
-    } else {
-      document.body.classList.remove("menu-open");
-    }
-  }, [menuOpen]);
-
-  const toggleDropdown = (key) => {
-    setDropdowns((prev) => ({
-      ...prev,
-      [key]: !prev[key],
-    }));
-  };
-
   return (
     <div>
-      {/* OVERLAY */}
-      <div
-        className={`menu-overlay ${menuOpen ? "show" : ""}`}
-        onClick={() => setMenuOpen(false)}
-      ></div>
-
-      {/* HERO */}
       <div className="hero">
-        {/* HEADER */}
-        <header className={scrolled ? "header scrolled" : "header"}>
-          <img
-            src="https://rimglobal.trade/assets/logo/logo.svg"
-            className="logo"
-            alt="logo"
-          />
+        <Header />
 
-          {/* DESKTOP NAV */}
-          <nav className="nav">
-            <button className="nav-item">Home</button>
-            <button className="nav-item">About</button>
-
-            <div className="dropdown nav-item">
-              <span className="dropdown-trigger">
-                Accounts <span className="arrow">▾</span>
-              </span>
-              <div className="dropdown-menu">
-                <button>Account Type</button>
-                <button>Demo Account</button>
-                <button>Withdrawal & Deposits</button>
-              </div>
-            </div>
-
-            <div className="dropdown nav-item">
-              <span className="dropdown-trigger">
-                Partners <span className="arrow">▾</span>
-              </span>
-              <div className="dropdown-menu">
-                <button>Partner Types</button>
-                <button>Partner Program</button>
-                <button>Investor</button>
-                <button>Become a Partner</button>
-              </div>
-            </div>
-
-            <button className="nav-item">Blogs</button>
-          </nav>
-
-          {/* BUTTONS */}
-          <div className="buttons">
-            <button className="login">LOG IN</button>
-            <button className="contact">CONTACT US</button>
-          </div>
-
-          {/* HAMBURGER */}
-          <div className="hamburger" onClick={() => setMenuOpen(true)}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </header>
-
-        {/* MOBILE NAV */}
-        <div className={`mobile-nav ${menuOpen ? "open" : ""}`}>
-          <span className="close-btn" onClick={() => setMenuOpen(false)}>
-            &times;
-          </span>
-
-          <button onClick={() => setMenuOpen(false)}>Home</button>
-          <button onClick={() => setMenuOpen(false)}>About</button>
-
-          <div className="mobile-dropdown">
-            <span onClick={() => toggleDropdown("accounts")}>
-              Accounts {dropdowns.accounts ? "▴" : "▾"}
-            </span>
-
-            <div
-              className={`mobile-dropdown-menu ${
-                dropdowns.accounts ? "show" : ""
-              }`}
-            >
-              <button onClick={() => setMenuOpen(false)}>Account Type</button>
-              <button onClick={() => setMenuOpen(false)}>Demo Account</button>
-              <button onClick={() => setMenuOpen(false)}>
-                Withdrawal & Deposits
-              </button>
-            </div>
-          </div>
-
-          <div className="mobile-dropdown">
-            <span onClick={() => toggleDropdown("partners")}>
-              Partners {dropdowns.partners ? "▴" : "▾"}
-            </span>
-
-            <div
-              className={`mobile-dropdown-menu ${
-                dropdowns.partners ? "show" : ""
-              }`}
-            >
-              <button onClick={() => setMenuOpen(false)}>Partner Types</button>
-              <button onClick={() => setMenuOpen(false)}>
-                Partner Program
-              </button>
-              <button onClick={() => setMenuOpen(false)}>Investor</button>
-              <button onClick={() => setMenuOpen(false)}>
-                Become a Partner
-              </button>
-            </div>
-          </div>
-
-          <button onClick={() => setMenuOpen(false)}>Blogs</button>
-
-          <div className="buttons">
-            <button className="login">LOG IN</button>
-            <button className="contact">CONTACT US</button>
-          </div>
-        </div>
-
-        {/* HERO CONTENT */}
         <div className="hero-content">
           <p className="tag">SMART TRADING SOLUTION</p>
 
@@ -210,7 +76,6 @@ export default function App() {
         </div>
       </div>
 
-      {/* SECTIONS */}
       <TradeView />
       <MarketsSection />
       <LeadingBroker />
@@ -223,7 +88,21 @@ export default function App() {
       <StatsSection />
       <Testimonials />
       <VideoGallery />
+      <Contact />
       <Footer />
     </div>
+  );
+}
+
+// ✅ MAIN APP
+export default function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/account-type" element={<AccountType />} />
+        <Route path="/DEMO_Account" element={<DEMOAccount />} />
+      </Routes>
+    </Router>
   );
 }

@@ -1,0 +1,149 @@
+/* Scoped with rim- prefix so nothing breaks */
+
+.rim-hero {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a1927 0%, #0b2b26 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  position: relative;
+  isolation: isolate;
+}
+
+.rim-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    rgba(0, 100, 80, 0.08) 1px,
+    transparent 1px
+  );
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+.rim-hero-container {
+  max-width: 1280px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.rim-demo-badge {
+  display: inline-flex;
+  gap: 0.5rem;
+  background: rgba(0, 80, 70, 0.3);
+  padding: 0.5rem 1.2rem;
+  border-radius: 100px;
+  font-size: 0.9rem;
+  color: #cbd5e6;
+  border: 1px solid rgba(46, 125, 90, 0.5);
+  margin-bottom: 1.8rem;
+}
+
+.rim-demo-badge span {
+  color: #2e7d5a;
+  font-weight: 600;
+}
+
+.rim-hero-headline {
+  font-size: clamp(2.4rem, 8vw, 4.8rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+}
+
+.rim-hero-highlight {
+  background: linear-gradient(120deg, #4caf7a, #2e7d5a);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.rim-hero-description {
+  max-width: 620px;
+  margin: 1.5rem auto 2.2rem;
+  font-size: 1.05rem;
+  color: #b9d0e2;
+}
+
+.rim-button-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.rim-btn-primary {
+  background: #2e7d5a;
+  color: #fff;
+  padding: 0.9rem 2.2rem;
+  border-radius: 48px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  transition: 0.25s;
+}
+
+.rim-btn-primary:hover {
+  background: #3e9e74;
+  transform: translateY(-2px);
+}
+
+.rim-btn-secondary {
+  background: transparent;
+  color: #fff;
+  padding: 0.9rem 2.2rem;
+  border-radius: 48px;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.rim-btn-secondary:hover {
+  background: rgba(46, 125, 90, 0.2);
+  border-color: #2e7d5a;
+}
+
+.rim-demo-note {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: #9bb4c9;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 1.5rem;
+}
+
+.rim-dot {
+  width: 4px;
+  height: 4px;
+  background: #2e7d5a;
+  border-radius: 50%;
+}
+
+.rim-bottom-note {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  color: #7c9abb;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1rem;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .rim-button-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .rim-btn-primary,
+  .rim-btn-secondary {
+    width: 100%;
+    max-width: 280px;
+  }
+}

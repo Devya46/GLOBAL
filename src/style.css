@@ -3,6 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+h2 {
+  font-size: 50px !important;
+  font-family: "Segoe UI", sans-serif !important;
+}
 
 body,
 html {
@@ -393,14 +397,14 @@ body.menu-open {
   font-size: 1.1rem;
   color: #0a1e2e;
   cursor: pointer;
-  box-shadow: 0 12px 28px -5px #3de39f;
+  /* box-shadow: 0 12px 28px -5px #3de39f; */
   transition: 0.2s;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 .cta:hover {
   background: #4cecb0;
   transform: translateY(-3px);
-  box-shadow: 0 22px 35px -5px #3de39f;
+  /* box-shadow: 0 22px 35px -5px #3de39f; */
 } /* flip animation */
 .cube-text {
   display: inline-block;
