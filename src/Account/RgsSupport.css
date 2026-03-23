@@ -1,0 +1,334 @@
+/* ================= ROOT ================= */
+.rgs_support_section {
+  position: relative;
+  padding: 100px 6%;
+  isolation: isolate;
+  overflow: hidden;
+  font-family: "Inter", sans-serif;
+  color: #eef4ff;
+  background: radial-gradient(circle at 10% 20%, #071e2f, #030c14);
+}
+
+/* ================= BACKGROUND ================= */
+.rgs_bg_mesh {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse at 30% 40%,
+      rgba(51, 209, 122, 0.1),
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse at 85% 70%,
+      rgba(0, 180, 216, 0.07),
+      transparent 50%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.rgs_floating {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(51, 209, 122, 0.05), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.rgs_float1 {
+  top: 15%;
+  right: 5%;
+  width: 400px;
+  height: 400px;
+}
+
+.rgs_float2 {
+  bottom: 10%;
+  left: -100px;
+  width: 350px;
+  height: 350px;
+}
+
+/* ================= CONTAINER ================= */
+.rgs_container {
+  display: flex;
+  gap: 64px;
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* ================= LEFT ================= */
+.rgs_left {
+  flex: 1.1;
+  min-width: 300px;
+}
+
+/* ================= RIGHT ================= */
+.rgs_right {
+  flex: 0.9;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  align-items: flex-start;
+}
+
+.rgs_right .rgs_card {
+  width: 100%;
+  max-width: 500px;
+}
+
+/* ================= TAG ================= */
+.rgs_tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(51, 209, 122, 0.12);
+  backdrop-filter: blur(2px);
+  padding: 6px 18px 6px 16px;
+  border-radius: 40px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  color: #33d17a;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  border: 0.5px solid rgba(51, 209, 122, 0.35);
+}
+
+/* ================= HEADING ================= */
+.rgs_support_section h1 {
+  font-size: clamp(32px, 5vw, 54px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #ffffff 70%, #c0f0da 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.rgs_support_section h1 span {
+  background: linear-gradient(135deg, #33d17a, #7ae9ae);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: 800;
+}
+
+/* ================= DESCRIPTION ================= */
+.rgs_desc {
+  font-size: 16px;
+  color: #c5deef;
+  line-height: 1.65;
+  margin-bottom: 48px;
+  max-width: 540px;
+  border-left: 2.5px solid #33d17a;
+  padding-left: 22px;
+}
+
+/* ================= CARD ================= */
+.rgs_card {
+  display: flex;
+  gap: 22px;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 45, 65, 0.75),
+    rgba(8, 30, 45, 0.85)
+  );
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(51, 209, 122, 0.25);
+  border-radius: 32px;
+  padding: 26px;
+  margin-bottom: 28px;
+  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.rgs_card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 0% 0%,
+    rgba(51, 209, 122, 0.08),
+    transparent 70%
+  );
+}
+
+/* ================= CARD HOVER ================= */
+.rgs_card:hover {
+  transform: translateY(-8px);
+  border-color: #33d17a;
+  background: linear-gradient(
+    135deg,
+    rgba(25, 65, 90, 0.85),
+    rgba(12, 42, 62, 0.9)
+  );
+  box-shadow:
+    0 28px 45px -14px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(51, 209, 122, 0.2);
+}
+
+/* ================= ICON ================= */
+.rgs_icon {
+  min-width: 64px;
+  height: 64px;
+  background: linear-gradient(145deg, #163e58, #0c2c42);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #33d17a;
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.1),
+    0 10px 20px -8px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.rgs_card:hover .rgs_icon {
+  background: linear-gradient(145deg, #33d17a, #26b064);
+  color: #ffffff;
+  box-shadow: 0 8px 20px -6px #33d17a60;
+  transform: scale(1.02);
+}
+
+/* ================= TEXT ================= */
+.rgs_card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rgs_card h3 span {
+  color: #33d17a;
+  font-weight: 800;
+  position: relative;
+}
+
+.rgs_card h3 span::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #33d17a, transparent);
+}
+
+.rgs_card p {
+  font-size: 14px;
+  color: #cfe3f5;
+  line-height: 1.6;
+}
+
+/* ================= META ================= */
+.rgs_card_meta {
+  margin-top: 14px;
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: #9bc2df;
+  flex-wrap: wrap;
+}
+
+.rgs_card_meta i {
+  color: #33d17a;
+  margin-right: 6px;
+}
+
+/* ================= RIGHT SPECIAL STYLE ================= */
+.rgs_right .rgs_card {
+  border-left: 3px solid #33d17a;
+}
+
+/* ================= STATS ================= */
+.rgs_stat {
+  background: rgba(51, 209, 122, 0.1);
+  backdrop-filter: blur(4px);
+  padding: 8px 16px;
+  border-radius: 40px;
+  font-size: 13px;
+  border: 0.5px solid rgba(51, 209, 122, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rgs_stat:hover {
+  background: rgba(51, 209, 122, 0.2);
+  transform: translateY(-2px);
+}
+
+.rgs_stats {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.SMALL {
+  font-size: 14px;
+  color: #33d17a;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .rgs_container {
+    gap: 48px;
+  }
+
+  .rgs_right {
+    align-items: flex-start;
+  }
+
+  .rgs_right .rgs_card {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .rgs_container {
+    flex-direction: column;
+  }
+
+  .rgs_card {
+    padding: 22px;
+    gap: 18px;
+  }
+
+  .rgs_icon {
+    min-width: 54px;
+    height: 54px;
+    font-size: 24px;
+  }
+
+  .rgs_desc {
+    margin-bottom: 36px;
+  }
+}
+
+@media (max-width: 550px) {
+  .rgs_card h3 {
+    font-size: 18px;
+  }
+
+  .rgs_card_meta {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .rgs_icon {
+    min-width: 48px;
+    height: 48px;
+    font-size: 22px;
+  }
+}

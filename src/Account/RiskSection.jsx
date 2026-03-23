@@ -31,14 +31,14 @@ export default function RiskSection() {
           </h1>
 
           <div className="desc">
-            <i className="fas fa-fish"></i>
+            <i className="fas fa-fish"> </i>
             “Phishing” is an attempt by criminals to procure or intercept
             personal data by imitating a trustworthy entity — using fake
             websites, e-mails, phone calls or SMS.
           </div>
 
           <div className="desc">
-            <i className="fas fa-key"></i>
+            <i className="fas fa-key"> </i>
             The term combines <strong>“fishing”</strong> with the
             <strong> P from password</strong>. Criminals bait users into
             revealing sensitive data.

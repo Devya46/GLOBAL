@@ -69,8 +69,12 @@ export default function Header() {
               <button onClick={() => navigate("/account-type")}>
                 Account Type
               </button>
-              <button>Demo Account</button>
-              <button>Withdrawal & Deposits</button>
+              <button onClick={() => navigate("/DEMO-Account")}>
+                Demo Account
+              </button>
+              <button onClick={() => navigate("/Withdrawal&Deposit")}>
+                Withdrawal & Deposits
+              </button>
             </div>
           </div>
 
@@ -125,7 +129,7 @@ export default function Header() {
             <button onClick={() => navigate("/account-type")}>
               Account Type
             </button>
-            <button onClick={() => navigate("/DEMOAccount")}>
+            <button onClick={() => navigate("/DEMO-Account")}>
               Demo Account
             </button>
             <button>Withdrawal & Deposits</button>

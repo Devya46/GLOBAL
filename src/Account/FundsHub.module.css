@@ -1,0 +1,453 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* body {
+  font-family: "Inter", sans-serif;
+  background-color: #0a1a2f;
+  color: white;
+  overflow-x: hidden;
+} */
+
+/* ----- MAIN WRAPPER: Navy background + overlay image ----- */
+.funds-hub {
+  width: 100%;
+  min-height: 100vh;
+  background: url("https://rimglobal.trade/assets/images/priceplan.jpg")
+    center/cover no-repeat fixed;
+  color: white;
+  background-blend-mode: overlay;
+  backdrop-filter: brightness(0.97);
+  position: relative;
+  font-family: "Segoe UI", sans-serif !important;
+}
+
+/* container for content */
+.funds-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 8.5rem 2rem 4rem;
+}
+
+/* ----- ANIMATIONS (unique names, no conflicts) ----- */
+@keyframes floatRise {
+  0% {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideGlideLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideGlideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes gentleScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes borderPulse {
+  0% {
+    border-color: rgba(76, 154, 255, 0.2);
+    box-shadow: 0 0 0 0 rgba(76, 154, 255, 0);
+  }
+  50% {
+    border-color: rgba(76, 154, 255, 0.7);
+    box-shadow: 0 0 0 3px rgba(76, 154, 255, 0.2);
+  }
+  100% {
+    border-color: rgba(76, 154, 255, 0.2);
+    box-shadow: 0 0 0 0 rgba(76, 154, 255, 0);
+  }
+}
+
+@keyframes shimmerFlow {
+  0% {
+    background-position: -150% 0;
+  }
+  100% {
+    background-position: 150% 0;
+  }
+}
+
+/* ----- Header Section (with unique class) ----- */
+.hero-funds {
+  text-align: center;
+  margin-bottom: 3.2rem;
+}
+
+.hero-funds h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #ffffff, #9ac8ff, #4d9eff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.8rem;
+  animation: floatRise 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+}
+
+.hero-sub {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.8rem;
+  margin-top: 1rem;
+}
+
+.hero-sub span {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(28, 55, 88, 0.6);
+  backdrop-filter: blur(6px);
+  padding: 0.5rem 1.4rem;
+  border-radius: 60px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border: 1px solid rgba(77, 158, 255, 0.3);
+  transition: all 0.25s;
+  animation: floatRise 0.6s backwards;
+}
+
+.hero-sub span:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.hero-sub span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.hero-sub span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.hero-sub span:hover {
+  transform: translateY(-3px);
+  background: rgba(52, 102, 153, 0.7);
+  border-color: #5d9eff;
+}
+
+.hero-sub i {
+  color: #63a5ff;
+  font-size: 1rem;
+}
+
+/* ----- Two core panels: Deposit & Withdrawal (grid) ----- */
+.tx-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin: 2.5rem 0 2rem;
+}
+
+/* card style unique */
+.fund-card {
+  background: rgba(10, 25, 45, 0.75);
+  backdrop-filter: blur(12px);
+  border-radius: 2rem;
+  padding: 1.8rem 1.8rem 2rem;
+  border: 1px solid rgba(72, 120, 184, 0.45);
+  transition: all 0.35s cubic-bezier(0.2, 0.88, 0.4, 1.1);
+  opacity: 0;
+  transform: translateY(25px);
+  animation: gentleScale 0.65s ease forwards;
+}
+
+.fund-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.fund-card:nth-child(2) {
+  animation-delay: 0.25s;
+}
+
+.fund-card:hover {
+  transform: translateY(-8px);
+  background: rgba(15, 38, 62, 0.85);
+  border-color: #5d9eff;
+  box-shadow: 0 25px 35px -14px rgba(0, 0, 0, 0.5);
+}
+
+.card-header-icon {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1.4rem;
+}
+
+.card-header-icon i {
+  font-size: 2.4rem;
+  color: #5d9eff;
+  transition: all 0.25s;
+}
+
+.fund-card:hover .card-header-icon i {
+  transform: scale(1.08);
+  text-shadow: 0 0 6px rgba(93, 158, 255, 0.5);
+}
+
+.card-header-icon h2 {
+  font-size: 1.9rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.3px;
+}
+
+.method-list {
+  margin: 1.3rem 0 1rem;
+}
+
+.method-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.7rem 1rem;
+  border-radius: 1.2rem;
+  margin-bottom: 0.8rem;
+  transition: all 0.2s;
+}
+
+.method-item:hover {
+  background: rgba(93, 158, 255, 0.15);
+  transform: translateX(6px);
+}
+
+.method-item i {
+  width: 30px;
+  font-size: 1.2rem;
+  color: #80b4ff;
+}
+
+.method-item span {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.badge-speed {
+  display: inline-block;
+  background: rgba(76, 154, 255, 0.2);
+  border-radius: 30px;
+  padding: 0.2rem 1rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-top: 0.7rem;
+}
+
+/* Fee & Limits section (extra row) */
+.info-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.8rem;
+  margin: 2.5rem 0 2rem;
+}
+
+.info-tile {
+  background: rgba(6, 20, 36, 0.7);
+  backdrop-filter: blur(8px);
+  border-radius: 1.5rem;
+  padding: 1.4rem 1.5rem;
+  border: 1px solid rgba(86, 136, 196, 0.4);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: slideGlideLeft 0.6s forwards;
+}
+
+.info-tile:nth-child(2) {
+  animation: slideGlideRight 0.6s forwards;
+  animation-delay: 0.1s;
+}
+.info-tile:nth-child(3) {
+  animation: slideGlideLeft 0.6s forwards;
+  animation-delay: 0.2s;
+}
+
+.info-tile:hover {
+  transform: translateY(-5px);
+  border-color: #4c9aff;
+  background: rgba(20, 48, 76, 0.8);
+}
+
+.info-tile i {
+  font-size: 1.8rem;
+  color: #5d9eff;
+  margin-bottom: 0.8rem;
+  display: inline-block;
+}
+
+.info-tile h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.info-tile p {
+  font-size: 0.85rem;
+  color: #caddf5;
+  line-height: 1.4;
+}
+
+/* ----- Transaction simulation / CTA section (demo) ----- */
+.action-zone {
+  margin: 2.5rem 0 1rem;
+  background: rgba(0, 15, 30, 0.55);
+  backdrop-filter: blur(10px);
+  border-radius: 1.8rem;
+  padding: 1.8rem;
+  border: 1px solid rgba(76, 154, 255, 0.3);
+  text-align: center;
+  animation: gentleScale 0.7s forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
+  transform: scale(0.97);
+  animation: floatRise 0.7s forwards;
+  animation-delay: 0.35s;
+}
+
+.action-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+.action-title i {
+  font-size: 1.6rem;
+  color: #63a5ff;
+}
+
+.action-title span {
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+.simulate-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.fund-btn {
+  background: linear-gradient(100deg, #1f5880, #0e3a58);
+  border: none;
+  padding: 0.75rem 1.7rem;
+  border-radius: 50px;
+  font-weight: 600;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.25s;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.9rem;
+}
+
+.fund-btn i {
+  font-size: 0.9rem;
+  transition: transform 0.2s;
+}
+
+.fund-btn:hover {
+  background: linear-gradient(100deg, #2c6e9b, #16527a);
+  transform: scale(1.03);
+  gap: 12px;
+}
+
+.fund-btn:active {
+  transform: scale(0.97);
+}
+
+.fund-btn-outline {
+  background: transparent;
+  border: 1.5px solid #5d9eff;
+  backdrop-filter: blur(4px);
+}
+
+.fund-btn-outline:hover {
+  background: rgba(93, 158, 255, 0.2);
+}
+
+.toast-msg {
+  margin-top: 1.2rem;
+  font-size: 0.8rem;
+  background: rgba(0, 0, 0, 0.5);
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  border-radius: 60px;
+  transition: all 0.2s;
+}
+
+/* footer */
+.fund-footer {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 0.7rem;
+  color: #8da9d0;
+  border-top: 1px solid rgba(76, 122, 172, 0.35);
+  padding-top: 2rem;
+  opacity: 0;
+  animation: floatRise 0.6s forwards;
+  animation-delay: 0.6s;
+}
+
+/* responsiveness */
+@media (max-width: 760px) {
+  .funds-container {
+    padding: 1.5rem 1.2rem 2.5rem;
+  }
+  .hero-funds h1 {
+    font-size: 2.2rem;
+  }
+  .card-header-icon h2 {
+    font-size: 1.6rem;
+  }
+  .info-tile h3 {
+    font-size: 1.1rem;
+  }
+  .action-title span {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .fund-card {
+    padding: 1.3rem;
+  }
+  .method-item span {
+    font-size: 0.85rem;
+  }
+}

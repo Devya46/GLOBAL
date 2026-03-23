@@ -127,3 +127,7 @@
   top: 20%;
   right: -50px;
 }
+.fa-solid,
+.fas {
+  margin-right: 5px;
+}

@@ -1,0 +1,123 @@
+.rim-demo-section {
+  background: #f4f6f8;
+  padding: 80px 20px;
+  font-family: "Segoe UI", sans-serif;
+  overflow: hidden;
+}
+
+.rim-demo-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+/* IMAGE */
+.rim-demo-image {
+  flex: 1;
+  text-align: center;
+  transform: translateX(-80px);
+  opacity: 0;
+  transition: all 0.8s ease;
+}
+
+.rim-demo-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* CONTENT */
+.rim-demo-content {
+  flex: 1;
+  color: #0d3b66;
+  transform: translateX(80px);
+  opacity: 0;
+  transition: all 0.8s ease;
+}
+
+/* SHOW ANIMATION */
+.rim-demo-section.show .rim-demo-image {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.rim-demo-section.show .rim-demo-content {
+  transform: translateX(0);
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+/* TEXT STYLES */
+.rim-tag {
+  font-size: 14px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.rim-title {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.rim-title span {
+  color: #53b87a;
+}
+
+.rim-description {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  max-width: 520px;
+}
+
+.rim-subtitle {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.rim-list {
+  list-style: none;
+  padding: 0;
+}
+
+.rim-list li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.rim-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #0d3b66;
+  font-size: 18px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .rim-demo-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .rim-demo-content {
+    text-align: center;
+  }
+
+  .rim-description {
+    margin: auto;
+  }
+
+  .rim-list li {
+    text-align: left;
+  }
+}

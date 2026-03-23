@@ -18,7 +18,8 @@ import VideoGallery from "./VideoGallery";
 import Contact from "./Contact";
 import Footer from "./Footer";
 import AccountType from "./Account/Account_type";
-import DEMOAccount from "./Account/DEMO_Account";
+import DEMOAccount from "./Account/DEMO-Account";
+import WithdrawalDeposit from "./Account/Withdrawal&Deposist";
 
 // 👉 CREATE TEMP PAGES (or import real ones)
 function Home() {
@@ -101,7 +102,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/account-type" element={<AccountType />} />
-        <Route path="/DEMO_Account" element={<DEMOAccount />} />
+        <Route path="/DEMO-Account" element={<DEMOAccount />} />
+        <Route path="/Withdrawal&Deposit" element={<WithdrawalDeposit />} />
       </Routes>
     </Router>
   );

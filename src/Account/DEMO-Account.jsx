@@ -1,10 +1,9 @@
 import React from "react";
 import Header from "../Header";
 import DEMOHero from "./DEMOHeroSection";
-// import "./Account_type.css";
-import Pricing from "../Pricing";
-import AccountSecurity from "./AccountSecurity";
-import RiskSection from "./RiskSection";
+import RgsPractice from "./RgsPractice";
+import DemoConSection from "./DemoConSection";
+import Contact from "../Contact";
 import Footer from "../Footer";
 
 export default function AccountType() {
@@ -15,9 +14,9 @@ export default function AccountType() {
       <Header />
       <main className="account-page-content">
         <DEMOHero />
-        <Pricing />
-        <AccountSecurity />
-        <RiskSection />
+        <RgsPractice />
+        <DemoConSection />
+        <Contact />
         <Footer />
       </main>
     </div>
