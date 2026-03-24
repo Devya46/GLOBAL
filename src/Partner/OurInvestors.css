@@ -1,0 +1,298 @@
+/* InvestorsShowcase.css */
+.investors-showcase {
+  background: #0a0a2a;
+  width: 100%;
+  padding: 3.5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Pattern */
+.investors-showcase::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(
+    circle at 25% 50%,
+    rgba(96, 206, 128, 0.02) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+}
+
+.showcase-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.showcase-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header */
+.showcase-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.showcase-badge {
+  display: inline-block;
+  background: rgba(96, 206, 128, 0.12);
+  color: #60ce80;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  padding: 0.3rem 1rem;
+  border-radius: 30px;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(96, 206, 128, 0.2);
+}
+
+.showcase-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem 0;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.highlight {
+  color: #60ce80;
+  position: relative;
+  display: inline-block;
+}
+
+.showcase-description {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Grid - Clean 2x2 Layout */
+.investors-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.investor-card {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  animation: fadeInUp 0.5s ease-out forwards;
+  opacity: 0;
+  transform: translateY(15px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.investor-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(96, 206, 128, 0.3);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Image Wrapper */
+.investor-image-wrapper {
+  position: relative;
+  padding-top: 100%;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    rgba(96, 206, 128, 0.05),
+    rgba(96, 206, 128, 0.01)
+  );
+}
+
+.investor-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.investor-card:hover .investor-image {
+  transform: scale(1.05);
+}
+
+.investor-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(10, 10, 42, 0.8), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.investor-card:hover .investor-overlay {
+  opacity: 1;
+}
+
+.status-badge {
+  display: inline-block;
+  background: rgba(96, 206, 128, 0.9);
+  color: #0a0a2a;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.2rem 0.7rem;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* Info */
+.investor-info {
+  padding: 1rem 1rem 1.2rem;
+  text-align: center;
+}
+
+.investor-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.3rem 0;
+  letter-spacing: -0.2px;
+}
+
+.investor-role {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Footer */
+.showcase-footer {
+  text-align: center;
+}
+
+.showcase-btn {
+  background: transparent;
+  color: #60ce80;
+  border: 1.5px solid rgba(96, 206, 128, 0.3);
+  padding: 0.7rem 1.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.showcase-btn:hover {
+  border-color: #60ce80;
+  background: rgba(96, 206, 128, 0.05);
+  transform: translateY(-1px);
+  gap: 0.8rem;
+}
+
+.showcase-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.showcase-btn:hover svg {
+  transform: translateX(3px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .investors-grid {
+    gap: 1.2rem;
+  }
+
+  .investor-name {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .investors-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+
+  .showcase-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .investors-showcase {
+    padding: 2.5rem 0;
+  }
+
+  .showcase-container {
+    padding: 0 1.2rem;
+  }
+
+  .showcase-title {
+    font-size: 1.8rem;
+  }
+
+  .showcase-description {
+    font-size: 0.85rem;
+  }
+
+  .investors-grid {
+    gap: 1rem;
+  }
+
+  .investor-info {
+    padding: 0.8rem;
+  }
+
+  .investor-name {
+    font-size: 0.85rem;
+  }
+
+  .investor-role {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .investors-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+
+  .showcase-badge {
+    font-size: 0.65rem;
+  }
+
+  .showcase-title {
+    font-size: 1.5rem;
+  }
+}

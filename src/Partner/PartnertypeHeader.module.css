@@ -1,0 +1,178 @@
+/* .partnerSection {
+  position: relative;
+  padding: 2rem 1.5rem 80px;
+  background: radial-gradient(circle at 20% 30%, #0a142f, #010314);
+  overflow: hidden;
+} */
+.heroSection {
+  position: relative;
+  padding: 9rem 1.5rem 80px;
+  background: radial-gradient(ellipse at 20% 30%, #0a142f, #010314);
+  overflow: hidden;
+}
+
+/* FLOATING BG */
+.floatingBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.floatingIcon {
+  position: absolute;
+  color: #5a8cf0;
+  animation: float linear infinite;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-120px);
+  }
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* LEFT */
+.left h1 {
+  font-size: 2.6rem;
+  color: #fff;
+}
+
+.left h1 span {
+  background: linear-gradient(135deg, #5a8cf0, #9bbdff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.desc {
+  color: #9bb1dc;
+  margin: 1rem 0 2rem;
+}
+
+.badge {
+  display: inline-flex;
+  gap: 0.5rem;
+  background: rgba(90, 140, 240, 0.15);
+  padding: 0.4rem 1rem;
+  border-radius: 30px;
+  color: #9bbdff;
+  margin-bottom: 1rem;
+}
+
+/* STATS */
+.stats {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.stats div {
+  text-align: center;
+  padding: 5px 15px;
+  background: #0000ff30;
+  color: white;
+  border-radius: 10px;
+}
+
+.stats i {
+  color: #5a8cf0;
+}
+.stat-value h4 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffffff, #c4b5fd);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  line-height: 1;
+}
+
+/* CTA */
+.cta {
+  display: flex;
+  gap: 1rem;
+}
+
+.cta button {
+  padding: 0.7rem 1.2rem;
+  border-radius: 30px;
+  border: none;
+  background: #5a8cf0;
+  color: white;
+  cursor: pointer;
+}
+
+.outline {
+  background: transparent;
+  border: 1px solid #5a8cf0;
+}
+
+/* RIGHT CARD */
+.right {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  background: linear-gradient(145deg, #0a1435, #040b24);
+  color: white;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  transition: 0.3s;
+  text-align: center;
+  border: 1px solid rgba(90, 140, 240, 0.3);
+}
+
+.iconCluster {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.iconCluster i {
+  font-size: 1.5rem;
+  color: #5a8cf0;
+}
+
+.badge2 {
+  margin-top: 1rem;
+  background: rgba(90, 140, 240, 0.2);
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  color: #bbd3ff;
+}
+
+/* TOAST */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #0a1a3a;
+  color: #fff;
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

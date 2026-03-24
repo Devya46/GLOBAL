@@ -1,0 +1,157 @@
+.root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: radial-gradient(circle at 10% 20%, #0b1120, #030617);
+  position: relative;
+  overflow: hidden;
+}
+
+/* container */
+.container {
+  max-width: 1280px;
+  width: 100%;
+  padding: 5rem 2rem;
+  z-index: 2;
+}
+
+/* header */
+.header {
+  margin-bottom: 3rem;
+}
+
+.badge {
+  display: inline-flex;
+  gap: 8px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  color: #7dd3fc;
+  padding: 0.4rem 1.2rem;
+  border-radius: 60px;
+  font-size: 0.85rem;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 1rem 0;
+  background: linear-gradient(135deg, #fff, #c4b5fd, #7dd3fc);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  color: #94a3b8;
+  max-width: 580px;
+}
+
+/* grid */
+.grid {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.imageBox {
+  flex: 1;
+}
+
+.imageBox img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+/* list */
+.list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* cards */
+.featureCard {
+  display: flex;
+  gap: 1rem;
+  background: rgba(15, 23, 42, 0.55);
+  padding: 1rem;
+  border-radius: 24px;
+  border: 1px solid rgba(71, 85, 105, 0.4);
+  animation: fadeIn 0.6s forwards;
+}
+
+.featureIcon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1e293b;
+  border-radius: 16px;
+  color: #a5b4fc;
+}
+
+.featureContent h3 {
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.featureContent p {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+}
+
+/* extras */
+.qrBadge {
+  margin-top: 10px;
+  font-size: 0.75rem;
+  color: #90e0ff;
+}
+
+.liveIndicator {
+  margin-top: 10px;
+  color: #6ee7b7;
+}
+
+.blinkDot {
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  display: inline-block;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+/* notification */
+.notifDemo {
+  margin-top: 10px;
+}
+
+.toast {
+  background: #1e293b;
+  padding: 6px 12px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.simulateBtn {
+  background: #4f46e5;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+/* animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

@@ -3,7 +3,7 @@ import "./style.css";
 import { useNavigate } from "react-router-dom";
 
 export default function Header() {
-  const navigate = useNavigate(); // ✅ FIXED (inside component)
+  const navigate = useNavigate();
 
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -40,6 +40,11 @@ export default function Header() {
     }));
   };
 
+  const handleNav = (path) => {
+    navigate(path);
+    setMenuOpen(false); // close mobile menu automatically
+  };
+
   return (
     <>
       {/* OVERLAY */}
@@ -50,53 +55,83 @@ export default function Header() {
 
       {/* HEADER */}
       <header className={scrolled ? "header scrolled" : "header"}>
+        {/* LOGO CLICKABLE */}
         <img
           src="https://rimglobal.trade/assets/logo/logo.svg"
           className="logo"
           alt="logo"
+          onClick={() => handleNav("/")}
+          style={{ cursor: "pointer" }}
         />
 
         {/* DESKTOP NAV */}
         <nav className="nav">
-          <button className="nav-item">Home</button>
-          <button className="nav-item">About</button>
+          <button className="nav-item" onClick={() => handleNav("/App.js")}>
+            Home
+          </button>
 
+          <button className="nav-item" onClick={() => handleNav("/about")}>
+            About
+          </button>
+
+          {/* ACCOUNTS */}
           <div className="dropdown nav-item">
             <span className="dropdown-trigger">
               Accounts <span className="arrow">▾</span>
             </span>
+
             <div className="dropdown-menu">
-              <button onClick={() => navigate("/account-type")}>
+              <button onClick={() => handleNav("/account-type")}>
                 Account Type
               </button>
-              <button onClick={() => navigate("/DEMO-Account")}>
+
+              <button onClick={() => handleNav("/demo-account")}>
                 Demo Account
               </button>
-              <button onClick={() => navigate("/Withdrawal&Deposit")}>
+
+              <button onClick={() => handleNav("/WithdrawalDeposist")}>
                 Withdrawal & Deposits
               </button>
             </div>
           </div>
 
+          {/* PARTNERS */}
           <div className="dropdown nav-item">
             <span className="dropdown-trigger">
               Partners <span className="arrow">▾</span>
             </span>
+
             <div className="dropdown-menu">
-              <button>Partner Types</button>
-              <button>Partner Program</button>
-              <button>Investor</button>
-              <button>Become a Partner</button>
+              <button onClick={() => handleNav("/PartnerTypes")}>
+                Partner Types
+              </button>
+
+              <button onClick={() => handleNav("/partners")}>
+                Partner Program
+              </button>
+
+              <button onClick={() => handleNav("/Investor")}>Investor</button>
+
+              <button onClick={() => handleNav("/BecomePartner")}>
+                Become a Partner
+              </button>
             </div>
           </div>
 
-          <button className="nav-item">Blogs</button>
+          <button className="nav-item" onClick={() => handleNav("/blogs")}>
+            Blogs
+          </button>
         </nav>
 
         {/* BUTTONS */}
         <div className="buttons">
-          <button className="login">LOG IN</button>
-          <button className="contact">CONTACT US</button>
+          <button className="login" onClick={() => handleNav("/login")}>
+            LOG IN
+          </button>
+
+          <button className="contact" onClick={() => handleNav("/contact")}>
+            CONTACT US
+          </button>
         </div>
 
         {/* HAMBURGER */}
@@ -113,9 +148,10 @@ export default function Header() {
           &times;
         </span>
 
-        <button onClick={() => setMenuOpen(false)}>Home</button>
-        <button onClick={() => setMenuOpen(false)}>About</button>
+        <button onClick={() => handleNav("/")}>Home</button>
+        <button onClick={() => handleNav("/about")}>About</button>
 
+        {/* MOBILE ACCOUNTS */}
         <div className="mobile-dropdown">
           <span onClick={() => toggleDropdown("accounts")}>
             Accounts {dropdowns.accounts ? "▴" : "▾"}
@@ -126,16 +162,21 @@ export default function Header() {
               dropdowns.accounts ? "show" : ""
             }`}
           >
-            <button onClick={() => navigate("/account-type")}>
+            <button onClick={() => handleNav("/account-type")}>
               Account Type
             </button>
-            <button onClick={() => navigate("/DEMO-Account")}>
+
+            <button onClick={() => handleNav("/demo-account")}>
               Demo Account
             </button>
-            <button>Withdrawal & Deposits</button>
+
+            <button onClick={() => handleNav("/withdrawal-deposit")}>
+              Withdrawal & Deposits
+            </button>
           </div>
         </div>
 
+        {/* MOBILE PARTNERS */}
         <div className="mobile-dropdown">
           <span onClick={() => toggleDropdown("partners")}>
             Partners {dropdowns.partners ? "▴" : "▾"}
@@ -146,18 +187,32 @@ export default function Header() {
               dropdowns.partners ? "show" : ""
             }`}
           >
-            <button>Partner Types</button>
-            <button>Partner Program</button>
-            <button>Investor</button>
-            <button>Become a Partner</button>
+            <button onClick={() => handleNav("/partner-types")}>
+              Partner Types
+            </button>
+
+            <button onClick={() => handleNav("/partners")}>
+              Partner Program
+            </button>
+
+            <button onClick={() => handleNav("/investor")}>Investor</button>
+
+            <button onClick={() => handleNav("/become-partner")}>
+              Become a Partner
+            </button>
           </div>
         </div>
 
-        <button>Blogs</button>
+        <button onClick={() => handleNav("/blogs")}>Blogs</button>
 
         <div className="buttons">
-          <button className="login">LOG IN</button>
-          <button className="contact">CONTACT US</button>
+          <button className="login" onClick={() => handleNav("/login")}>
+            LOG IN
+          </button>
+
+          <button className="contact" onClick={() => handleNav("/contact")}>
+            CONTACT US
+          </button>
         </div>
       </div>
     </>

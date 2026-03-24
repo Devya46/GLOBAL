@@ -1,0 +1,132 @@
+.pf_section {
+  width: 100%;
+  padding: 5rem 1.5rem;
+  background: radial-gradient(circle at 20% 30%, #0a142f, #02030d);
+  color: #ffffff;
+  position: relative;
+  isolation: isolate;
+}
+
+.pf_container {
+  max-width: 1300px;
+  margin: auto;
+}
+
+/* HEADER */
+.pf_header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.pf_header h2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.pf_accent {
+  color: #5ee28a;
+}
+
+.pf_header p {
+  opacity: 0.7;
+  margin-top: 0.6rem;
+}
+
+/* GRID */
+.pf_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+}
+
+/* CARD */
+.pf_card {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 18px;
+  padding: 1.6rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.35s ease;
+}
+
+.pf_card:hover {
+  transform: translateY(-6px);
+  border-color: #5ee28a;
+  box-shadow: 0 10px 30px rgba(94, 226, 138, 0.15);
+}
+
+/* TITLE */
+.pf_cardTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.pf_icon {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, #5ee28a, #2bc0e4);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+}
+
+/* LIST */
+.pf_list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pf_list li {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.pf_check {
+  color: #5ee28a;
+  margin-top: 3px;
+}
+
+.pf_green {
+  color: #5ee28a;
+}
+
+/* DIVIDER */
+.pf_divider {
+  margin: 3rem 0 2rem;
+  border: none;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* BADGES */
+.pf_badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+.pf_badges span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+.hero-section h1 {
+  font-size: 45px !important;
+  font-weight: 700 !important;
+}

@@ -20,6 +20,10 @@ import Footer from "./Footer";
 import AccountType from "./Account/Account_type";
 import DEMOAccount from "./Account/DEMO-Account";
 import WithdrawalDeposit from "./Account/Withdrawal&Deposist";
+import PatnerTYPES from "./Partner/PatnerTYPES";
+import PartnerPrograms from "./Partner/PartnerPROGRAM";
+import Investor from "./Partner/Invertor";
+import BecomePartner from "./Partner/BecomePartner";
 
 // 👉 CREATE TEMP PAGES (or import real ones)
 function Home() {
@@ -104,6 +108,10 @@ export default function App() {
         <Route path="/account-type" element={<AccountType />} />
         <Route path="/DEMO-Account" element={<DEMOAccount />} />
         <Route path="/Withdrawal&Deposit" element={<WithdrawalDeposit />} />
+        <Route path="/PatnerTYPES" element={<PatnerTYPES />} />
+        <Route path="/partners" element={<PartnerPrograms />} />
+        <Route path="/Investor" element={<Investor />} />
+        <Route path="/BecomePartner" element={<BecomePartner />} />
       </Routes>
     </Router>
   );

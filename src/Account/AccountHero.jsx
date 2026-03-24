@@ -1,180 +1,235 @@
-import React, { useState } from "react";
-import styles from "./DEMOHeroSection.css";
+import React from "react";
+import "./AccountHero.css";
 
-export default function DemoAccount() {
-  const s = styles;
-
-  const [toast, setToast] = useState("");
-
-  const handleCreateDemo = () => {
-    setToast(
-      "✨ Demo account created! Practice with $100K virtual funds. Check your email for login details.",
+const TradingAccountTypes = () => {
+  const handleExploreClick = () => {
+    alert(
+      "Explore all trading accounts: Individual, Joint, Corporate, Demo & Premium Plans. Contact support for tailored advice.",
     );
-
-    setTimeout(() => setToast(""), 3200);
   };
 
   return (
-    <div className={s["rimX-demo-root"]}>
-      <div className={s["rimX-container"]}>
-        {/* HERO */}
-        <div className={s["rimX-hero"]}>
-          <div className={s["rimX-brand"]}>
-            <i className="fas fa-chart-line"></i>
-            <span>RIM GLOBAL</span>
-          </div>
+    <div className="tat-page-wrapper">
+      <div className="tat-container">
+        {/* Hero */}
+        <div className="tat-hero">
+          <h1>Trading Account Types</h1>
 
-          <h1>Demo Account</h1>
-
-          <div className={s["rimX-tagline"]}>
+          <div className="tat-tagline">
             <span>
-              <i className="fas fa-chart-simple"></i> Practice Investing
+              <i className="fas fa-chart-line"></i> Choose your path
             </span>
             <span>
-              <i className="fas fa-shield-virus"></i> Zero risk
+              <i className="fas fa-shield-alt"></i> Secure
             </span>
             <span>
-              <i className="fas fa-globe"></i> Real markets
+              <i className="fas fa-chart-simple"></i> Transparent
+            </span>
+            <span>
+              <i className="fas fa-microchip"></i> Smart
             </span>
           </div>
         </div>
 
-        {/* GRID */}
-        <div className={s["rimX-demo-grid"]}>
-          {/* LEFT CARD */}
-          <div className={s["rimX-practice-card"]}>
-            <div className={s["rimX-icon-large"]}>
-              <i className="fas fa-chalkboard-user"></i>
+        {/* Cards */}
+        <div className="tat-card-grid">
+          {/* Pricing */}
+          <div className="tat-card">
+            <div className="tat-card-icon">
+              <i className="fas fa-tags"></i>
             </div>
-
-            <h2>Practice Investing</h2>
-
-            <div className={s["rimX-highlight"]}>Demo Account • RIM Global</div>
-
-            <p className={s["rimX-desc"]}>
-              Practice investing — zero risk, real markets. Simulate live
-              trading conditions with $100,000 virtual capital, real-time data,
-              and advanced execution.
+            <h2>Pricing Plan</h2>
+            <p>
+              Flexible tiers designed for retail & pro traders. Clear cost
+              structure with maximum efficiency.
             </p>
 
-            <ul className={s["rimX-feature-list"]}>
+            <ul className="tat-feature-list">
               <li>
-                <i className="fas fa-chart-line"></i>
-                Real-time market depth & execution
+                <i className="fas fa-layer-group"></i> Flexible tiers · Starter,
+                Pro, Elite
               </li>
               <li>
-                <i className="fas fa-clock"></i>
-                24/7 demo environment, no expiration
+                <i className="fas fa-receipt"></i> Transparent fees · Zero
+                hidden spreads
               </li>
               <li>
-                <i className="fas fa-chart-pie"></i>
-                Full access to stocks, forex, crypto & indices
-              </li>
-              <li>
-                <i className="fas fa-mobile-alt"></i>
-                Mobile & desktop sync
+                <i className="fas fa-coins"></i> No hidden costs · Flat
+                commissions
               </li>
             </ul>
-          </div>
 
-          {/* RIGHT CARD */}
-          <div className={s["rimX-cta-card"]}>
-            <div className={s["rimX-stats"]}>
-              <span className={s["rimX-stat-badge"]}>
-                <i className="fas fa-chart-line"></i> 10,000+ investors
-              </span>
-              <span className={s["rimX-stat-badge"]}>
-                <i className="fas fa-shield-alt"></i> Zero risk capital
-              </span>
-            </div>
-
-            <i
-              className="fas fa-user-plus"
-              style={{ fontSize: "2.2rem", color: "#5d9eff" }}
-            ></i>
-
-            <h3>Create An Account</h3>
-
-            <p style={{ margin: "0.5rem 0", fontSize: "0.85rem" }}>
-              Get started in 2 minutes — no deposit required
-            </p>
-
-            <button className={s["rimX-cta-btn"]} onClick={handleCreateDemo}>
-              <i className="fas fa-rocket"></i>
-              Create An Account
-              <i className="fas fa-arrow-right"></i>
-            </button>
-
-            <div className={s["rimX-divider"]}></div>
-
-            <div
-              className={s["rimX-stat-badge"]}
-              style={{ display: "inline-block", marginTop: "0.5rem" }}
-            >
-              <i className="fas fa-check-circle"></i>
-              Trusted by 10,000+ investors
+            <div className="tat-badge">
+              <i className="fas fa-chart-simple"></i> from $0/mo + competitive
             </div>
           </div>
+
+          {/* Account */}
+          <div className="tat-card">
+            <div className="tat-card-icon">
+              <i className="fas fa-user-circle"></i>
+            </div>
+            <h2>Trading Account</h2>
+            <p>
+              Diverse account structures to match your experience — individual,
+              joint, corporate & demo.
+            </p>
+
+            <ul className="tat-feature-list">
+              <li>
+                <i className="fas fa-user-check"></i> Individual · Full control
+                & ownership
+              </li>
+              <li>
+                <i className="fas fa-users"></i> Joint · Shared access, dual
+                security
+              </li>
+              <li>
+                <i className="fas fa-building"></i> Corporate · Institutional
+                grade
+              </li>
+              <li>
+                <i className="fas fa-chalkboard-user"></i> Demo · Risk-free
+                practice
+              </li>
+            </ul>
+
+            <div className="tat-badge">
+              <i className="fas fa-arrow-right"></i> Switch anytime
+            </div>
+          </div>
+
+          {/* Smart */}
+          <div className="tat-card">
+            <div className="tat-card-icon">
+              <i className="fas fa-chart-line"></i>
+            </div>
+            <h2>Smart Features</h2>
+            <p>
+              AI insights, real-time analytics & custom alerts for every account
+              type.
+            </p>
+
+            <ul className="tat-feature-list">
+              <li>
+                <i className="fas fa-brain"></i> Smart risk management tools
+              </li>
+              <li>
+                <i className="fas fa-chart-pie"></i> Portfolio analytics
+                dashboard
+              </li>
+              <li>
+                <i className="fas fa-bolt"></i> Low-latency execution
+              </li>
+            </ul>
+
+            <div className="tat-badge">Explore account options ↓</div>
+          </div>
         </div>
 
-        {/* FEATURE ROW */}
-        <div className={s["rimX-feature-row"]}>
-          <div className={s["rimX-info-card"]}>
-            <i className="fas fa-hand-holding-heart"></i>
-            <h4>Highest confidence</h4>
-            <p>
-              We provide our customers with the highest level of financial
-              confidence and investment protection.
-            </p>
+        {/* Double Section */}
+        <div className="tat-double-section">
+          {/* Security */}
+          <div className="tat-full-card">
+            <div className="tat-section-header">
+              <i className="fas fa-lock"></i>
+              <h2>Guide to Account Security</h2>
+            </div>
+
+            <div className="tat-insight-list">
+              <div className="tat-insight-item">
+                <i className="fas fa-key"></i>
+                <span>
+                  <strong>2FA & strong passwords</strong> – Always enable
+                  two-factor authentication and use complex passphrases.
+                </span>
+              </div>
+
+              <div className="tat-insight-item">
+                <i className="fas fa-fingerprint"></i>
+                <span>
+                  <strong>Secure authentication</strong> – Biometric login,
+                  hardware keys, and authenticator apps.
+                </span>
+              </div>
+
+              <div className="tat-insight-item">
+                <i className="fas fa-shield-hooded"></i>
+                <span>
+                  <strong>Best practices</strong> – Regular password rotation,
+                  withdrawal whitelist, and session timeouts.
+                </span>
+              </div>
+            </div>
+
+            <div className="tat-badge">
+              <i className="fas fa-check-circle"></i> Verified security
+              protocols
+            </div>
           </div>
 
-          <div className={s["rimX-info-card"]}>
-            <i className="fas fa-chart-line"></i>
-            <h4>Real market conditions</h4>
-            <p>
-              Live spreads, liquidity, and execution — identical to live
-              accounts.
-            </p>
-          </div>
+          {/* Risks */}
+          <div className="tat-full-card">
+            <div className="tat-section-header">
+              <i className="fas fa-triangle-exclamation"></i>
+              <h2>Common Risks & Phishing</h2>
+            </div>
 
-          <div className={s["rimX-info-card"]}>
-            <i className="fas fa-laptop-code"></i>
-            <h4>Advanced demo tools</h4>
-            <p>
-              Technical indicators, risk simulators, and portfolio analysis.
-            </p>
+            <div className="tat-insight-list">
+              <div className="tat-insight-item">
+                <i className="fas fa-fish"></i>
+                <span>
+                  <strong>Identify scams</strong> – Recognize fake support
+                  emails, spoofed websites, and pump-and-dump schemes.
+                </span>
+              </div>
+
+              <div className="tat-insight-item">
+                <i className="fas fa-eye"></i>
+                <span>
+                  <strong>Stay protected</strong> – Never share OTPs, verify
+                  URL, use anti-phishing codes.
+                </span>
+              </div>
+
+              <div className="tat-insight-item">
+                <i className="fas fa-bell"></i>
+                <span>
+                  <strong>Security alerts</strong> – Real-time login alerts,
+                  device management, and suspicious activity monitoring.
+                </span>
+              </div>
+            </div>
+
+            <div className="tat-badge">
+              <i className="fas fa-shield-virus"></i> Phishing-resistant mode
+              available
+            </div>
           </div>
         </div>
 
-        {/* TRUST */}
-        <div className={s["rimX-trust-section"]}>
-          <p>
-            <i className="fas fa-user-check"></i> Trusted by 10,000+ investors
-            <i className="fas fa-chart-simple"></i> 4.9/5 rating
-            <i className="fas fa-clock"></i> 24/7 demo support
+        {/* CTA */}
+        <div className="tat-explore-section">
+          <button className="tat-explore-btn" onClick={handleExploreClick}>
+            <i className="fas fa-compass"></i>
+            Explore account options
+            <i className="fas fa-arrow-right"></i>
+          </button>
+
+          <p className="tat-explore-text">
+            Compare features, fees, and security levels — find your perfect
+            match
           </p>
-
-          <div className={s["rimX-divider"]}></div>
-
-          <p style={{ fontSize: "0.75rem" }}>
-            Practice investing — zero risk, real markets. Join RIM Global demo
-            community today.
-          </p>
         </div>
 
-        {/* FOOTER */}
-        <div className={s["rimX-footer"]}>
-          <i className="fas fa-chart-line"></i> RIM Global Demo | Risk-free
-          environment • Real market depth • Instant activation
+        {/* Footer */}
+        <div className="tat-footer-note">
+          <i className="fas fa-chart-line"></i> Secure • Transparent • Smart —
+          All account types are monitored 24/7
         </div>
       </div>
-
-      {/* TOAST */}
-      {toast && (
-        <div className={s["rimX-toast"]}>
-          <i className="fas fa-check-circle"></i> {toast}
-        </div>
-      )}
     </div>
   );
-}
+};
+
+export default TradingAccountTypes;
