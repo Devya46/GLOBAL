@@ -24,6 +24,8 @@ import PatnerTYPES from "./Partner/PatnerTYPES";
 import PartnerPrograms from "./Partner/PartnerPROGRAM";
 import Investor from "./Partner/Invertor";
 import BecomePartner from "./Partner/BecomePartner";
+import BLOGS from "./BLOG/BLOGS";
+import About from "./ABOUT/About";
 
 // 👉 CREATE TEMP PAGES (or import real ones)
 function Home() {
@@ -112,6 +114,8 @@ export default function App() {
         <Route path="/partners" element={<PartnerPrograms />} />
         <Route path="/Investor" element={<Investor />} />
         <Route path="/BecomePartner" element={<BecomePartner />} />
+        <Route path="/BLOGS" element={<BLOGS />} />
+        <Route path="/About" element={<About />} />
       </Routes>
     </Router>
   );

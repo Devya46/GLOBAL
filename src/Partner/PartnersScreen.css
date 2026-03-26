@@ -1,0 +1,212 @@
+/* PartnersScreen.css - Dark Navy Blue Theme */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.partners-screen {
+  max-width: 1520px;
+  width: 100%;
+  background: radial-gradient(circle at 20% 30%, #0a142f, #02030d);
+  /* border-radius: 2rem; */
+  box-shadow:
+    0 25px 45px -12px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.partners-inner {
+  padding: 8.5rem 2rem 6.2rem 2rem;
+}
+
+/* Header section with elegant underline */
+.section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.section-header h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  background: linear-gradient(135deg, #ffffff 0%, #c0d0ff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.accent-line {
+  width: 70px;
+  height: 3px;
+  background: #2d4aff;
+  margin: 0.6rem auto 0.2rem auto;
+  border-radius: 4px;
+}
+
+.subhead {
+  color: #8a99cc;
+  font-size: 0.85rem;
+  font-weight: 400;
+  margin-top: 0.6rem;
+  letter-spacing: 0.3px;
+}
+
+/* Partner grid - small height friendly, clean cards */
+.partners-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.6rem;
+  margin: 1rem 0 1.2rem 0;
+}
+
+/* Individual card — dark navy elevated style */
+.partner-card {
+  background: #111827; /* deep navy card */
+  backdrop-filter: blur(2px);
+  border-radius: 1.4rem;
+  padding: 1.1rem 1.2rem;
+  width: 160px;
+  text-align: center;
+  transition: all 0.25s ease-in-out;
+  border: 1px solid rgba(45, 74, 255, 0.25);
+  box-shadow: 0 6px 12px -8px rgba(0, 0, 0, 0.5);
+  cursor: default;
+}
+
+.partner-card:hover {
+  transform: translateY(-4px);
+  border-color: #2d4aff;
+  box-shadow: 0 12px 20px -12px rgba(45, 74, 255, 0.3);
+  background: #131e2f;
+}
+
+/* Logo area */
+.partner-logo {
+  font-size: 2.8rem;
+  margin-bottom: 0.65rem;
+  color: #a0b4ff;
+  transition: color 0.2s;
+}
+
+.partner-card:hover .partner-logo {
+  color: #ffffff;
+}
+
+.partner-name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #f0f3ff;
+  letter-spacing: -0.2px;
+  margin-bottom: 0.25rem;
+}
+
+.partner-desc {
+  font-size: 0.7rem;
+  color: #8b9acf;
+  font-weight: 400;
+  margin-top: 0.2rem;
+  line-height: 1.3;
+}
+
+/* Trust badge / stats row — minimal */
+.trust-section {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1.6rem 0 0.6rem 0;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(72, 98, 168, 0.4);
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  background: rgba(17, 24, 39, 0.7);
+  padding: 0.4rem 1rem;
+  border-radius: 40px;
+}
+
+.stat-number {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #c4d0ff;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #7c8bc0;
+  letter-spacing: 0.3px;
+}
+
+.footer-note {
+  text-align: center;
+  margin-top: 1.4rem;
+  font-size: 0.7rem;
+  color: #4f6191;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-note i {
+  font-size: 0.7rem;
+}
+
+/* Responsive design - maintains small height */
+@media (max-width: 640px) {
+  .partners-inner {
+    padding: 1.2rem 1.2rem 1.5rem;
+  }
+
+  .partner-card {
+    width: 140px;
+    padding: 0.9rem 0.8rem;
+  }
+
+  .partner-logo {
+    font-size: 2.2rem;
+  }
+
+  .partner-name {
+    font-size: 0.9rem;
+  }
+
+  .trust-section {
+    gap: 1rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .partners-grid {
+    gap: 1rem;
+  }
+
+  .partner-card {
+    width: 125px;
+  }
+}
+
+/* Custom scrollbar */
+/* ::-webkit-scrollbar {
+  width: 4px;
+  background: #0b1120;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2d4aff;
+  border-radius: 6px;
+} */

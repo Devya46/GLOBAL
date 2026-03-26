@@ -70,7 +70,7 @@ export default function Header() {
             Home
           </button>
 
-          <button className="nav-item" onClick={() => handleNav("/about")}>
+          <button className="nav-item" onClick={() => handleNav("/About")}>
             About
           </button>
 
@@ -118,7 +118,7 @@ export default function Header() {
             </div>
           </div>
 
-          <button className="nav-item" onClick={() => handleNav("/blogs")}>
+          <button className="nav-item" onClick={() => handleNav("/BLOGS")}>
             Blogs
           </button>
         </nav>

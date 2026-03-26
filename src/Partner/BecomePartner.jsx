@@ -4,6 +4,7 @@ import AccountSteps from "../AccountSteps";
 import Contact from "../Contact";
 import Whyus from "./Whyus";
 import Footer from "../Footer";
+import PartnersScreen from "./PartnersScreen";
 
 export default function BecomePartner() {
   return (
@@ -11,6 +12,7 @@ export default function BecomePartner() {
       <Header />
 
       <main className="accountX-content">
+        <PartnersScreen />
         <AccountSteps />
         <Contact />
         <Whyus />
