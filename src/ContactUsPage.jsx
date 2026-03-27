@@ -3,17 +3,19 @@ import "./ContactUsPage.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Header from "./Header";
-import Hero from "./hero"; // Fixed import (capital H)
+import ContactHero from "./ContactHero"; // Fixed import (capital H)
 import Contact from "./Contact";
 import Footer from "./Footer";
 
 // ✅ HOME COMPONENT - All sections combined
-function Home() {
+function ContactUsPage() {
   return (
     <>
-      <Hero /> {/* Use the Hero component instead of duplicating code */}
+      <Header />
+      <ContactHero /> {/* Use the Hero component instead of duplicating code */}
       <Contact />
       <Footer />
     </>
   );
 }
+export default ContactUsPage;

@@ -27,6 +27,7 @@ import Investor from "./Partner/Invertor";
 import BecomePartner from "./Partner/BecomePartner";
 import BLOGS from "./BLOG/BLOGS";
 import About from "./ABOUT/About";
+import ContactUsPage from "./ContactUsPage";
 
 // ✅ HOME COMPONENT - All sections combined
 function Home() {
@@ -66,6 +67,7 @@ export default function App() {
         <Route path="/BecomePartner" element={<BecomePartner />} />
         <Route path="/BLOGS" element={<BLOGS />} />
         <Route path="/About" element={<About />} />
+        <Route path="/ContactUsPage" element={<ContactUsPage />} />
       </Routes>
     </Router>
   );

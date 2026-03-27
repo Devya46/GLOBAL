@@ -257,7 +257,7 @@ export default function Header() {
             </button>
             <button
               className="btn-contact"
-              onClick={() => handleNav("/contact")}
+              onClick={() => handleNav("/ContactUsPage")}
             >
               <Mail size={18} />
               <span>CONTACT US</span>
@@ -299,7 +299,7 @@ export default function Header() {
           </button>
           <button
             className="mobile-btn-contact"
-            onClick={() => handleNav("/contact")}
+            onClick={() => handleNav("/ContactUsPage")}
           >
             <Mail size={18} />
             <span>CONTACT US</span>
