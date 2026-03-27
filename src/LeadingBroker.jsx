@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./LeadingBroker.css";
+import marketImg from "./assets/RIMWebImage.png";
 
 export default function LeadingBroker() {
   const ref = useRef(null);
@@ -92,10 +93,7 @@ export default function LeadingBroker() {
         {/* RIGHT */}
 
         <div className="rim-right">
-          <img
-            src="https://plus.unsplash.com/premium_vector-1737030151718-dab6096b5fcc?w=600&auto=format&fit=crop&q=60"
-            alt="market"
-          />
+          <img src={marketImg} alt="market" />
         </div>
       </div>
     </section>

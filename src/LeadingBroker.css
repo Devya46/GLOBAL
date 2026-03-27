@@ -48,9 +48,11 @@
 }
 
 .rim-right img {
-  width: 440px;
+  width: 713px;
+  height: 478px;
+  border-radius: 30px;
   filter: drop-shadow(0 30px 70px rgba(0, 0, 0, 0.2));
-  animation: float3d 6s ease-in-out infinite;
+  /* animation: float3d 6s ease-in-out infinite; */
 }
 
 /* 3D FLOAT */
@@ -124,7 +126,7 @@
   display: inline-block;
   padding: 14px 32px;
   border-radius: 30px;
-  background: #5bc07d;
+  background: linear-gradient(135deg, #3de39f 0%, #2ed18c 100%) !important ;
   color: white;
   font-weight: 600;
   text-decoration: none;
@@ -133,7 +135,7 @@
 
 .rim-btn:hover {
   transform: translateY(-3px);
-  background: #46a969;
+  background: #127835;
 }
 
 /* LIQUIDITY LINES */

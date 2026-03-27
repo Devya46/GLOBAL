@@ -8,6 +8,10 @@ export default function BlogSlider() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(0);
   const [maxScroll, setMaxScroll] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStartX, setDragStartX] = useState(0);
+  const [dragStartTranslate, setDragStartTranslate] = useState(0);
+  const [dragOffset, setDragOffset] = useState(0);
 
   const gap = 24;
 
@@ -63,7 +67,7 @@ export default function BlogSlider() {
     setCardWidth(width);
 
     const max = track.scrollWidth - wrapper.offsetWidth;
-    setMaxScroll(max);
+    setMaxScroll(max > 0 ? max : 0);
   };
 
   const getTranslateX = () => {
@@ -83,10 +87,62 @@ export default function BlogSlider() {
 
   const prev = () => {
     if (currentIndex <= 0) {
-      setCurrentIndex(Math.ceil(maxScroll / cardWidth));
+      const maxIndex = Math.ceil(maxScroll / cardWidth);
+      setCurrentIndex(maxIndex > 0 ? maxIndex : 0);
     } else {
       setCurrentIndex((prev) => prev - 1);
     }
+  };
+
+  // Drag handlers
+  const handleDragStart = (e) => {
+    setIsDragging(true);
+    const startX = e.type === "mousedown" ? e.clientX : e.touches[0].clientX;
+    setDragStartX(startX);
+    setDragStartTranslate(getTranslateX());
+    setDragOffset(0);
+  };
+
+  const handleDragMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const currentX = e.type === "mousemove" ? e.clientX : e.touches[0].clientX;
+    const diff = currentX - dragStartX;
+    const newOffset = dragStartTranslate - diff;
+    setDragOffset(diff);
+
+    // Apply temporary transform during drag
+    if (trackRef.current) {
+      let newTranslate = newOffset;
+      if (newTranslate > maxScroll) newTranslate = maxScroll;
+      if (newTranslate < 0) newTranslate = 0;
+      trackRef.current.style.transform = `translateX(-${newTranslate}px)`;
+      trackRef.current.style.transition = "none";
+    }
+  };
+
+  const handleDragEnd = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+
+    // Calculate new index based on drag distance
+    const dragDistance = Math.abs(dragOffset);
+    if (dragDistance > 50) {
+      if (dragOffset > 0) {
+        // Swipe left -> next
+        next();
+      } else if (dragOffset < 0) {
+        // Swipe right -> prev
+        prev();
+      }
+    }
+
+    // Reset track transition and position
+    if (trackRef.current) {
+      trackRef.current.style.transition = "";
+      trackRef.current.style.transform = `translateX(-${getTranslateX()}px)`;
+    }
+    setDragOffset(0);
   };
 
   useEffect(() => {
@@ -96,9 +152,39 @@ export default function BlogSlider() {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(next, 3500);
+    // Update track position when index changes
+    if (trackRef.current && !isDragging) {
+      trackRef.current.style.transform = `translateX(-${getTranslateX()}px)`;
+    }
+  }, [currentIndex, cardWidth, maxScroll, isDragging]);
+
+  // Auto-slide
+  useEffect(() => {
+    const interval = setInterval(next, 4000);
     return () => clearInterval(interval);
   }, [currentIndex]);
+
+  // Add/remove drag event listeners
+  useEffect(() => {
+    const handleMouseMove = (e) => handleDragMove(e);
+    const handleMouseUp = () => handleDragEnd();
+    const handleTouchMove = (e) => handleDragMove(e);
+    const handleTouchEnd = () => handleDragEnd();
+
+    if (isDragging) {
+      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mouseup", handleMouseUp);
+      window.addEventListener("touchmove", handleTouchMove);
+      window.addEventListener("touchend", handleTouchEnd);
+    }
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [isDragging, dragStartX, dragStartTranslate, dragOffset]);
 
   return (
     <section className="blog-section-wrapper">
@@ -108,30 +194,74 @@ export default function BlogSlider() {
           <h2 className="blog-title">
             <span className="green">Forex &</span>
             <br />
-            <span className="orange">Markets</span>
+            <span className="green">Markets</span>
             <br />
             <span className="sky">Learning Hub</span>
           </h2>
         </div>
 
         <div className="blog-slider">
-          <button className="slider-arrow arrow-left" onClick={prev}>
-            ‹
+          <button
+            className="slider-arrow arrow-left"
+            onClick={prev}
+            aria-label="Previous slide"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15 18L9 12L15 6"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </button>
 
-          <button className="slider-arrow arrow-right" onClick={next}>
-            ›
+          <button
+            className="slider-arrow arrow-right"
+            onClick={next}
+            aria-label="Next slide"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9 18L15 12L9 6"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </button>
 
-          <div className="slider-wrapper" ref={wrapperRef}>
+          <div
+            className="slider-wrapper"
+            ref={wrapperRef}
+            onMouseDown={handleDragStart}
+            onTouchStart={handleDragStart}
+          >
             <div
               className="blog-track"
               ref={trackRef}
-              style={{ transform: `translateX(-${getTranslateX()}px)` }}
+              style={{
+                transform: `translateX(-${getTranslateX()}px)`,
+                cursor: isDragging ? "grabbing" : "grab",
+              }}
             >
               {cards.map((card, i) => (
                 <div className="blog-card" key={i}>
-                  <img src={card.img} alt="" />
+                  <img src={card.img} alt={card.title} loading="lazy" />
                   <h3>{card.title}</h3>
                   <p>{card.desc}</p>
                   <div className="card-footer">
@@ -141,6 +271,18 @@ export default function BlogSlider() {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Pagination indicators */}
+          <div className="slider-pagination">
+            {cards.map((_, idx) => (
+              <button
+                key={idx}
+                className={`pagination-dot ${Math.round(getTranslateX() / cardWidth) === idx ? "active" : ""}`}
+                onClick={() => setCurrentIndex(idx)}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
           </div>
         </div>
       </div>

@@ -1,217 +1,308 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
+import {
+  ChevronDown,
+  Menu,
+  X,
+  LogIn,
+  Mail,
+  Home,
+  Info,
+  BookOpen,
+  User,
+  Users,
+  Briefcase,
+  Handshake,
+  CreditCard,
+  Wallet,
+  Rocket,
+  TrendingUp,
+} from "lucide-react";
+
+// Mobile Dropdown Item Component
+const MobileDropdownItem = ({ item, handleNav }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const icons = {
+    home: Home,
+    info: Info,
+    user: User,
+    handshake: Handshake,
+    book: BookOpen,
+    creditcard: CreditCard,
+    rocket: Rocket,
+    wallet: Wallet,
+    users: Users,
+    briefcase: Briefcase,
+    trendingup: TrendingUp,
+  };
+
+  const Icon = icons[item.icon];
+  const hasDropdown = item.dropdown && item.dropdown.length > 0;
+
+  if (hasDropdown) {
+    return (
+      <div className="mobile-dropdown">
+        <button
+          className="mobile-dropdown-trigger"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <span className="mobile-dropdown-left">
+            <Icon size={20} />
+            <span>{item.label}</span>
+          </span>
+          <ChevronDown size={18} className={isOpen ? "rotated" : ""} />
+        </button>
+        <div className={`mobile-dropdown-menu ${isOpen ? "show" : ""}`}>
+          {item.dropdown.map((subItem) => {
+            const SubIcon = icons[subItem.icon];
+            return (
+              <button
+                key={subItem.path}
+                className="mobile-dropdown-item"
+                onClick={() => handleNav(subItem.path)}
+              >
+                <SubIcon size={18} />
+                <span>{subItem.label}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <button className="mobile-nav-link" onClick={() => handleNav(item.path)}>
+      <Icon size={20} />
+      <span>{item.label}</span>
+    </button>
+  );
+};
 
 export default function Header() {
   const navigate = useNavigate();
-
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [dropdowns, setDropdowns] = useState({
-    accounts: false,
-    partners: false,
-  });
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const dropdownTimeoutRef = useRef(null);
 
-  // Scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      if (!menuOpen) {
-        setScrolled(window.scrollY > 80);
-      }
+      const isScrolled = window.scrollY > 20;
+      if (isScrolled !== scrolled) setScrolled(isScrolled);
     };
-
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [menuOpen]);
+  }, [scrolled]);
 
-  // Lock body scroll
   useEffect(() => {
     if (menuOpen) {
       document.body.classList.add("menu-open");
+      document.body.style.overflow = "hidden";
     } else {
       document.body.classList.remove("menu-open");
+      document.body.style.overflow = "";
     }
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [menuOpen]);
 
-  const toggleDropdown = (key) => {
-    setDropdowns((prev) => ({
-      ...prev,
-      [key]: !prev[key],
-    }));
+  useEffect(() => {
+    return () => {
+      if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
+    };
+  }, []);
+
+  const handleDropdownEnter = (dropdown) => {
+    if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
+    setActiveDropdown(dropdown);
+  };
+
+  const handleDropdownLeave = () => {
+    dropdownTimeoutRef.current = setTimeout(() => setActiveDropdown(null), 150);
   };
 
   const handleNav = (path) => {
     navigate(path);
-    setMenuOpen(false); // close mobile menu automatically
+    setMenuOpen(false);
+    setActiveDropdown(null);
+  };
+
+  const icons = {
+    home: Home,
+    info: Info,
+    user: User,
+    handshake: Handshake,
+    book: BookOpen,
+    creditcard: CreditCard,
+    rocket: Rocket,
+    wallet: Wallet,
+    users: Users,
+    briefcase: Briefcase,
+    trendingup: TrendingUp,
+  };
+
+  const navItems = [
+    { label: "Home", path: "/", icon: "home" },
+    { label: "About", path: "/About", icon: "info" },
+    {
+      label: "Accounts",
+      icon: "user",
+      dropdown: [
+        { label: "Account Types", path: "/account-type", icon: "creditcard" },
+        { label: "Demo Account", path: "/demo-account", icon: "rocket" },
+        {
+          label: "Withdrawal & Deposits",
+          path: "/WithdrawalDeposist",
+          icon: "wallet",
+        },
+      ],
+    },
+    {
+      label: "Partners",
+      icon: "handshake",
+      dropdown: [
+        { label: "Partner Types", path: "/PartnerTypes", icon: "users" },
+        { label: "Partner Program", path: "/partners", icon: "briefcase" },
+        { label: "Investor", path: "/Investor", icon: "trendingup" },
+        {
+          label: "Become a Partner",
+          path: "/BecomePartner",
+          icon: "handshake",
+        },
+      ],
+    },
+    { label: "Blogs", path: "/BLOGS", icon: "book" },
+  ];
+
+  const getIcon = (iconName) => {
+    const Icon = icons[iconName];
+    return Icon ? <Icon size={18} /> : null;
   };
 
   return (
     <>
-      {/* OVERLAY */}
       <div
         className={`menu-overlay ${menuOpen ? "show" : ""}`}
         onClick={() => setMenuOpen(false)}
-      ></div>
-
-      {/* HEADER */}
-      <header className={scrolled ? "header scrolled" : "header"}>
-        {/* LOGO CLICKABLE */}
-        <img
-          src="https://rimglobal.trade/assets/logo/logo.svg"
-          className="logo"
-          alt="logo"
-          onClick={() => handleNav("/")}
-          style={{ cursor: "pointer" }}
-        />
-
-        {/* DESKTOP NAV */}
-        <nav className="nav">
-          <button className="nav-item" onClick={() => handleNav("/App.js")}>
-            Home
-          </button>
-
-          <button className="nav-item" onClick={() => handleNav("/About")}>
-            About
-          </button>
-
-          {/* ACCOUNTS */}
-          <div className="dropdown nav-item">
-            <span className="dropdown-trigger">
-              Accounts <span className="arrow">▾</span>
-            </span>
-
-            <div className="dropdown-menu">
-              <button onClick={() => handleNav("/account-type")}>
-                Account Type
-              </button>
-
-              <button onClick={() => handleNav("/demo-account")}>
-                Demo Account
-              </button>
-
-              <button onClick={() => handleNav("/WithdrawalDeposist")}>
-                Withdrawal & Deposits
-              </button>
-            </div>
+      />
+      <header className={`header ${scrolled ? "scrolled" : ""}`}>
+        <div className="header-container">
+          <div className="logo-wrapper">
+            <img
+              src="https://rimglobal.trade/assets/logo/logo.svg"
+              className="logo"
+              alt="RIM Global"
+              onClick={() => handleNav("/")}
+            />
           </div>
-
-          {/* PARTNERS */}
-          <div className="dropdown nav-item">
-            <span className="dropdown-trigger">
-              Partners <span className="arrow">▾</span>
-            </span>
-
-            <div className="dropdown-menu">
-              <button onClick={() => handleNav("/PartnerTypes")}>
-                Partner Types
-              </button>
-
-              <button onClick={() => handleNav("/partners")}>
-                Partner Program
-              </button>
-
-              <button onClick={() => handleNav("/Investor")}>Investor</button>
-
-              <button onClick={() => handleNav("/BecomePartner")}>
-                Become a Partner
-              </button>
-            </div>
+          <nav className="nav-desktop">
+            {navItems.map((item) => {
+              const hasDropdown = item.dropdown?.length > 0;
+              const isActive = activeDropdown === item.label;
+              if (hasDropdown) {
+                return (
+                  <div
+                    key={item.label}
+                    className={`dropdown-wrapper ${isActive ? "active" : ""}`}
+                    onMouseEnter={() => handleDropdownEnter(item.label)}
+                    onMouseLeave={handleDropdownLeave}
+                  >
+                    <button className="nav-link dropdown-trigger">
+                      {getIcon(item.icon)}
+                      <span>{item.label}</span>
+                      <ChevronDown
+                        size={16}
+                        className={`dropdown-arrow ${isActive ? "rotated" : ""}`}
+                      />
+                    </button>
+                    <div
+                      className={`dropdown-menu-custom ${isActive ? "show" : ""}`}
+                    >
+                      <div className="dropdown-inner">
+                        {item.dropdown.map((subItem) => (
+                          <button
+                            key={subItem.path}
+                            className="dropdown-item"
+                            onClick={() => handleNav(subItem.path)}
+                          >
+                            {getIcon(subItem.icon)}
+                            <span>{subItem.label}</span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+              return (
+                <button
+                  key={item.label}
+                  className="nav-link"
+                  onClick={() => handleNav(item.path)}
+                >
+                  {getIcon(item.icon)}
+                  <span>{item.label}</span>
+                </button>
+              );
+            })}
+          </nav>
+          <div className="header-buttons">
+            <button className="btn-login" onClick={() => handleNav("/login")}>
+              <LogIn size={18} />
+              <span>LOG IN</span>
+            </button>
+            <button
+              className="btn-contact"
+              onClick={() => handleNav("/contact")}
+            >
+              <Mail size={18} />
+              <span>CONTACT US</span>
+            </button>
           </div>
-
-          <button className="nav-item" onClick={() => handleNav("/BLOGS")}>
-            Blogs
+          <button className="hamburger" onClick={() => setMenuOpen(true)}>
+            <Menu size={24} />
           </button>
-        </nav>
-
-        {/* BUTTONS */}
-        <div className="buttons">
-          <button className="login" onClick={() => handleNav("/login")}>
-            LOG IN
-          </button>
-
-          <button className="contact" onClick={() => handleNav("/contact")}>
-            CONTACT US
-          </button>
-        </div>
-
-        {/* HAMBURGER */}
-        <div className="hamburger" onClick={() => setMenuOpen(true)}>
-          <span></span>
-          <span></span>
-          <span></span>
         </div>
       </header>
-
-      {/* MOBILE NAV */}
       <div className={`mobile-nav ${menuOpen ? "open" : ""}`}>
-        <span className="close-btn" onClick={() => setMenuOpen(false)}>
-          &times;
-        </span>
-
-        <button onClick={() => handleNav("/")}>Home</button>
-        <button onClick={() => handleNav("/about")}>About</button>
-
-        {/* MOBILE ACCOUNTS */}
-        <div className="mobile-dropdown">
-          <span onClick={() => toggleDropdown("accounts")}>
-            Accounts {dropdowns.accounts ? "▴" : "▾"}
-          </span>
-
-          <div
-            className={`mobile-dropdown-menu ${
-              dropdowns.accounts ? "show" : ""
-            }`}
-          >
-            <button onClick={() => handleNav("/account-type")}>
-              Account Type
-            </button>
-
-            <button onClick={() => handleNav("/demo-account")}>
-              Demo Account
-            </button>
-
-            <button onClick={() => handleNav("/withdrawal-deposit")}>
-              Withdrawal & Deposits
-            </button>
-          </div>
-        </div>
-
-        {/* MOBILE PARTNERS */}
-        <div className="mobile-dropdown">
-          <span onClick={() => toggleDropdown("partners")}>
-            Partners {dropdowns.partners ? "▴" : "▾"}
-          </span>
-
-          <div
-            className={`mobile-dropdown-menu ${
-              dropdowns.partners ? "show" : ""
-            }`}
-          >
-            <button onClick={() => handleNav("/partner-types")}>
-              Partner Types
-            </button>
-
-            <button onClick={() => handleNav("/partners")}>
-              Partner Program
-            </button>
-
-            <button onClick={() => handleNav("/investor")}>Investor</button>
-
-            <button onClick={() => handleNav("/become-partner")}>
-              Become a Partner
-            </button>
-          </div>
-        </div>
-
-        <button onClick={() => handleNav("/blogs")}>Blogs</button>
-
-        <div className="buttons">
-          <button className="login" onClick={() => handleNav("/login")}>
-            LOG IN
+        <div className="mobile-nav-header">
+          <img
+            src="https://rimglobal.trade/assets/logo/logo.svg"
+            className="mobile-logo"
+            alt="RIM Global"
+            onClick={() => handleNav("/")}
+          />
+          <button className="close-btn" onClick={() => setMenuOpen(false)}>
+            <X size={28} />
           </button>
-
-          <button className="contact" onClick={() => handleNav("/contact")}>
-            CONTACT US
+        </div>
+        <div className="mobile-nav-links">
+          {navItems.map((item) => (
+            <MobileDropdownItem
+              key={item.label}
+              item={item}
+              handleNav={handleNav}
+            />
+          ))}
+        </div>
+        <div className="mobile-buttons">
+          <button
+            className="mobile-btn-login"
+            onClick={() => handleNav("/login")}
+          >
+            <LogIn size={18} />
+            <span>LOG IN</span>
+          </button>
+          <button
+            className="mobile-btn-contact"
+            onClick={() => handleNav("/contact")}
+          >
+            <Mail size={18} />
+            <span>CONTACT US</span>
           </button>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "./AccountSteps.css";
+import accountImg from "./assets/AccountSteps2.png";
 import {
   FaFileLines,
   FaUserCheck,
@@ -102,10 +103,7 @@ export default function AccountSteps() {
 
         {/* RIGHT IMAGE */}
         <div className="account-right">
-          <img
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
-            alt="financial district"
-          />
+          <img src={accountImg} alt="financial district" />
         </div>
       </div>
     </section>

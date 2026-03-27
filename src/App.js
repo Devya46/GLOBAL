@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Header from "./Header";
+import Hero from "./hero"; // Fixed import (capital H)
 import MarketsSection from "./MarketsSection";
 import TradeView from "./TradeView";
 import LeadingBroker from "./LeadingBroker";
@@ -27,62 +28,11 @@ import BecomePartner from "./Partner/BecomePartner";
 import BLOGS from "./BLOG/BLOGS";
 import About from "./ABOUT/About";
 
-// 👉 CREATE TEMP PAGES (or import real ones)
+// ✅ HOME COMPONENT - All sections combined
 function Home() {
   return (
     <>
-      <MainHome />
-    </>
-  );
-}
-
-// 👉 YOUR MAIN HOME CONTENT MOVED HERE
-function MainHome() {
-  const [index, setIndex] = useState(0);
-
-  const titles = [
-    <>
-      New to Trading?
-      <br /> We're Here
-      <br />
-      Learn-Trade-Grow
-    </>,
-    "Essential Tools for Every Trader's Success",
-    "Fast, Secure & Transparent Trading",
-  ];
-
-  const desc =
-    "Start with a demo account and explore global markets risk-free. Access advanced charts, real-time market insights and powerful tools designed to help you analyse trends and trade smarter.";
-
-  const btn = "Start Trading";
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % titles.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [titles.length]);
-
-  return (
-    <div>
-      <div className="hero">
-        <Header />
-
-        <div className="hero-content">
-          <p className="tag">SMART TRADING SOLUTION</p>
-
-          <div className="flip-box">
-            <h1 key={index} className="cube-text">
-              {titles[index]}
-            </h1>
-
-            <p className="desc">{desc}</p>
-            <button className="cta">{btn}</button>
-          </div>
-        </div>
-      </div>
-
+      <Hero /> {/* Use the Hero component instead of duplicating code */}
       <TradeView />
       <MarketsSection />
       <LeadingBroker />
@@ -97,7 +47,7 @@ function MainHome() {
       <VideoGallery />
       <Contact />
       <Footer />
-    </div>
+    </>
   );
 }
 
@@ -108,9 +58,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/account-type" element={<AccountType />} />
-        <Route path="/DEMO-Account" element={<DEMOAccount />} />
-        <Route path="/Withdrawal&Deposit" element={<WithdrawalDeposit />} />
-        <Route path="/PatnerTYPES" element={<PatnerTYPES />} />
+        <Route path="/demo-account" element={<DEMOAccount />} />
+        <Route path="/WithdrawalDeposist" element={<WithdrawalDeposit />} />
+        <Route path="/PartnerTypes" element={<PatnerTYPES />} />
         <Route path="/partners" element={<PartnerPrograms />} />
         <Route path="/Investor" element={<Investor />} />
         <Route path="/BecomePartner" element={<BecomePartner />} />

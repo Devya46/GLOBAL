@@ -3,11 +3,11 @@ import "./Features.css";
 
 export default function Features() {
   return (
-    <section className="features-section">
-      <div className="features-wrapper">
+    <section className="fc-features-section">
+      <div className="fc-features-wrapper">
         {/* CENTER TEXT */}
-        <div className="features-center">
-          <span className="features-tag">FEATURES</span>
+        <div className="fc-features-center">
+          <span className="fc-features-tag">FEATURES</span>
           <h2>
             RIM Global <br />
             <span>Best Features</span>
@@ -19,8 +19,8 @@ export default function Features() {
         </div>
 
         {/* CARD 1 */}
-        <div className="feature-card card1">
-          <div className="icon">
+        <div className="fc-feature-card card1">
+          <div className="fc-icon">
             <img
               src="https://cdn-icons-png.flaticon.com/128/11135/11135232.png"
               alt="Financial Security"
@@ -34,8 +34,8 @@ export default function Features() {
         </div>
 
         {/* CARD 2 */}
-        <div className="feature-card card2">
-          <div className="icon">
+        <div className="fc-feature-card card2">
+          <div className="fc-icon">
             <img
               src="https://cdn-icons-png.flaticon.com/128/11328/11328453.png"
               alt="Segregation Of Funds"
@@ -49,8 +49,8 @@ export default function Features() {
         </div>
 
         {/* CARD 3 */}
-        <div className="feature-card card3">
-          <div className="icon">
+        <div className="fc-feature-card card3">
+          <div className="fc-icon">
             <img
               src="https://cdn-icons-png.flaticon.com/128/13063/13063429.png"
               alt="International Asset Protection"
