@@ -1,0 +1,647 @@
+/* RiskManagementSection.css - Premium Dark Navy Theme */
+
+.risk-management-section {
+  background: radial-gradient(circle at 10% 80%, #0a0f2a, #030614);
+  background-color: #07122b;
+  padding: 8rem 1.5rem 5rem 1.5rem;
+  width: 100%;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+  color: #eef2ff;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Header */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(59, 130, 246, 0.15);
+  backdrop-filter: blur(8px);
+  padding: 0.5rem 1.2rem;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #60a5fa;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.section-title {
+  font-size: 3.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.title-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #a78bfa 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.subhead {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #a9c1ff;
+  background: rgba(59, 130, 246, 0.05);
+  border-radius: 0 12px 12px 0;
+  padding: 0.6rem 1.2rem;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Hero Statement */
+.hero-statement {
+  background: linear-gradient(
+    135deg,
+    rgba(81, 207, 102, 0.12),
+    rgba(59, 130, 246, 0.08)
+  );
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  border-left: 4px solid #51cf66;
+}
+
+.hero-statement svg {
+  color: #51cf66;
+  flex-shrink: 0;
+}
+
+.hero-statement p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Topic Cards */
+.topic-card {
+  background: rgba(12, 25, 55, 0.65);
+  backdrop-filter: blur(8px);
+  border-radius: 1.75rem;
+  padding: 1.8rem;
+  margin-bottom: 1.75rem;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  transition: all 0.35s ease;
+}
+
+.topic-card:hover {
+  border-color: rgba(96, 165, 250, 0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.5);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.icon-wrapper {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.2),
+    rgba(139, 92, 246, 0.15)
+  );
+  padding: 0.75rem;
+  border-radius: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.icon-wrapper.warning {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 107, 107, 0.2),
+    rgba(255, 71, 87, 0.15)
+  );
+  border-color: rgba(255, 71, 87, 0.3);
+}
+
+.icon-wrapper.success-icon {
+  background: linear-gradient(
+    135deg,
+    rgba(81, 207, 102, 0.2),
+    rgba(64, 192, 87, 0.15)
+  );
+  border-color: rgba(81, 207, 102, 0.3);
+}
+
+.card-header h2 {
+  font-size: 1.65rem;
+  font-weight: 600;
+  color: #f0f4ff;
+  margin: 0;
+}
+
+.card-description {
+  color: #dfe7ff;
+  line-height: 1.55;
+  margin-bottom: 1rem;
+}
+
+/* Risk Comparison */
+.risk-comparison {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.risk-card {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 1rem;
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  transition: all 0.2s;
+}
+
+.risk-card.highlight {
+  border-color: #51cf66;
+  background: rgba(81, 207, 102, 0.08);
+}
+
+.risk-percent {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #ff6b6b;
+}
+
+.risk-card.highlight .risk-percent {
+  color: #51cf66;
+}
+
+.risk-losses {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+}
+
+.risk-desc {
+  font-size: 0.75rem;
+  color: #a9c1ff;
+}
+
+.example-box {
+  background: rgba(59, 130, 246, 0.08);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+}
+
+/* Calculator */
+.calculator-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .calculator-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.calculator-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.input-field label {
+  font-size: 0.75rem;
+  color: #a9c1ff;
+}
+
+.input-field input {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  color: white;
+  font-family: inherit;
+}
+
+.calculator-results {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.result-card {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.result-card.highlight {
+  background: linear-gradient(
+    135deg,
+    rgba(81, 207, 102, 0.15),
+    rgba(64, 192, 87, 0.08)
+  );
+  border: 1px solid #51cf66;
+}
+
+.result-label {
+  display: block;
+  font-size: 0.75rem;
+  color: #a9c1ff;
+}
+
+.result-value {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.result-value-large {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #51cf66;
+}
+
+.formula-note {
+  text-align: center;
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 0.75rem;
+  font-family: monospace;
+  font-size: 0.85rem;
+}
+
+/* Stop Loss Guide */
+.stop-loss-guide {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.guide-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.guide-item svg {
+  color: #51cf66;
+}
+
+.guide-item.warning svg {
+  color: #ff6b6b;
+}
+
+/* RRR Comparison */
+.rrr-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .rrr-comparison {
+    grid-template-columns: 1fr;
+  }
+}
+
+.rrr-card {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 1rem;
+  padding: 1rem;
+  text-align: center;
+  border-left: 4px solid;
+}
+
+.rrr-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.win-rate {
+  font-size: 0.85rem;
+  color: #a9c1ff;
+}
+
+.rrr-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.rrr-result {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0.5rem 0;
+}
+
+.rrr-explanation {
+  font-size: 0.75rem;
+  color: #a9c1ff;
+}
+
+.rrr-principle {
+  background: rgba(250, 204, 21, 0.08);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+/* Correlation */
+.correlation-example {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.correlation-bad,
+.correlation-good {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  align-items: flex-start;
+}
+
+.correlation-bad {
+  background: rgba(255, 107, 107, 0.08);
+  border-left: 3px solid #ff6b6b;
+}
+
+.correlation-good {
+  background: rgba(81, 207, 102, 0.08);
+  border-left: 3px solid #51cf66;
+}
+
+.correlation-bad svg {
+  color: #ff6b6b;
+}
+
+.correlation-good svg {
+  color: #51cf66;
+}
+
+.correlation-bad strong,
+.correlation-good strong {
+  display: block;
+  font-size: 0.85rem;
+}
+
+.correlation-bad span,
+.correlation-good span {
+  font-size: 0.75rem;
+  color: #a9c1ff;
+}
+
+.portfolio-limit {
+  background: rgba(59, 130, 246, 0.08);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+/* Leverage */
+.leverage-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .leverage-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.leverage-warning,
+.leverage-safe {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  align-items: flex-start;
+}
+
+.leverage-warning {
+  background: rgba(255, 107, 107, 0.08);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.leverage-safe {
+  background: rgba(81, 207, 102, 0.08);
+  border: 1px solid rgba(81, 207, 102, 0.3);
+}
+
+.leverage-warning svg {
+  color: #ff6b6b;
+}
+
+.leverage-safe svg {
+  color: #51cf66;
+}
+
+.leverage-formula {
+  text-align: center;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
+  font-family: monospace;
+  font-size: 0.8rem;
+}
+
+/* Emotional Pitfalls */
+.emotional-pitfalls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.pitfall {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 0.75rem;
+}
+
+.pitfall svg {
+  color: #facc15;
+  flex-shrink: 0;
+}
+
+.pitfall strong {
+  display: block;
+  font-size: 0.9rem;
+}
+
+.pitfall span {
+  font-size: 0.8rem;
+  color: #a9c1ff;
+}
+
+.discipline-tip {
+  background: rgba(59, 130, 246, 0.08);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+/* Implementation */
+.implementation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.impl-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.impl-item svg {
+  color: #51cf66;
+  flex-shrink: 0;
+}
+
+.tracking-metrics {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+}
+
+/* Conclusion */
+.verdict-card {
+  background: linear-gradient(
+    135deg,
+    rgba(12, 25, 55, 0.8),
+    rgba(20, 35, 70, 0.9)
+  );
+}
+
+.conclusion-quote {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(59, 130, 246, 0.08);
+  border-radius: 1rem;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+/* Key Takeaway */
+.key-takeaway {
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.2),
+    rgba(139, 92, 246, 0.1)
+  );
+  border-radius: 2rem;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  margin: 1.5rem 0;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  font-weight: 500;
+}
+
+/* Footer */
+.section-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  font-size: 0.8rem;
+  opacity: 0.6;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .risk-management-section {
+    padding: 2rem 1rem 3rem;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .subhead {
+    font-size: 0.9rem;
+  }
+
+  .card-header h2 {
+    font-size: 1.35rem;
+  }
+
+  .topic-card {
+    padding: 1.2rem;
+  }
+
+  .calculator-inputs {
+    grid-template-columns: 1fr;
+  }
+}

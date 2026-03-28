@@ -120,9 +120,10 @@ body.menu-open {
 
 /* Tag/Badge */
 .tag {
+  margin-right: 268px !important;
   display: inline-block;
   color: #3de39f;
-  font-size: 12px;
+  font-size: 12px !important;
   letter-spacing: 4px;
   text-transform: uppercase;
   margin-bottom: 24px;
@@ -130,13 +131,13 @@ body.menu-open {
   position: relative;
   padding-left: 30px;
   background: rgba(0, 0, 0, 0.3);
-  padding: 8px 20px 8px 45px;
+  padding: 8px 20px 8px 20px;
   border-radius: 30px;
   backdrop-filter: blur(5px);
   border: 1px solid rgba(61, 227, 159, 0.3);
 }
 
-.tag::before {
+/* .tag::before {
   content: "";
   position: absolute;
   left: 20px;
@@ -146,7 +147,7 @@ body.menu-open {
   background: #3de39f;
   transform: translateY(-50%);
   transition: width 0.3s ease;
-}
+} */
 
 .tag:hover::before {
   width: 30px;
@@ -172,6 +173,7 @@ body.menu-open {
   animation: flipIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   position: relative;
   display: inline-block;
+  padding: 25px 20px;
 }
 
 @keyframes flipIn {
@@ -422,8 +424,8 @@ body.menu-open {
 }
 
 .header.scrolled .header-container {
-  padding: 12px 32px;
-  max-width: 1300px;
+  padding: 20px 62px;
+  max-width: 1250px;
 }
 
 .header.scrolled .logo {
@@ -457,7 +459,7 @@ body.menu-open {
   background: none;
   border: none;
   color: white;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);

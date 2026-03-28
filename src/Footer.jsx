@@ -7,14 +7,24 @@ import {
   FaYoutube,
 } from "react-icons/fa6";
 import { FaEnvelope, FaPhone } from "react-icons/fa";
+import { Mail, ExternalLink } from "lucide-react"; // Import icons for button
 
 export default function Footer() {
+  const handleNav = (path) => {
+    // Handle navigation - you can use react-router-dom or window.location
+    window.location.href = path;
+  };
+
   return (
     <footer className="footer">
       <div className="footer-top">
         {/* LEFT SECTION */}
         <div className="footer-about">
-          <img src="/logo.svg" alt="RIM Global" className="footer-logo" />
+          <img
+            src="https://rimglobal.trade/assets/logo/logo.svg"
+            alt="RIM Global"
+            className="footer-logo"
+          />
 
           <p>
             With over many years of experience and a remarkable legacy in the
@@ -61,19 +71,51 @@ export default function Footer() {
         <div className="footer-links">
           <h3>Quick Link</h3>
 
-          <a href="/">Home</a>
-          <a href="/about">About</a>
-          <a href="/accounts">Accounts</a>
-          <a href="/partners">Partners</a>
-          <a href="/contact">Contact</a>
+          <button className="footer-link-btn" onClick={() => handleNav("/")}>
+            Home
+          </button>
+          <button
+            className="footer-link-btn"
+            onClick={() => handleNav("/about")}
+          >
+            About
+          </button>
+          <button
+            className="footer-link-btn"
+            onClick={() => handleNav("/demo-account")}
+          >
+            Accounts
+          </button>
+          <button
+            className="footer-link-btn"
+            onClick={() => handleNav("/partners")}
+          >
+            Partners
+          </button>
+          <button
+            className="footer-link-btn"
+            onClick={() => handleNav("/ContactUsPage")}
+          >
+            Contact
+          </button>
         </div>
 
         {/* USEFUL LINKS */}
         <div className="footer-links">
           <h3>Useful Links</h3>
 
-          <a href="/terms">Terms & Conditions</a>
-          <a href="/privacy">Privacy Policy</a>
+          <button
+            className="footer-link-btn"
+            onClick={() => handleNav("/terms-and-conditions")}
+          >
+            Terms & Conditions
+          </button>
+          <button
+            className="footer-link-btn"
+            onClick={() => handleNav("/PrivacyPolicy")}
+          >
+            Privacy Policy
+          </button>
         </div>
 
         {/* CONTACT */}
@@ -93,7 +135,13 @@ export default function Footer() {
 
         {/* BUTTON */}
         <div className="footer-btn">
-          <button>OPEN ACCOUNT</button>
+          <button
+            className="btn-contact"
+            onClick={() => handleNav("/open-account")}
+          >
+            <ExternalLink size={18} />
+            <span>OPEN ACCOUNT</span>
+          </button>
         </div>
       </div>
 
@@ -127,14 +175,14 @@ export default function Footer() {
           distribution to, or use by, any person in any country or jurisdiction
           where such distribution or use would be contrary to local law or
           regulation. Please read the full{" "}
-          <a
-            className="RiskDisclosure"
-            href="https://rimglobal.trade/legal-risk-disclosure"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            className="risk-disclosure-link"
+            onClick={() =>
+              handleNav("https://rimglobal.trade/legal-risk-disclosure")
+            }
           >
             Risk Disclosure
-          </a>
+          </button>
           .
         </p>
 

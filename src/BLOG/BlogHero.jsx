@@ -1,5 +1,22 @@
 // BlogHero.jsx
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import {
+  TrendingUp,
+  Users,
+  BookOpen,
+  Sparkles,
+  Zap,
+  Eye,
+  Radio,
+  Layers,
+  Hash,
+  RefreshCw,
+  Activity,
+  ArrowRight,
+  Star,
+  Flame,
+  Timer,
+} from "lucide-react";
 import "./BlogHero.css";
 
 const BlogHero = () => {
@@ -15,6 +32,8 @@ const BlogHero = () => {
   const [bgPosition, setBgPosition] = useState({ x: 20, y: 40 });
   const [showSyncMsg, setShowSyncMsg] = useState(false);
   const [syncMsg, setSyncMsg] = useState("");
+  const [isStatsPulsing, setIsStatsPulsing] = useState(false);
+  const [isTrendingPulsing, setIsTrendingPulsing] = useState(false);
 
   // Refs for intervals cleanup
   const intervalsRef = useRef([]);
@@ -30,12 +49,12 @@ const BlogHero = () => {
 
   // Blog update messages (rotating)
   const updateMessages = [
-    "✨ New essay: 'The Art of Digital Minimalism' just dropped",
-    "📖 Hot off the press: 'Scaling Design Systems' guide released",
-    "🎙️ Podcast episode: Future of Creative Coding — listen now",
-    "📊 Weekly digest: 5 must-read articles on AI ethics",
-    "💡 Community spotlight: 'How I built a second brain' by Mia Chen",
-    "🚀 Trending: WebAssembly and the edge runtime deep dive",
+    "New essay: 'The Art of Digital Minimalism' just dropped",
+    "Hot off the press: 'Scaling Design Systems' guide released",
+    "Podcast episode: Future of Creative Coding — listen now",
+    "Weekly digest: 5 must-read articles on AI ethics",
+    "Community spotlight: 'How I built a second brain' by Mia Chen",
+    "Trending: WebAssembly and the edge runtime deep dive",
   ];
 
   // Helper to format numbers with k
@@ -47,14 +66,11 @@ const BlogHero = () => {
     return value.toString();
   }, []);
 
-  // Update all stats display
-  const updateAllStats = useCallback(() => {
-    // State updates will trigger re-render
-  }, []);
-
   // Rotate trending topics
   const rotateTrending = useCallback(() => {
     setTrendingIdx((prev) => (prev + 1) % trendingPool.length);
+    setIsTrendingPulsing(true);
+    setTimeout(() => setIsTrendingPulsing(false), 400);
   }, [trendingPool.length]);
 
   // Rotate update message
@@ -71,7 +87,7 @@ const BlogHero = () => {
 
     for (let i = 0; i < particleCount; i++) {
       const particle = document.createElement("div");
-      particle.classList.add("particle");
+      particle.classList.add("bloghero-particle");
       const size = Math.random() * 5 + 2;
       particle.style.width = `${size}px`;
       particle.style.height = `${size}px`;
@@ -79,7 +95,7 @@ const BlogHero = () => {
       particle.style.animationDuration = `${Math.random() * 12 + 8}s`;
       particle.style.animationDelay = `${Math.random() * 10}s`;
       particle.style.opacity = Math.random() * 0.5 + 0.2;
-      particle.style.background = `rgba(100, 170, 250, ${Math.random() * 0.5 + 0.2})`;
+      particle.style.background = `rgba(34, 197, 94, ${Math.random() * 0.5 + 0.2})`;
       container.appendChild(particle);
     }
 
@@ -127,26 +143,12 @@ const BlogHero = () => {
       });
 
       // Pulse effect on stats row
-      const statsRow = document.querySelector(".hero-stats-row");
-      if (statsRow) {
-        statsRow.style.transform = "scale(1.01)";
-        setTimeout(() => {
-          if (statsRow) statsRow.style.transform = "";
-        }, 200);
-      }
+      setIsStatsPulsing(true);
+      setTimeout(() => setIsStatsPulsing(false), 200);
 
       // Shimmer effect on trending card
-      const trendingCard = document.querySelector(".trending-card");
-      if (trendingCard) {
-        trendingCard.style.borderColor = "rgba(100, 170, 255, 0.7)";
-        trendingCard.style.boxShadow = "0 0 8px rgba(70, 130, 255, 0.3)";
-        setTimeout(() => {
-          if (trendingCard) {
-            trendingCard.style.borderColor = "rgba(80, 140, 210, 0.35)";
-            trendingCard.style.boxShadow = "";
-          }
-        }, 400);
-      }
+      setIsTrendingPulsing(true);
+      setTimeout(() => setIsTrendingPulsing(false), 400);
     }, 9500);
 
     intervalsRef.current.push(growthInterval);
@@ -201,7 +203,7 @@ const BlogHero = () => {
       minute: "2-digit",
     });
     const originalMsg = updateMessages[currentUpdateIndex];
-    setSyncMsg(`🕒 Last sync: ${timeString} · ${originalMsg.slice(0, 40)}`);
+    setSyncMsg(`Last sync: ${timeString} · ${originalMsg.slice(0, 40)}`);
     setShowSyncMsg(true);
     setTimeout(() => {
       setShowSyncMsg(false);
@@ -213,106 +215,133 @@ const BlogHero = () => {
 
   // Background gradient style
   const heroBackgroundStyle = {
-    background: `radial-gradient(ellipse 70% 40% at ${bgPosition.x}% ${bgPosition.y}%, rgba(40, 100, 170, 0.2), transparent 60%), #0a0f1f`,
+    background: `radial-gradient(ellipse 70% 40% at ${bgPosition.x}% ${bgPosition.y}%, rgba(34, 197, 94, 0.12), transparent 60%), linear-gradient(135deg, #0a0f1f 0%, #0c1222 100%)`,
   };
 
   return (
-    <section className="hero-fullwidth" style={heroBackgroundStyle}>
-      <div className="particles-bg" ref={particlesContainerRef}></div>
-      <div className="noise-overlay"></div>
-      <div className="hero-container">
+    <section className="bloghero" style={heroBackgroundStyle}>
+      <div className="bloghero-particles" ref={particlesContainerRef}></div>
+      <div className="bloghero-noise"></div>
+      <div className="bloghero-container">
         {/* LEFT SIDE: main blog copy */}
-        <div className="hero-left">
-          <div className="hero-badge">
-            <span className="live-indicator"></span>
+        <div className="bloghero-left">
+          <div className="bloghero-badge">
+            <Radio size={12} className="bloghero-badge-icon" />
             <span>BlogSphere • editorial pulse</span>
+            <span className="bloghero-badge-dot"></span>
           </div>
-          <h1>
+          <h1 className="bloghero-title">
             Where Ideas
             <br />
-            Ignite & Stories evolve
+            Ignite & Stories Evolve
           </h1>
-          <p className="hero-description">
+          <p className="bloghero-description">
             Dive into deep conversations about tech, creativity, and the future
             of digital storytelling. Fresh perspectives, weekly.
           </p>
-          <div className="hero-stats-row">
-            <div className="stat-item">
-              <span className="stat-number">{articles}</span>
-              <span>articles</span>
+          <div
+            className={`bloghero-stats ${isStatsPulsing ? "bloghero-stats-pulse" : ""}`}
+          >
+            <div className="bloghero-stat">
+              <BookOpen size={18} className="bloghero-stat-icon" />
+              <div>
+                <span className="bloghero-stat-number">{articles}</span>
+                <span className="bloghero-stat-label">articles</span>
+              </div>
             </div>
-            <div className="stat-item">
-              <span className="stat-number">{writers}</span>
-              <span>contributors</span>
+            <div className="bloghero-stat">
+              <Users size={18} className="bloghero-stat-icon" />
+              <div>
+                <span className="bloghero-stat-number">{writers}</span>
+                <span className="bloghero-stat-label">contributors</span>
+              </div>
             </div>
-            <div className="stat-item">
-              <span className="stat-number">5min</span>
-              <span>avg read</span>
+            <div className="bloghero-stat">
+              <Timer size={18} className="bloghero-stat-icon" />
+              <div>
+                <span className="bloghero-stat-number">5min</span>
+                <span className="bloghero-stat-label">avg read</span>
+              </div>
             </div>
           </div>
         </div>
 
         {/* RIGHT SIDE: more elements */}
-        <div className="hero-right">
+        <div className="bloghero-right">
           {/* trending topics card */}
-          <div className="trending-card">
-            <div className="trending-header">
-              <span>🔥</span> <span>trending now</span>
+          <div
+            className={`bloghero-trending ${isTrendingPulsing ? "bloghero-trending-pulse" : ""}`}
+          >
+            <div className="bloghero-trending-header">
+              <Flame size={14} />
+              <span>trending now</span>
             </div>
-            <div className="trending-topics">
+            <div className="bloghero-trending-topics">
               {currentTrending.map((topic, idx) => (
-                <span key={idx} className="topic-tag">
-                  {topic}
+                <span key={idx} className="bloghero-topic">
+                  <Hash size={10} />
+                  {topic.replace("#", "")}
                 </span>
               ))}
             </div>
           </div>
 
           {/* insight grid */}
-          <div className="insight-grid">
+          <div className="bloghero-insights">
             <div
-              className={`insight-item ${hoveredInsight === "featured" ? "hovered" : ""}`}
+              className={`bloghero-insight ${hoveredInsight === "featured" ? "bloghero-insight-hover" : ""}`}
               onMouseEnter={() => setHoveredInsight("featured")}
               onMouseLeave={() => setHoveredInsight(null)}
             >
-              <div className="insight-label">⭐ featured</div>
-              <div className="insight-value">
+              <div className="bloghero-insight-header">
+                <Star size={12} />
+                <span>featured</span>
+              </div>
+              <div className="bloghero-insight-value">
                 {formatWithK(featuredReadsVal)}
               </div>
-              <div className="insight-desc">reads this week</div>
+              <div className="bloghero-insight-desc">reads this week</div>
             </div>
             <div
-              className={`insight-item ${hoveredInsight === "series" ? "hovered" : ""}`}
+              className={`bloghero-insight ${hoveredInsight === "series" ? "bloghero-insight-hover" : ""}`}
               onMouseEnter={() => setHoveredInsight("series")}
               onMouseLeave={() => setHoveredInsight(null)}
             >
-              <div className="insight-label">📚 new series</div>
-              <div className="insight-value">{newSeriesVal}</div>
-              <div className="insight-desc">ongoing series</div>
+              <div className="bloghero-insight-header">
+                <Layers size={12} />
+                <span>new series</span>
+              </div>
+              <div className="bloghero-insight-value">{newSeriesVal}</div>
+              <div className="bloghero-insight-desc">ongoing series</div>
             </div>
             <div
-              className={`insight-item ${hoveredInsight === "community" ? "hovered" : ""}`}
+              className={`bloghero-insight ${hoveredInsight === "community" ? "bloghero-insight-hover" : ""}`}
               onMouseEnter={() => setHoveredInsight("community")}
               onMouseLeave={() => setHoveredInsight(null)}
             >
-              <div className="insight-label">⚡ community</div>
-              <div className="insight-value">{formatWithK(communityVal)}</div>
-              <div className="insight-desc">active readers</div>
+              <div className="bloghero-insight-header">
+                <Activity size={12} />
+                <span>community</span>
+              </div>
+              <div className="bloghero-insight-value">
+                {formatWithK(communityVal)}
+              </div>
+              <div className="bloghero-insight-desc">active readers</div>
             </div>
           </div>
 
           {/* dynamic latest update ticker */}
-          <div className="update-marquee" onClick={handleMarqueeClick}>
-            <span className="spark">✨</span>
+          <div className="bloghero-update" onClick={handleMarqueeClick}>
+            <RefreshCw size={14} className="bloghero-update-icon" />
             <span
-              className="update-text"
+              className="bloghero-update-text"
               style={{
                 opacity: showSyncMsg ? 0 : 1,
-                transition: "opacity 0.1s",
               }}
             >
               {showSyncMsg ? syncMsg : updateMessages[currentUpdateIndex]}
             </span>
+            <ArrowRight size={14} className="bloghero-update-arrow" />
           </div>
         </div>
       </div>

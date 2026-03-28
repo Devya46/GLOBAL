@@ -13,7 +13,7 @@ const ForexArticlesSection = () => {
       image:
         "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&auto=format",
       imageAlt: "Forex trading charts and analysis",
-      readMoreLink: "#",
+      readMoreLink: "/BLOG/TopForexTrading",
     },
     {
       id: 2,
@@ -24,7 +24,7 @@ const ForexArticlesSection = () => {
       image:
         "https://images.unsplash.com/photo-1719381565370-86f9d7a9fc34?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       imageAlt: "Market analysis graphs and indicators",
-      readMoreLink: "#",
+      readMoreLink: "/BLOG/MarketAnalysis",
     },
     {
       id: 3,
@@ -35,7 +35,7 @@ const ForexArticlesSection = () => {
       image:
         "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800&auto=format",
       imageAlt: "Global financial markets concept",
-      readMoreLink: "#",
+      readMoreLink: "/BLOG/DriveMarket",
     },
     {
       id: 4,
@@ -46,7 +46,7 @@ const ForexArticlesSection = () => {
       image:
         "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&auto=format",
       imageAlt: "Profit growth chart and coins",
-      readMoreLink: "#",
+      readMoreLink: "/BLOG/Profitable",
     },
     {
       id: 5,
@@ -57,7 +57,7 @@ const ForexArticlesSection = () => {
       image:
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format",
       imageAlt: "Broker comparison and financial decision",
-      readMoreLink: "#",
+      readMoreLink: "/BLOG/BestBroker",
     },
     {
       id: 6,
@@ -68,7 +68,7 @@ const ForexArticlesSection = () => {
       image:
         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format",
       imageAlt: "Risk management concept with shield and charts",
-      readMoreLink: "#",
+      readMoreLink: "/BLOG/RiskManagement",
     },
   ];
 

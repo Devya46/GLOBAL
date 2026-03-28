@@ -12,47 +12,71 @@ export default function BlogSlider() {
   const [dragStartX, setDragStartX] = useState(0);
   const [dragStartTranslate, setDragStartTranslate] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
+  const [hasMoved, setHasMoved] = useState(false);
 
   const gap = 24;
 
   const cards = [
     {
+      id: "top-forex-strategies-2026",
       img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&q=80&auto=format&fit=crop",
       title: "Top Forex Strategies 2026",
       desc: "Adaptive algorithms & macro shifts — new playbook for volatile pairs.",
       date: "2026-02-10",
+      slug: "TopForexTrading",
     },
     {
+      id: "forex-deep-analysis",
       img: "https://images.unsplash.com/photo-1559526324-593bc073d938?w=400&q=80&auto=format&fit=crop",
       title: "Forex Deep Analysis",
       desc: "Beyond indicators: order flow, sentiment & central bank narratives.",
       date: "2026-02-05",
+      slug: "MarketAnalysis",
     },
     {
+      id: "macro-drivers-2026",
       img: "https://images.unsplash.com/photo-1640161704729-cbe966a08476?w=400&q=80&auto=format&fit=crop",
       title: "2026 Macro Drivers",
       desc: "Rate divergence, commodity flows & election impacts on majors.",
       date: "2026-01-28",
+      slug: "DriveMarket",
     },
     {
+      id: "is-forex-still-profitable",
       img: "https://images.unsplash.com/photo-1707902665498-a202981fb5ac?q=80&w=1170&auto=format&fit=crop",
       title: "Is Forex Still Profitable?",
       desc: "Retail edge: automation & discipline matter more than ever.",
       date: "2026-01-20",
+      slug: "Profitable",
     },
     {
+      id: "choose-right-broker",
       img: "https://images.unsplash.com/photo-1724482606633-fa74fe4f5de1?q=80&w=1170&auto=format&fit=crop",
       title: "Choose the Right Broker",
       desc: "Spreads, execution, regulation — what really counts in 2026.",
       date: "2026-01-15",
+      slug: "BestBroker",
     },
     {
+      id: "risk-first-always",
       img: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&q=80&auto=format&fit=crop",
       title: "Risk First, Always",
       desc: "Position sizing, correlation & drawdown control — the real edge.",
       date: "2026-01-08",
+      slug: "RiskManagement",
     },
   ];
+
+  const handleCardClick = (slug, e) => {
+    // Don't navigate if this was a drag/swipe
+    if (hasMoved) {
+      e?.stopPropagation();
+      return;
+    }
+
+    // Navigate to blog page
+    window.location.href = `/BLOG/${slug}`;
+  };
 
   const updateMetrics = () => {
     const track = trackRef.current;
@@ -96,7 +120,13 @@ export default function BlogSlider() {
 
   // Drag handlers
   const handleDragStart = (e) => {
+    // Only start drag on slider wrapper, not on buttons or links
+    if (e.target.closest("button") || e.target.closest(".arrow")) {
+      return;
+    }
+
     setIsDragging(true);
+    setHasMoved(false);
     const startX = e.type === "mousedown" ? e.clientX : e.touches[0].clientX;
     setDragStartX(startX);
     setDragStartTranslate(getTranslateX());
@@ -105,9 +135,15 @@ export default function BlogSlider() {
 
   const handleDragMove = (e) => {
     if (!isDragging) return;
-    e.preventDefault();
+
     const currentX = e.type === "mousemove" ? e.clientX : e.touches[0].clientX;
     const diff = currentX - dragStartX;
+
+    // Mark as moved if drag distance is significant
+    if (Math.abs(diff) > 5) {
+      setHasMoved(true);
+    }
+
     const newOffset = dragStartTranslate - diff;
     setDragOffset(diff);
 
@@ -143,6 +179,11 @@ export default function BlogSlider() {
       trackRef.current.style.transform = `translateX(-${getTranslateX()}px)`;
     }
     setDragOffset(0);
+
+    // Reset moved flag after a short delay
+    setTimeout(() => {
+      setHasMoved(false);
+    }, 100);
   };
 
   useEffect(() => {
@@ -162,7 +203,7 @@ export default function BlogSlider() {
   useEffect(() => {
     const interval = setInterval(next, 4000);
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, [currentIndex, next]);
 
   // Add/remove drag event listeners
   useEffect(() => {
@@ -184,7 +225,7 @@ export default function BlogSlider() {
       window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("touchend", handleTouchEnd);
     };
-  }, [isDragging, dragStartX, dragStartTranslate, dragOffset]);
+  }, [isDragging, dragStartX, dragStartTranslate, dragOffset, hasMoved]);
 
   return (
     <section className="blog-section-wrapper">
@@ -203,7 +244,10 @@ export default function BlogSlider() {
         <div className="blog-slider">
           <button
             className="slider-arrow arrow-left"
-            onClick={prev}
+            onClick={(e) => {
+              e.stopPropagation();
+              prev();
+            }}
             aria-label="Previous slide"
           >
             <svg
@@ -225,7 +269,10 @@ export default function BlogSlider() {
 
           <button
             className="slider-arrow arrow-right"
-            onClick={next}
+            onClick={(e) => {
+              e.stopPropagation();
+              next();
+            }}
             aria-label="Next slide"
           >
             <svg
@@ -257,10 +304,27 @@ export default function BlogSlider() {
               style={{
                 transform: `translateX(-${getTranslateX()}px)`,
                 cursor: isDragging ? "grabbing" : "grab",
+                transition: isDragging ? "none" : "transform 0.3s ease-out",
               }}
             >
               {cards.map((card, i) => (
-                <div className="blog-card" key={i}>
+                <a
+                  className="blog-card"
+                  key={card.id}
+                  href={`/BLOG/${card.slug}`}
+                  onClick={(e) => {
+                    if (hasMoved) {
+                      e.preventDefault();
+                      e.stopPropagation();
+                    }
+                  }}
+                  style={{
+                    cursor: "pointer",
+                    textDecoration: "none",
+                    color: "inherit",
+                    display: "block",
+                  }}
+                >
                   <img src={card.img} alt={card.title} loading="lazy" />
                   <h3>{card.title}</h3>
                   <p>{card.desc}</p>
@@ -268,7 +332,7 @@ export default function BlogSlider() {
                     <span>{card.date}</span>
                     <div className="arrow">↗</div>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           </div>
@@ -279,7 +343,10 @@ export default function BlogSlider() {
               <button
                 key={idx}
                 className={`pagination-dot ${Math.round(getTranslateX() / cardWidth) === idx ? "active" : ""}`}
-                onClick={() => setCurrentIndex(idx)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrentIndex(idx);
+                }}
                 aria-label={`Go to slide ${idx + 1}`}
               />
             ))}

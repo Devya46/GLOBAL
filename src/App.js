@@ -28,6 +28,14 @@ import BecomePartner from "./Partner/BecomePartner";
 import BLOGS from "./BLOG/BLOGS";
 import About from "./ABOUT/About";
 import ContactUsPage from "./ContactUsPage";
+import TopForexTrading from "./BLOG/TopForexTrading";
+import MarketAnalysis from "./BLOG/MarketAnalysis";
+import DriveMarket from "./BLOG/DriveMarket";
+import Profitable from "./BLOG/Profitable";
+import BestBroker from "./BLOG/BestBroker";
+import RiskManagement from "./BLOG/RiskManagement";
+import PrivacyPolicy from "./PrivacyPolicy";
+import { TermsAndConditions } from "./TermsAndConditions";
 
 // ✅ HOME COMPONENT - All sections combined
 function Home() {
@@ -68,6 +76,14 @@ export default function App() {
         <Route path="/BLOGS" element={<BLOGS />} />
         <Route path="/About" element={<About />} />
         <Route path="/ContactUsPage" element={<ContactUsPage />} />
+        <Route path="/BLOG/TopForexTrading" element={<TopForexTrading />} />
+        <Route path="/BLOG/MarketAnalysis" element={<MarketAnalysis />} />
+        <Route path="/BLOG/DriveMarket" element={<DriveMarket />} />
+        <Route path="/BLOG/Profitable" element={<Profitable />} />
+        <Route path="/BLOG/BestBroker" element={<BestBroker />} />
+        <Route path="/BLOG/RiskManagement" element={<RiskManagement />} />
+        <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
       </Routes>
     </Router>
   );

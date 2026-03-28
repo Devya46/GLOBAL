@@ -12,8 +12,21 @@ export default function MainHome() {
       <br />
       Learn-Trade-Grow
     </>,
-    "Essential Tools for Every Trader's Success",
-    "Fast, Secure & Transparent Trading",
+    <>
+      Essential Tools
+      <br />
+      for
+      <br />
+      Every Trader's Success
+    </>,
+    <>
+      Fast,
+      <br /> Secure &
+      <br />
+      Transparent Trading
+    </>,
+    // "Essential Tools for Every Trader's Success",
+    // "Fast, Secure & Transparent Trading",
   ];
 
   const desc =
