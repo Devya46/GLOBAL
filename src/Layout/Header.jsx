@@ -291,12 +291,17 @@ export default function Header() {
         </div>
         <div className="mobile-buttons">
           <button
+            type="button"
             className="mobile-btn-login"
-            onClick={() => handleNav("/login")}
+            onClick={() => {
+              setMenuOpen(false);
+              window.location.href = "https://cabinet.rimglobal.trade/";
+            }}
           >
             <LogIn size={18} />
             <span>LOG IN</span>
           </button>
+
           <button
             className="mobile-btn-contact"
             onClick={() => handleNav("/ContactUsPage")}

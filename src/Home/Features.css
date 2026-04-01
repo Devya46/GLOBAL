@@ -1,4 +1,4 @@
-/* ===== HARD RESET ONLY INSIDE COMPONENT ===== */
+/* Features.css */
 .fc-features-section,
 .fc-features-section * {
   box-sizing: border-box;
@@ -53,9 +53,9 @@
 .fc-features-section .fc-features-wrapper {
   position: relative;
   width: 1100px;
-  height: 520px;
   max-width: 90%;
   z-index: 2;
+  min-height: 520px;
 }
 
 /* ===== CENTER ===== */
@@ -108,6 +108,14 @@
   border-radius: 28px;
 }
 
+/* ===== CARDS CONTAINER - used for responsive layout ===== */
+.fc-cards-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+}
+
 /* ===== CARDS ===== */
 .fc-feature-card {
   position: absolute;
@@ -117,14 +125,13 @@
   border-radius: 14px;
   width: 303px;
   text-align: center;
-  /* STANDARDIZED TRANSITION - removed conflicting !important and simplified */
   transition: all 0.3s ease;
-  /* STANDARDIZED ANIMATION - single source of truth, smaller movement */
   animation: fc-float 4s ease-in-out infinite;
   will-change: transform;
+  backdrop-filter: blur(4px);
 }
 
-/* FIXED CLASS MATCH */
+/* CARD POSITIONS - DESKTOP */
 .card1 {
   top: 0;
   left: 20px;
@@ -136,10 +143,10 @@
   animation-delay: 0.5s;
 }
 .card3 {
-  left: 36%;
-  transform: translateX(-50%);
+  left: 52%;
   bottom: -5%;
-  animation-delay: 1s;
+  transform: translateX(-50%);
+  animation: fc-float-card3 4s ease-in-out infinite;
 }
 
 /* ===== ICON ===== */
@@ -162,11 +169,10 @@
   color: #bdd0e6;
 }
 
-/* ===== HOVER EFFECT - DOES NOT INTERFERE WITH FLOAT ANIMATION ===== */
+/* ===== HOVER EFFECT ===== */
 .fc-feature-card:hover {
   background: #0f1e2f;
   border-color: rgba(111, 227, 160, 0.6);
-  /* Scale is applied ON TOP of the float transform without conflict */
   transform: scale(1.02);
 }
 
@@ -178,7 +184,12 @@
   transform: scale(1.1);
 }
 
-/* ===== FLOAT ANIMATION - SINGLE DEFINITION, SMOOTHER MOVEMENT ===== */
+/* Card3 hover override to preserve X translation */
+.card3:hover {
+  transform: translateX(-50%) scale(1.02);
+}
+
+/* ===== FLOAT ANIMATIONS ===== */
 @keyframes fc-float {
   0% {
     transform: translateY(0px);
@@ -189,19 +200,6 @@
   100% {
     transform: translateY(0px);
   }
-}
-
-/* Override for card3 to preserve its horizontal centering during animation */
-.card3 {
-  left: 52%;
-  bottom: -5%;
-  /* Base transform for positioning */
-  transform: translateX(-50%);
-}
-
-/* Card3 needs to maintain its X translation during float */
-.card3 {
-  animation: fc-float-card3 4s ease-in-out infinite;
 }
 
 @keyframes fc-float-card3 {
@@ -216,56 +214,153 @@
   }
 }
 
-/* Hover effect for card3 - preserves the translateX(-50%) */
-.card3:hover {
-  transform: translateX(-50%) scale(1.02);
-}
-
-/* ===== RESPONSIVE ===== */
+/* ===== RESPONSIVE DESIGN - Mobile with SCROLLABLE cards ===== */
 @media (max-width: 900px) {
   .fc-features-section {
-    padding: 80px 16px;
+    padding: 80px 0;
   }
 
-  .fc-features-wrapper {
+  .fc-features-section .fc-features-wrapper {
     width: 100%;
-    height: auto;
+    max-width: 100%;
+    min-height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 28px;
-    position: relative;
   }
 
-  .fc-features-center {
+  /* Center text becomes relative positioned */
+  .fc-features-section .fc-features-center {
     position: relative;
     top: 0;
     left: 0;
     transform: none;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    width: 90%;
   }
 
-  .fc-feature-card {
+  .fc-features-center h2 {
+    font-size: 38px;
+  }
+
+  .fc-features-center p {
+    font-size: 14px;
+  }
+
+  /* Cards container becomes scrollable horizontally */
+  .fc-cards-container {
     position: relative;
     width: 100%;
-    max-width: 400px;
+    min-height: auto;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: visible;
+    gap: 24px;
+    padding: 20px 24px 40px 24px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #3de39f rgba(61, 227, 159, 0.2);
+  }
+
+  /* Custom scrollbar styling */
+  .fc-cards-container::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .fc-cards-container::-webkit-scrollbar-track {
+    background: rgba(61, 227, 159, 0.1);
+    border-radius: 10px;
+  }
+
+  .fc-cards-container::-webkit-scrollbar-thumb {
+    background: #3de39f;
+    border-radius: 10px;
+  }
+
+  /* Cards become inline-flex items with fixed width, scroll-snap */
+  .fc-feature-card {
+    position: relative;
     top: auto !important;
     left: auto !important;
     right: auto !important;
     bottom: auto !important;
     transform: none !important;
     animation: none !important;
+    flex: 0 0 auto;
+    width: 280px;
+    margin: 0;
+    scroll-snap-align: center;
+    transition:
+      transform 0.3s ease,
+      background 0.3s ease;
   }
 
-  .card3 {
-    transform: none !important;
+  /* Hover effects for mobile - subtle */
+  .fc-feature-card:hover {
+    transform: scale(1.02) !important;
   }
 
   .card3:hover {
     transform: scale(1.02) !important;
   }
 
-  .fc-feature-card:hover {
-    transform: scale(1.02) !important;
+  /* Adjust card internal spacing for mobile */
+  .fc-feature-card {
+    padding: 20px 24px 26px;
+  }
+
+  .fc-feature-card h4 {
+    font-size: 20px;
+    margin: 14px 0 10px;
+  }
+
+  .fc-feature-card p {
+    font-size: 14px;
+  }
+
+  .fc-icon img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* Tablet adjustments (between 901px and 1100px) - maintain desktop layout */
+@media (min-width: 901px) and (max-width: 1100px) {
+  .fc-features-section .fc-features-wrapper {
+    width: 95%;
+  }
+
+  .fc-feature-card {
+    width: 270px;
+    padding: 20px 24px 26px;
+  }
+
+  .card1 {
+    left: 0;
+  }
+
+  .card2 {
+    right: 0;
+  }
+
+  .card3 {
+    left: 52%;
+  }
+
+  .fc-features-center h2 {
+    font-size: 44px;
+  }
+}
+
+/* Small desktop adjustments */
+@media (min-width: 1101px) and (max-width: 1300px) {
+  .fc-features-section .fc-features-wrapper {
+    width: 1000px;
+  }
+
+  .fc-feature-card {
+    width: 290px;
   }
 }

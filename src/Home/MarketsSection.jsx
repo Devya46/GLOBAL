@@ -19,7 +19,7 @@ export default function MarketsSection() {
       title: "Forex CFDs",
       products: "61 Products",
       img: "https://cdn-icons-png.flaticon.com/128/8632/8632149.png",
-      desc: "Access the world’s largest financial market and trade major, minor and exotic currency pairs.",
+      desc: "Access the world's largest financial market and trade major, minor and exotic currency pairs.",
     },
     {
       title: "Commodities CFDs",

@@ -7,7 +7,11 @@ export default function MainHome() {
     "A refined trading experience with secure access, responsive execution, and tools built for confident market decisions.";
 
   const btn = "Start Trading";
-  const trustPoints = ["Fast onboarding", "Secure withdrawals", "Market-focused tools"];
+  const trustPoints = [
+    "Fast onboarding",
+    "Secure withdrawals",
+    "Market-focused tools",
+  ];
 
   return (
     <div>
@@ -25,9 +29,9 @@ export default function MainHome() {
 
           <div className="flip-box">
             <h1 className="cube-text">
-              The world's <span className="hero-accent">#1</span> broker
+              The world's <span className="hero-accent">#1</span> Broker
               <br />
-              for modern trading
+              for Modern Trading
             </h1>
 
             <p className="desc">{desc}</p>

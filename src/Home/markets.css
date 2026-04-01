@@ -3,10 +3,12 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   background: #030b14;
   font-family: "Outfit", sans-serif;
 }
+
 /* main section – same refined dark */
 .markets-premium {
   padding: 5rem 2rem;
@@ -28,6 +30,7 @@ body {
   transform: translateY(30px);
   animation: sectionFadeUp 0.8s ease forwards;
 }
+
 .markets-premium::before {
   content: "";
   position: absolute;
@@ -107,6 +110,7 @@ body {
     transform: rotateY(180deg);
   }
 }
+
 /* for touch devices where hover is not primary, we use :active as fallback */
 @media (hover: none) {
   .flip-card:active .flip-inner {
@@ -215,6 +219,7 @@ body {
   opacity: 0;
   animation: textFade 0.7s ease forwards 0.4s;
 }
+
 @keyframes textFade {
   to {
     opacity: 1;
@@ -445,6 +450,7 @@ body {
 .flip-card {
   -webkit-tap-highlight-color: transparent;
 }
+
 .flip-card:focus-visible {
   outline: 2px solid #60ffd0;
   outline-offset: 2px;
