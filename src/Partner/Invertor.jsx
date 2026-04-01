@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "../Header";
+import Header from "../Layout/Header";
 import InvestorsSection from "./InvestorsSection"; // ✅ FIXED
-import Footer from "../Footer";
+import Footer from "../Layout/Footer";
 import "./PartnerTypes.css";
 // import Whyus from "./Whyus";
 import KeepGrowing from "./KeepGrowing";

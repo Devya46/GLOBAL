@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "../Header";
+import Header from "../Layout/Header";
 import DEMOHero from "./DEMOHeroSection";
 import RgsPractice from "./RgsPractice";
 import DemoConSection from "./DemoConSection";
-import Contact from "../Contact";
-import Footer from "../Footer";
+import Contact from "../Home/Contact";
+import Footer from "../Layout/Footer";
 
 export default function AccountType() {
   return (

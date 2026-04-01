@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "../Header";
-import Footer from "../Footer";
-import BlogSlider from "../BlogSlider";
+import Header from "../Layout/Header";
+import Footer from "../Layout/Footer";
+import BlogSlider from "../Home/BlogSlider";
 
 // ✅ IMPORT YOUR COMPONENT
 import BrokerSelectionSection from "./BrokerSelectionSection"; // adjust path if needed

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./LeadingBroker.css";
-import marketImg from "./assets/RIMWebImage.png";
+import marketImg from "../assets/RIMWebImage.png";
 
 export default function LeadingBroker() {
   const ref = useRef(null);

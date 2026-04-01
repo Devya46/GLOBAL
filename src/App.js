@@ -1,23 +1,27 @@
-import React, { useState, useEffect } from "react";
-import "./style.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from "react";
+import "./Layout/style.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
-import Header from "./Header";
-import Hero from "./hero"; // Fixed import (capital H)
-import MarketsSection from "./MarketsSection";
-import TradeView from "./TradeView";
-import LeadingBroker from "./LeadingBroker";
-import Features from "./Features";
-import Pricing from "./Pricing";
-import AccountSteps from "./AccountSteps";
-import AutoTrading from "./AutoTrading";
-import BlogSlider from "./BlogSlider";
-import TradingTerminals from "./TradingTerminals";
-import StatsSection from "./StatsSection";
-import Testimonials from "./Testimonials";
-import VideoGallery from "./VideoGallery";
-import Contact from "./Contact";
-import Footer from "./Footer";
+import Hero from "./Home/hero";
+import MarketsSection from "./Home/MarketsSection";
+import TradeView from "./Home/TradeView";
+import LeadingBroker from "./Home/LeadingBroker";
+import Features from "./Home/Features";
+import Pricing from "./Home/Pricing";
+import AccountSteps from "./Home/AccountSteps";
+import AutoTrading from "./Home/AutoTrading";
+import BlogSlider from "./Home/BlogSlider";
+import TradingTerminals from "./Home/TradingTerminals";
+import StatsSection from "./Home/StatsSection";
+import Testimonials from "./Home/Testimonials";
+import VideoGallery from "./Home/VideoGallery";
+import Contact from "./Home/Contact";
+import Footer from "./Layout/Footer";
 import AccountType from "./Account/Account_type";
 import DEMOAccount from "./Account/DEMO-Account";
 import WithdrawalDeposit from "./Account/Withdrawal&Deposist";
@@ -27,21 +31,20 @@ import Investor from "./Partner/Invertor";
 import BecomePartner from "./Partner/BecomePartner";
 import BLOGS from "./BLOG/BLOGS";
 import About from "./ABOUT/About";
-import ContactUsPage from "./ContactUsPage";
+import ContactUsPage from "./Home/ContactUsPage";
 import TopForexTrading from "./BLOG/TopForexTrading";
 import MarketAnalysis from "./BLOG/MarketAnalysis";
 import DriveMarket from "./BLOG/DriveMarket";
 import Profitable from "./BLOG/Profitable";
 import BestBroker from "./BLOG/BestBroker";
 import RiskManagement from "./BLOG/RiskManagement";
-import PrivacyPolicy from "./PrivacyPolicy";
-import { TermsAndConditions } from "./TermsAndConditions";
+import PrivacyPolicy from "./Legal/PrivacyPolicy";
+import { TermsAndConditions } from "./Legal/TermsAndConditions";
 
-// ✅ HOME COMPONENT - All sections combined
 function Home() {
   return (
     <>
-      <Hero /> {/* Use the Hero component instead of duplicating code */}
+      <Hero />
       <TradeView />
       <MarketsSection />
       <LeadingBroker />
@@ -60,7 +63,6 @@ function Home() {
   );
 }
 
-// ✅ MAIN APP
 export default function App() {
   return (
     <Router>
@@ -76,6 +78,7 @@ export default function App() {
         <Route path="/BLOGS" element={<BLOGS />} />
         <Route path="/About" element={<About />} />
         <Route path="/ContactUsPage" element={<ContactUsPage />} />
+        <Route path="/login" element={<Home />} />
         <Route path="/BLOG/TopForexTrading" element={<TopForexTrading />} />
         <Route path="/BLOG/MarketAnalysis" element={<MarketAnalysis />} />
         <Route path="/BLOG/DriveMarket" element={<DriveMarket />} />
@@ -84,6 +87,9 @@ export default function App() {
         <Route path="/BLOG/RiskManagement" element={<RiskManagement />} />
         <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+        <Route path="/GLOBAL" element={<Navigate to="/" replace />} />
+        <Route path="/home" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
   );

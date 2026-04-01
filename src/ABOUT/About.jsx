@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "../Header";
+import Header from "../Layout/Header";
 import AboutHero from "./AboutHero";
-import Footer from "../Footer";
-import LeadingBroker from "../LeadingBroker";
+import Footer from "../Layout/Footer";
+import LeadingBroker from "../Home/LeadingBroker";
 import MissionVission from "./MissionVission";
 import RimGlobalSection from "./RimGlobalSection";
 

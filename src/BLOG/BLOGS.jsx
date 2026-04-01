@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "../Header";
+import Header from "../Layout/Header";
 import BlogHero from "./BlogHero";
-import Footer from "../Footer";
+import Footer from "../Layout/Footer";
 import ForexArticlesSection from "./ForexArticlesSection";
 
 export default function AccountType() {

@@ -1,9 +1,9 @@
 import React from "react";
-import Header from "../Header";
-import AccountSteps from "../AccountSteps";
-import Contact from "../Contact";
+import Header from "../Layout/Header";
+import AccountSteps from "../Home/AccountSteps";
+import Contact from "../Home/Contact";
 import Whyus from "./Whyus";
-import Footer from "../Footer";
+import Footer from "../Layout/Footer";
 import PartnersScreen from "./PartnersScreen";
 
 export default function BecomePartner() {

@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "../Layout/Header";
+import Footer from "../Layout/Footer";
 import {
   ShieldCheck,
   TrendingUp,

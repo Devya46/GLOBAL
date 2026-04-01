@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "../Header";
+import Header from "../Layout/Header";
 import PartnertypeHeader from "./PartnertypeHeader";
 import AffiliatePartner from "./AffiliatePartner";
 import PartnerFeatures from "./PartnerFeatures";
-import Contact from "../Contact";
-import Footer from "../Footer";
+import Contact from "../Home/Contact";
+import Footer from "../Layout/Footer";
 import "./PartnerTypes.css";
 
 export default function PartnerTypes() {

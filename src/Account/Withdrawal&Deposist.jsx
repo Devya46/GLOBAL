@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "../Header";
+import Header from "../Layout/Header";
 import FWHero from "./FundsHub";
 import RgsSupport from "./RgsSupport";
 // import "./Account_type.css";
-import Marketing from "../MarketsSection";
+import Marketing from "../Home/MarketsSection";
 import WithdrawalGuidelines from "./WithdrawalGuidelines";
 // import RiskSection from "./RiskSection";
-import Footer from "../Footer";
+import Footer from "../Layout/Footer";
 
 export default function AccountType() {
   return (

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "./AccountSteps.css";
-import accountImg from "./assets/AccountSteps2.png";
+import accountImg from "../assets/AccountSteps2.png";
 import {
   FaFileLines,
   FaUserCheck,
