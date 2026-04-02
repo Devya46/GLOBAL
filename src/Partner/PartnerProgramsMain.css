@@ -1,5 +1,4 @@
-/* PartnersScreen.css - Dark Navy Blue Theme */
-
+/* PartnerProgramsMain.css - Dark Navy Blue Theme */
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +17,7 @@
 }
 
 .partners-inner {
-  padding: 1.8rem 2rem 2.2rem 2rem;
+  padding: 8.8rem 2rem 2.2rem 2rem;
 }
 
 /* Header */
@@ -330,10 +329,15 @@
   gap: 0.5rem;
 }
 
-/* Responsive */
-@media (max-width: 640px) {
+/* ========== RESPONSIVE STYLES (Mobile Only - Desktop Unchanged) ========== */
+/* Only apply these styles when screen width is 768px or less */
+@media (max-width: 768px) {
   .partners-inner {
-    padding: 1.2rem;
+    padding: 1rem;
+  }
+
+  .partners-grid {
+    gap: 1rem;
   }
 
   .partner-card {
@@ -345,9 +349,66 @@
     font-size: 2.2rem;
   }
 
+  .partner-name {
+    font-size: 0.9rem;
+  }
+
+  .partner-desc {
+    font-size: 0.65rem;
+  }
+
+  .trust-section {
+    gap: 1rem;
+  }
+
+  .stat-item {
+    padding: 0.3rem 0.8rem;
+  }
+
+  .stat-number {
+    font-size: 1rem;
+  }
+
+  .partner-program-new {
+    margin: 1rem 0;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .partners-inner {
+    padding: 0.8rem;
+    padding-top: 6rem;
+  }
+
+  .partner-card {
+    width: 130px;
+    padding: 0.8rem 0.6rem;
+  }
+
+  .partner-logo {
+    font-size: 2rem;
+  }
+
+  .partner-name {
+    font-size: 0.85rem;
+  }
+
   .program-compact-content {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .program-left {
+    text-align: center;
+  }
+
+  .tier-selector {
+    justify-content: center;
+  }
+
+  .benefits-list {
+    justify-content: center;
   }
 
   .program-right {
@@ -361,23 +422,71 @@
 }
 
 @media (max-width: 480px) {
+  .section-header h2 {
+    font-size: 1.4rem;
+  }
+
   .partners-grid {
-    gap: 1rem;
+    gap: 0.8rem;
   }
 
   .partner-card {
-    width: 125px;
+    width: calc(50% - 0.8rem);
+    min-width: 120px;
+    padding: 0.7rem 0.5rem;
   }
 
-  .benefits-list {
-    justify-content: center;
+  .partner-logo {
+    font-size: 1.8rem;
   }
 
-  .tier-selector {
-    justify-content: center;
+  .partner-name {
+    font-size: 0.8rem;
   }
 
-  .program-left {
-    text-align: center;
+  .trust-section {
+    gap: 0.6rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .stat-item {
+    padding: 0.2rem 0.6rem;
+  }
+
+  .stat-number {
+    font-size: 0.9rem;
+  }
+
+  .stat-label {
+    font-size: 0.6rem;
+  }
+
+  .partner-program-new {
+    padding: 0.8rem;
+  }
+
+  .program-left h3 {
+    font-size: 1rem;
+  }
+
+  .program-left > p {
+    font-size: 0.65rem;
+  }
+
+  .tier-btn {
+    padding: 0.2rem 0.6rem;
+    font-size: 0.65rem;
+  }
+
+  .benefit-item {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.5rem;
+  }
+
+  .footer-note {
+    font-size: 0.6rem;
+    flex-wrap: wrap;
+    gap: 0.3rem;
   }
 }

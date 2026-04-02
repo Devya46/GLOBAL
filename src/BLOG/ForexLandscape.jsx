@@ -6,7 +6,6 @@ import {
   Shield,
   Fuel,
   Bitcoin,
-  ChevronRight,
   Lightbulb,
   Sparkles,
   Globe,
@@ -19,6 +18,7 @@ import {
   RefreshCw,
   Smile,
   Library,
+  Eye,
 } from "lucide-react";
 import "./ForexLandscape.css";
 
@@ -27,14 +27,14 @@ const ForexLandscape = () => {
 
   // Define insights array
   const insights = [
-    "📊 Monitor central bank divergence – the key to 2026 trends.",
-    "🤖 Use AI tools for pattern recognition, but trust your risk management.",
-    "🌍 Safe havens (USD/JPY/CHF) shine during geopolitical uncertainty.",
-    "⚡ Flash volatility is real – always set protective stops.",
-    "📈 Emerging markets: high yield but high care – watch fundamentals.",
-    "💡 Commodity correlations: oil up = CAD up, gold up = AUD momentum.",
-    "🏦 CBDCs are coming: prepare for lower transaction costs & new flows.",
-    "🎯 Diversify strategies: combine carry trades with technical confirmations.",
+    "Monitor central bank divergence – the key to 2026 trends.",
+    "Use AI tools for pattern recognition, but trust your risk management.",
+    "Safe havens (USD/JPY/CHF) shine during geopolitical uncertainty.",
+    "Flash volatility is real – always set protective stops.",
+    "Emerging markets: high yield but high care – watch fundamentals.",
+    "Commodity correlations: oil up = CAD up, gold up = AUD momentum.",
+    "CBDCs are coming: prepare for lower transaction costs & new flows.",
+    "Diversify strategies: combine carry trades with technical confirmations.",
   ];
 
   const [currentMessageIndex, setCurrentMessageIndex] = useState(
@@ -50,319 +50,313 @@ const ForexLandscape = () => {
   };
 
   return (
-    <section className="forex-landscape">
-      <div className="container">
-        {/* Header Section */}
-        <div className="section-header">
+    <section className="forex-blog">
+      <div className="blog-container">
+        {/* Header Section - Centered */}
+        <div className="blog-header">
           <div className="header-badge">
             <Sparkles size={16} />
             <span>2026 Outlook</span>
           </div>
-          <h1 className="section-title">
-            The Evolving
-            <span className="title-gradient"> Forex Landscape</span>
+          <h1 className="blog-title">
+            The Evolving <br />
+            <span className="title-gradient">Forex Landscape</span>
           </h1>
-          <p className="subhead">
-            <Globe size={18} />
-            Monetary shifts · AI evolution · Geopolitical currents · Strategic
-            edge
-          </p>
+          <div className="header-divider"></div>
         </div>
 
-        {/* Card 1: Central Bank Policy Divergence */}
-        <div className="topic-card">
-          <div className="card-header">
-            <div className="icon-wrapper">
-              <Landmark size={28} strokeWidth={1.5} />
+        {/* Blog Content - No Cards, Clean Typography */}
+        <div className="blog-content">
+          {/* Section 1: Central Bank Policy Divergence */}
+          <article className="blog-article">
+            <div className="article-icon">
+              <Landmark size={32} strokeWidth={1.5} />
             </div>
             <h2>Central Bank Policy Divergence</h2>
-          </div>
-          <p className="card-description">
-            The most significant driver of forex movements in 2026 is the
-            divergence in central bank monetary policies across major economies.
-            The Federal Reserve has entered a prolonged easing cycle — gradual
-            rate cuts creating{" "}
-            <strong className="highlight">dollar weakness</strong> against
-            currencies with tighter stances. Meanwhile, the ECB balances growth
-            & inflation, the
-            <strong> Bank of Japan</strong> abandoned ultra-loose policy,
-            strengthening the yen.
-          </p>
-          <ul className="insight-list">
-            <li>
-              <ChartLine size={18} />
-              <span>
-                <strong>Carry trades shine:</strong> widening rate differentials
-                offer fresh yield opportunities.
-              </span>
-            </li>
-            <li>
-              <Library size={18} />
-              <span>
+            <p className="article-lead">
+              The most significant driver of forex movements in 2026 is the
+              divergence in central bank monetary policies across major
+              economies.
+            </p>
+            <p>
+              The Federal Reserve has entered a prolonged easing cycle — gradual
+              rate cuts creating{" "}
+              <strong className="highlight-blue">dollar weakness</strong>{" "}
+              against currencies with tighter stances. Meanwhile, the ECB
+              balances growth and inflation, while the{" "}
+              <strong>Bank of Japan</strong> has abandoned its ultra-loose
+              policy, strengthening the yen.
+            </p>
+            <div className="insight-block">
+              <ChartLine size={20} />
+              <p>
+                <strong className="highlight-green">Carry trades shine:</strong>{" "}
+                widening rate differentials offer fresh yield opportunities.
+              </p>
+            </div>
+            <div className="insight-block">
+              <Library size={20} />
+              <p>
                 Focus on central bank minutes, inflation reports & forward
                 guidance — anticipate shifts early.
-              </span>
-            </li>
-          </ul>
-          <div className="stats-grid">
-            <div className="stat-item">
-              <span className="stat-label">Fed easing</span>
-              <span className="stat-value">~125bps projected</span>
+              </p>
             </div>
-            <div className="stat-item">
-              <span className="stat-label">BoJ pivot</span>
-              <span className="stat-value">first hike in 17y</span>
+            <div className="stats-row">
+              <div className="stat-badge">
+                <span className="stat-label">Fed easing</span>
+                <span className="stat-value">~125bps projected</span>
+              </div>
+              <div className="stat-badge">
+                <span className="stat-label">BoJ pivot</span>
+                <span className="stat-value">first hike in 17y</span>
+              </div>
+              <div className="stat-badge">
+                <span className="stat-label">DXY index</span>
+                <span className="stat-value">downside bias</span>
+              </div>
             </div>
-            <div className="stat-item">
-              <span className="stat-label">DXY index</span>
-              <span className="stat-value">downside bias</span>
-            </div>
-          </div>
-        </div>
+          </article>
 
-        {/* Card 2: AI & Algorithmic Trading */}
-        <div className="topic-card">
-          <div className="card-header">
-            <div className="icon-wrapper">
-              <Bot size={28} strokeWidth={1.5} />
+          <div className="blog-divider"></div>
+
+          {/* Section 2: AI & Algorithmic Trading */}
+          <article className="blog-article">
+            <div className="article-icon">
+              <Bot size={32} strokeWidth={1.5} />
             </div>
             <h2>AI & Algorithmic Trading</h2>
-          </div>
-          <p className="card-description">
-            Machine learning algorithms now execute a significant portion of
-            daily forex volume — creating more efficient markets but also new
-            risks. <strong>Flash volatility events</strong> have evolved from
-            rare to periodic reality as algorithms react simultaneously to data.
-          </p>
-          <ul className="insight-list">
-            <li>
-              <Zap size={18} />
-              <span>
-                <strong>Flash crash ready:</strong> always use stop-loss
-                strategies in this environment.
-              </span>
-            </li>
-            <li>
-              <Brain size={18} />
-              <span>
+            <p>
+              Machine learning algorithms now execute a significant portion of
+              daily forex volume — creating more efficient markets but also new
+              risks.
+              <strong> Flash volatility events</strong> have evolved from rare
+              to periodic reality as algorithms react simultaneously to data.
+            </p>
+            <div className="insight-block warning">
+              <Zap size={20} />
+              <p>
+                <strong className="highlight-green">Flash crash ready:</strong>{" "}
+                always use stop-loss strategies in this environment.
+              </p>
+            </div>
+            <div className="insight-block">
+              <Brain size={20} />
+              <p>
                 Competitive edge = speed of{" "}
-                <strong>information processing & execution</strong>.
-              </span>
-            </li>
-          </ul>
-          <div className="ai-tip-container">
-            <div className="tip-content">
-              <Lightbulb size={18} />
-              <span className="tip-text">
-                🤖 <strong>AI insight:</strong> sentiment analysis can detect
-                early shifts from news.
-              </span>
+                <strong className="highlight-blue">
+                  information processing & execution
+                </strong>
+                .
+              </p>
             </div>
-            <button
-              className="tip-button"
-              onClick={() => setAiTipRevealed(!aiTipRevealed)}
-            >
-              {aiTipRevealed ? "✨ Tip shown" : "Pro tip"}
-            </button>
-          </div>
-          {aiTipRevealed && (
-            <div className="expanded-tip">
-              <Zap size={16} />
-              <span>
-                🔥 Advanced AI edge: Use correlation matrix tools & real-time
-                news sentiment to anticipate algo-driven moves before volume
-                spikes.
-              </span>
-            </div>
-          )}
-        </div>
 
-        {/* Card 3: Emerging Market Opportunities */}
-        <div className="topic-card">
-          <div className="card-header">
-            <div className="icon-wrapper">
-              <TrendingUp size={28} strokeWidth={1.5} />
+            <div className="ai-section">
+              <div className="ai-prompt">
+                <Lightbulb size={18} />
+                <span>
+                  AI insight: sentiment analysis can detect early shifts from
+                  news.
+                </span>
+                <button
+                  className="ai-reveal-btn"
+                  onClick={() => setAiTipRevealed(!aiTipRevealed)}
+                >
+                  {aiTipRevealed ? "Tip shown" : "Pro tip"}
+                </button>
+              </div>
+              {aiTipRevealed && (
+                <div className="ai-expanded">
+                  <Zap size={16} />
+                  <span>
+                    Advanced AI edge: Use correlation matrix tools & real-time
+                    news sentiment to anticipate algo-driven moves before volume
+                    spikes.
+                  </span>
+                </div>
+              )}
+            </div>
+          </article>
+
+          <div className="blog-divider"></div>
+
+          {/* Section 3: Emerging Market Opportunities */}
+          <article className="blog-article">
+            <div className="article-icon">
+              <TrendingUp size={32} strokeWidth={1.5} />
             </div>
             <h2>Emerging Market Opportunities</h2>
-          </div>
-          <p className="card-description">
-            As developed market rates decline, capital flows into EM currencies
-            with superior yields. The Brazilian real, Indian rupee, and Mexican
-            peso are benefiting, though volatility is higher.
-          </p>
-          <ul className="insight-list">
-            <li>
-              <BarChart3 size={18} />
-              <span>
+            <p>
+              As developed market rates decline, capital flows into EM
+              currencies with superior yields. The Brazilian real, Indian rupee,
+              and Mexican peso are benefiting, though volatility is higher.
+            </p>
+            <div className="insight-block">
+              <BarChart3 size={20} />
+              <p>
                 Monitor{" "}
-                <strong>
+                <strong className="highlight-blue">
                   credit ratings, debt-to-GDP, current accounts & foreign
                   reserves
                 </strong>
                 .
-              </span>
-            </li>
-            <li>
-              <AlertTriangle size={18} />
-              <span>
+              </p>
+            </div>
+            <div className="insight-block warning">
+              <AlertTriangle size={20} />
+              <p>
                 Risk-reward compelling — but political stability & capital
                 controls require strict risk management.
+              </p>
+            </div>
+            <div className="trend-tags">
+              <span className="trend-tag">
+                <ArrowUpRight size={12} /> BRL · INR · MXN
               </span>
-            </li>
-          </ul>
-          <div className="trend-badges">
-            <span className="trend-badge">
-              <ArrowUpRight size={12} /> BRL · INR · MXN
-            </span>
-            <span className="trend-badge">
-              <Fuel size={12} /> CAD, NOK
-            </span>
-          </div>
-          <div className="pro-tip-card">
-            <Lightbulb size={16} />
-            <span>
-              💡 Friendly pro tip: Track EM central bank reserve changes weekly
-              — rising reserves often signal stability and currency strength.
-            </span>
-          </div>
-        </div>
+              <span className="trend-tag">
+                <Fuel size={12} /> CAD, NOK
+              </span>
+            </div>
+            <div className="pro-tip">
+              <Lightbulb size={16} />
+              <p>
+                <strong className="highlight-green">Pro tip:</strong> Track EM
+                central bank reserve changes weekly — rising reserves often
+                signal stability and currency strength.
+              </p>
+            </div>
+          </article>
 
-        {/* Card 4: Geopolitical Tensions & Safe Havens */}
-        <div className="topic-card">
-          <div className="card-header">
-            <div className="icon-wrapper">
-              <Shield size={28} strokeWidth={1.5} />
+          <div className="blog-divider"></div>
+
+          {/* Section 4: Geopolitical Tensions & Safe Havens */}
+          <article className="blog-article">
+            <div className="article-icon">
+              <Shield size={32} strokeWidth={1.5} />
             </div>
             <h2>Geopolitics & Safe Havens</h2>
-          </div>
-          <p className="card-description">
-            Geopolitical uncertainty remains elevated in 2026: trade
-            negotiations, regional conflicts, shifting alliances create risk-off
-            episodes. <strong>USD, JPY, CHF</strong> experience inflows during
-            turbulence.
-          </p>
-          <ul className="insight-list">
-            <li>
-              <TrendingUp size={18} />
-              <span>
+            <p>
+              Geopolitical uncertainty remains elevated in 2026: trade
+              negotiations, regional conflicts, shifting alliances create
+              risk-off episodes.
+              <strong className="highlight-blue"> USD, JPY, CHF</strong>{" "}
+              experience inflows during turbulence.
+            </p>
+            <div className="insight-block">
+              <TrendingUp size={20} />
+              <p>
                 Build positions in safe havens ahead of crises, or fade strength
                 after resolution.
-              </span>
-            </li>
-            <li>
-              <Globe size={18} />
-              <span>
+              </p>
+            </div>
+            <div className="insight-block">
+              <Globe size={20} />
+              <p>
                 Maintain awareness of geopolitical calendars and central bank
                 rhetoric shifts.
-              </span>
-            </li>
-          </ul>
-        </div>
+              </p>
+            </div>
+          </article>
 
-        {/* Card 5: Commodity Prices & Currency Correlations */}
-        <div className="topic-card">
-          <div className="card-header">
-            <div className="icon-wrapper">
-              <Fuel size={28} strokeWidth={1.5} />
+          <div className="blog-divider"></div>
+
+          {/* Section 5: Commodity Prices & Currency Correlations */}
+          <article className="blog-article">
+            <div className="article-icon">
+              <Fuel size={32} strokeWidth={1.5} />
             </div>
             <h2>Commodity Prices & Currency Links</h2>
-          </div>
-          <p className="card-description">
-            Oil prices strengthen CAD, NOK, RUB. Gold influences AUD & ZAR.
-            Agricultural goods impact NZD & BRL.
-          </p>
-          <div className="stats-grid">
-            <div className="stat-item">
-              <span className="stat-label">WTI ~$82</span>
-              <span className="stat-value">supports loonie</span>
+            <p>
+              Oil prices strengthen CAD, NOK, RUB. Gold influences AUD & ZAR.
+              Agricultural goods impact NZD & BRL.
+            </p>
+            <div className="stats-row">
+              <div className="stat-badge">
+                <span className="stat-label">WTI ~$82</span>
+                <span className="stat-value">supports loonie</span>
+              </div>
+              <div className="stat-badge">
+                <span className="stat-label">Gold ~$2,150</span>
+                <span className="stat-value">boosts AUD</span>
+              </div>
             </div>
-            <div className="stat-item">
-              <span className="stat-label">Gold ~$2,150</span>
-              <span className="stat-value">boosts AUD</span>
-            </div>
-          </div>
-        </div>
+          </article>
 
-        {/* Card 6: Digital Assets & CBDCs */}
-        <div className="topic-card">
-          <div className="card-header">
-            <div className="icon-wrapper">
-              <Bitcoin size={28} strokeWidth={1.5} />
+          <div className="blog-divider"></div>
+
+          {/* Section 6: Digital Assets & CBDCs */}
+          <article className="blog-article">
+            <div className="article-icon">
+              <Bitcoin size={32} strokeWidth={1.5} />
             </div>
             <h2>Digital Assets & CBDCs</h2>
-          </div>
-          <p className="card-description">
-            Cryptocurrencies influence sentiment and capital flows, especially
-            among younger traders. Several nations are piloting Central Bank
-            Digital Currencies (CBDCs), which may reduce forex transaction costs
-            and reshape international payments.
-          </p>
-          <ul className="insight-list">
-            <li>
-              <Globe size={18} />
-              <span>
+            <p>
+              Cryptocurrencies influence sentiment and capital flows, especially
+              among younger traders. Several nations are piloting Central Bank
+              Digital Currencies (CBDCs), which may reduce forex transaction
+              costs and reshape international payments.
+            </p>
+            <div className="insight-block">
+              <Globe size={20} />
+              <p>
                 CBDC interoperability could reshape cross-border settlements by
                 2027-28.
-              </span>
-            </li>
-            <li>
-              <Bitcoin size={18} />
-              <span>
+              </p>
+            </div>
+            <div className="insight-block">
+              <Bitcoin size={20} />
+              <p>
                 Bitcoin & crypto correlation with risk assets still matters for
                 forex sentiment.
-              </span>
-            </li>
-          </ul>
-        </div>
-
-        {/* Positioning for Success Card */}
-        <div className="topic-card featured-card">
-          <div className="card-header">
-            <div className="icon-wrapper featured-icon">
-              <Sparkles size={28} strokeWidth={1.5} />
+              </p>
             </div>
-            <h2>🎯 Positioning for Success</h2>
-          </div>
-          <p className="card-description">
-            Navigating the 2026 forex landscape requires combining traditional
-            analysis with awareness of these emerging themes.{" "}
-            <strong>
-              Focus on central bank policy divergence for directional bias
-            </strong>
-            , use technical analysis for precise entry and exit timing, and
-            maintain flexibility to adapt as new information emerges.
-          </p>
-          <ul className="insight-list">
-            <li>
-              <ChartLine size={18} />
-              <span>
-                <strong>Strategy:</strong> Diversify across themes — carry
-                trades, AI signals, safe-haven hedges.
-              </span>
-            </li>
-            <li>
-              <Smile size={18} />
-              <span>
-                <strong>Friendly reminder:</strong> always practice disciplined
-                risk management (1-2% rule).
-              </span>
-            </li>
-          </ul>
+          </article>
+
+          <div className="blog-divider"></div>
+
+          {/* Section 7: Positioning for Success - Featured */}
+          <article className="blog-article featured-article">
+            <div className="article-icon featured-icon">
+              <Sparkles size={32} strokeWidth={1.5} />
+            </div>
+            <h2>Positioning for Success</h2>
+            <p>
+              Navigating the 2026 forex landscape requires combining traditional
+              analysis with awareness of these emerging themes.
+              <strong className="highlight-blue">
+                {" "}
+                Focus on central bank policy divergence for directional bias
+              </strong>
+              , use technical analysis for precise entry and exit timing, and
+              maintain flexibility to adapt as new information emerges.
+            </p>
+            <div className="insight-block">
+              <ChartLine size={20} />
+              <p>
+                <strong className="highlight-green">Strategy:</strong> Diversify
+                across themes — carry trades, AI signals, safe-haven hedges.
+              </p>
+            </div>
+            <div className="insight-block">
+              <Smile size={20} />
+              <p>
+                <strong className="highlight-blue">Friendly reminder:</strong>{" "}
+                always practice disciplined risk management (1-2% rule).
+              </p>
+            </div>
+          </article>
         </div>
 
         {/* Dynamic Insight Bar */}
-        <div className="dynamic-insight-bar">
-          <Lightbulb size={18} />
-          <span className="insight-message">
-            {insights[currentMessageIndex]}
-          </span>
-          <button className="refresh-button" onClick={refreshInsight}>
-            <RefreshCw size={16} />
-            <span>Insight</span>
+        <div className="insight-bar">
+          <Eye size={18} />
+          <span className="insight-text">{insights[currentMessageIndex]}</span>
+          <button className="insight-refresh" onClick={refreshInsight}>
+            <RefreshCw size={14} />
+            <span>Refresh</span>
           </button>
         </div>
 
-        <footer className="section-footer">
+        <footer className="blog-footer">
           <BarChart3 size={14} />
           <span>Data-driven perspectives 2026 | Macro + AI + Geopolitics</span>
         </footer>

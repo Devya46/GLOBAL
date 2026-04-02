@@ -103,22 +103,34 @@ const PartnertypeHeader = () => {
             </p>
 
             <div className={styles.stats}>
-              <div>
-                <i className="fas fa-chart-line"></i>
-                <h4 className="stat-value">0.0%</h4>
-                <p>Commission caps</p>
+              <div className={styles.statCard}>
+                <div className={styles.statIcon}>
+                  <i className="fas fa-chart-line"></i>
+                </div>
+                <div className={styles.statContent}>
+                  <h4 className={styles.statValue}>0.0%</h4>
+                  <p>Commission Caps</p>
+                </div>
               </div>
 
-              <div>
-                <i className="fas fa-bolt"></i>
-                <h4 className="stat-value">&lt; 10ms</h4>
-                <p>Execution</p>
+              <div className={styles.statCard}>
+                <div className={styles.statIcon}>
+                  <i className="fas fa-bolt"></i>
+                </div>
+                <div className={styles.statContent}>
+                  <h4 className={styles.statValue}>&lt; 10ms</h4>
+                  <p>Execution Speed</p>
+                </div>
               </div>
 
-              <div>
-                <i className="fas fa-globe"></i>
-                <h4 className="stat-value">50+</h4>
-                <p>Markets</p>
+              <div className={styles.statCard}>
+                <div className={styles.statIcon}>
+                  <i className="fas fa-globe"></i>
+                </div>
+                <div className={styles.statContent}>
+                  <h4 className={styles.statValue}>50+</h4>
+                  <p>Global Markets</p>
+                </div>
               </div>
             </div>
 

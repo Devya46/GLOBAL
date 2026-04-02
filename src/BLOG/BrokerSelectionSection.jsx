@@ -17,18 +17,10 @@ import {
   Zap,
   BarChart3,
   Star,
-  Award,
   FileText,
-  CreditCard,
-  Lock,
   Users,
-  ChevronRight,
-  Search,
   Info,
   ThumbsUp,
-  ExternalLink,
-  Briefcase,
-  Layers,
   Timer,
   Settings,
 } from "lucide-react";
@@ -146,24 +138,16 @@ const BrokerSelectionSection = () => {
   return (
     <section className="broker-selection-section">
       <div className="container">
-        {/* Header */}
+        {/* Header - Centered */}
         <div className="section-header">
-          <div className="header-badge">
-            <Shield size={16} />
-            <span>Critical Decision</span>
-          </div>
           <h1 className="section-title">
             Why Broker Selection
             <span className="title-gradient"> Matters</span>
           </h1>
-          <p className="subhead">
-            <Building2 size={18} />
-            Your gateway to markets · Execution · Security · Costs
-          </p>
         </div>
 
         {/* Hero Quote */}
-        <div className="hero-quote-card">
+        <div className="hero-quote">
           <AlertTriangle size={24} />
           <p>
             Your broker is your gateway to currency markets. Choosing the wrong
@@ -173,14 +157,12 @@ const BrokerSelectionSection = () => {
         </div>
 
         {/* Regulatory Compliance */}
-        <div className="topic-card">
-          <div className="card-header">
-            <div className="icon-wrapper">
-              <Shield size={28} strokeWidth={1.5} />
-            </div>
+        <div className="content-block">
+          <div className="block-header">
+            <Shield size={28} strokeWidth={1.5} />
             <h2>Regulatory Compliance & Safety</h2>
           </div>
-          <p className="card-description">
+          <p className="block-description">
             Regulatory oversight is your primary protection against fraud and
             broker misconduct. Reputable brokers maintain licenses from
             respected regulatory bodies that enforce strict capital
@@ -222,10 +204,10 @@ const BrokerSelectionSection = () => {
             </p>
           </div>
 
-          <div className="warning-box">
+          <div className="warning-message">
             <AlertTriangle size={18} />
             <span>
-              ⚠️ Verify broker licensing directly on regulator websites. Avoid
+              Verify broker licensing directly on regulator websites. Avoid
               unregulated or offshore-licensed brokers regardless of attractive
               marketing promises.
             </span>
@@ -233,15 +215,13 @@ const BrokerSelectionSection = () => {
         </div>
 
         {/* Trading Costs Calculator */}
-        <div className="topic-card">
-          <div className="card-header">
-            <div className="icon-wrapper">
-              <DollarSign size={28} strokeWidth={1.5} />
-            </div>
+        <div className="content-block">
+          <div className="block-header">
+            <DollarSign size={28} strokeWidth={1.5} />
             <h2>Trading Costs: Spreads and Commissions</h2>
           </div>
 
-          <div className="costs-grid">
+          <div className="costs-layout">
             <div className="costs-text">
               <p>
                 Trading costs directly impact profitability. Calculate total
@@ -272,7 +252,7 @@ const BrokerSelectionSection = () => {
             </div>
 
             <div className="cost-calculator">
-              <h4>💰 Cost Calculator</h4>
+              <h4>Cost Calculator</h4>
               <div className="calc-inputs">
                 <div className="calc-input">
                   <label>Trades per Month</label>
@@ -339,11 +319,9 @@ const BrokerSelectionSection = () => {
         </div>
 
         {/* Execution Quality */}
-        <div className="topic-card">
-          <div className="card-header">
-            <div className="icon-wrapper">
-              <Gauge size={28} strokeWidth={1.5} />
-            </div>
+        <div className="content-block">
+          <div className="block-header">
+            <Gauge size={28} strokeWidth={1.5} />
             <h2>Execution Quality and Speed</h2>
           </div>
           <p>
@@ -354,7 +332,7 @@ const BrokerSelectionSection = () => {
 
           <div className="execution-grid">
             {executionFactors.map((factor, idx) => (
-              <div key={idx} className="execution-card">
+              <div key={idx} className="execution-item">
                 <factor.icon size={24} />
                 <div>
                   <div className="execution-label">{factor.label}</div>
@@ -377,11 +355,9 @@ const BrokerSelectionSection = () => {
         </div>
 
         {/* Trading Platform */}
-        <div className="topic-card">
-          <div className="card-header">
-            <div className="icon-wrapper">
-              <Monitor size={28} strokeWidth={1.5} />
-            </div>
+        <div className="content-block">
+          <div className="block-header">
+            <Monitor size={28} strokeWidth={1.5} />
             <h2>Trading Platform and Technology</h2>
           </div>
           <p>
@@ -412,11 +388,9 @@ const BrokerSelectionSection = () => {
         </div>
 
         {/* Currency Pairs and Instruments */}
-        <div className="topic-card">
-          <div className="card-header">
-            <div className="icon-wrapper">
-              <Globe size={28} strokeWidth={1.5} />
-            </div>
+        <div className="content-block">
+          <div className="block-header">
+            <Globe size={28} strokeWidth={1.5} />
             <h2>Available Currency Pairs & Instruments</h2>
           </div>
           <div className="instruments-grid">
@@ -441,11 +415,9 @@ const BrokerSelectionSection = () => {
         </div>
 
         {/* Deposit and Withdrawal */}
-        <div className="topic-card">
-          <div className="card-header">
-            <div className="icon-wrapper">
-              <Wallet size={28} strokeWidth={1.5} />
-            </div>
+        <div className="content-block">
+          <div className="block-header">
+            <Wallet size={28} strokeWidth={1.5} />
             <h2>Deposit and Withdrawal Processes</h2>
           </div>
           <p>
@@ -472,10 +444,10 @@ const BrokerSelectionSection = () => {
             ))}
           </div>
 
-          <div className="warning-box warning-yellow">
+          <div className="warning-message warning-yellow">
             <AlertTriangle size={18} />
             <span>
-              ⚠️ Watch for withdrawal restrictions, excessive fees, or bonus
+              Watch for withdrawal restrictions, excessive fees, or bonus
               conditions that trap funds until unrealistic volume requirements
               are met.
             </span>
@@ -483,16 +455,14 @@ const BrokerSelectionSection = () => {
         </div>
 
         {/* Customer Support */}
-        <div className="topic-card">
-          <div className="card-header">
-            <div className="icon-wrapper">
-              <Headphones size={28} strokeWidth={1.5} />
-            </div>
+        <div className="content-block">
+          <div className="block-header">
+            <Headphones size={28} strokeWidth={1.5} />
             <h2>Customer Support Quality</h2>
           </div>
-          <div className="support-grid">
+          <div className="support-layout">
             <div className="support-channels">
-              <h4>📞 Available Channels</h4>
+              <h4>Available Channels</h4>
               <ul>
                 <li>
                   <CheckCircle size={14} /> 24/5 Live Chat
@@ -509,7 +479,7 @@ const BrokerSelectionSection = () => {
               </ul>
             </div>
             <div className="support-test">
-              <h4>🔍 Test Before You Trust</h4>
+              <h4>Test Before You Trust</h4>
               <p>
                 Test support responsiveness before opening accounts. Ask
                 specific questions through various channels and evaluate
@@ -527,11 +497,9 @@ const BrokerSelectionSection = () => {
         </div>
 
         {/* Educational Resources */}
-        <div className="topic-card">
-          <div className="card-header">
-            <div className="icon-wrapper">
-              <GraduationCap size={28} strokeWidth={1.5} />
-            </div>
+        <div className="content-block">
+          <div className="block-header">
+            <GraduationCap size={28} strokeWidth={1.5} />
             <h2>Educational Resources & Tools</h2>
           </div>
           <div className="resources-grid">
@@ -555,12 +523,10 @@ const BrokerSelectionSection = () => {
         </div>
 
         {/* Red Flags to Avoid */}
-        <div className="topic-card red-flags-card">
-          <div className="card-header">
-            <div className="icon-wrapper warning">
-              <AlertTriangle size={28} strokeWidth={1.5} />
-            </div>
-            <h2>⚠️ Red Flags to Avoid</h2>
+        <div className="content-block red-flags-block">
+          <div className="block-header">
+            <AlertTriangle size={28} strokeWidth={1.5} />
+            <h2>Red Flags to Avoid</h2>
           </div>
           <div className="red-flags-grid">
             {redFlags.map((flag, idx) => (
@@ -569,78 +535,6 @@ const BrokerSelectionSection = () => {
                 <span>{flag}</span>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Final Decision Guide */}
-        <div className="topic-card decision-card">
-          <div className="card-header">
-            <div className="icon-wrapper success-icon">
-              <ThumbsUp size={28} strokeWidth={1.5} />
-            </div>
-            <h2>Making Your Final Decision</h2>
-          </div>
-
-          <div className="decision-steps">
-            <div className="step">
-              <div className="step-number">1</div>
-              <div className="step-content">
-                <strong>Create Shortlist</strong>
-                <span>
-                  3-5 brokers meeting your regulation, cost, and execution
-                  requirements
-                </span>
-              </div>
-            </div>
-            <div className="step">
-              <div className="step-number">2</div>
-              <div className="step-content">
-                <strong>Test Demo Accounts</strong>
-                <span>
-                  Evaluate platforms and execution during various market
-                  conditions
-                </span>
-              </div>
-            </div>
-            <div className="step">
-              <div className="step-number">3</div>
-              <div className="step-content">
-                <strong>Compare Total Costs</strong>
-                <span>
-                  Calculate all-in costs for your trading volume and style
-                </span>
-              </div>
-            </div>
-            <div className="step">
-              <div className="step-number">4</div>
-              <div className="step-content">
-                <strong>Read Independent Reviews</strong>
-                <span>
-                  Focus on withdrawal experiences and customer service
-                </span>
-              </div>
-            </div>
-            <div className="step">
-              <div className="step-number">5</div>
-              <div className="step-content">
-                <strong>Start Small Live Account</strong>
-                <span>
-                  Verify real-money execution matches demo performance before
-                  scaling up
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div className="final-note">
-            <Star size={20} />
-            <p>
-              The 'best' broker depends on your individual needs. Active day
-              traders prioritize execution speed and low costs. Swing traders
-              value research tools and platform features. Take time to evaluate
-              options thoroughly—it establishes a solid foundation for your
-              trading journey.
-            </p>
           </div>
         </div>
 

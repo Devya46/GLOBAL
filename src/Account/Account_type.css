@@ -1,86 +1,569 @@
-/* ===== PAGE WRAPPER (NO GLOBAL DAMAGE) ===== */
-.account-page {
-  background: #070f1f;
-  min-height: 100vh;
-}
-
-/* prevents header overlap issue */
-.account-page-content {
-  width: 100%;
-  overflow-x: hidden;
-}
-
-/* ===== SECTION SPACING SYSTEM ===== */
-.account-page-content > * {
-  width: 100%;
-}
-
-/* ===== HERO FIX (force full width) ===== */
-.account-page .account-hero {
-  width: 100%;
-  min-height: 90vh;
+/* RESET */
+.tat-page-wrapper * {
   margin: 0;
-}
-
-/* ===== PRICING SECTION FIX ===== */
-/* .account-page .pricing-section {
-  padding: 80px 20px;
-  background: linear-gradient(180deg, #070f1f 0%, #08152a 100%);
-} */
-
-.account-page .pricing-container {
-  max-width: 1300px;
-  margin: 0 auto;
-}
-
-/* ===== CARD IMPROVEMENT ===== */
-.account-page .pricing-card {
-  backdrop-filter: blur(12px);
-  background: rgba(10, 20, 45, 0.6);
-  border: 1px solid rgba(200, 170, 100, 0.2);
-  transition: all 0.3s ease;
-}
-
-.account-page .pricing-card:hover {
-  transform: translateY(-8px);
-  border-color: #e8c97a;
-  box-shadow: 0 20px 40px rgba(200, 170, 100, 0.1);
-}
-
-/* ===== SECURITY SECTION FIX ===== */
-.account-page .security-section {
-  padding: 80px 20px;
-  background: #070f1f;
-}
-
-.account-page .security-container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* ===== TYPOGRAPHY UPGRADE ===== */
-.account-page h1,
-.account-page h2,
-.account-page h3 {
-  letter-spacing: -0.02em;
-}
-
-/* ===== SMOOTH UI ===== */
-.account-page * {
+  padding: 0;
   box-sizing: border-box;
 }
 
-/* ===== REMOVE RANDOM GAPS ===== */
-.account-page,
-.account-page-content {
-  margin: 0;
-  padding: 0;
+/* BASE */
+.tat-page-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+  color: #eef4ff;
+  background:
+    linear-gradient(135deg, rgba(10, 25, 47, 0.9), rgba(2, 12, 27, 0.95)),
+    url("https://images.unsplash.com/photo-1687197180710-b2b9484a3c5f?q=80&w=1170&auto=format&fit=crop")
+      center/cover no-repeat fixed;
 }
 
-/* ===== MOBILE OPTIMIZATION ===== */
+/* CONTAINER */
+.tat-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 8rem 1.8rem 4rem;
+}
+
+/* HERO */
+.tat-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.tat-hero h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  background: linear-gradient(to right, #ffffff, #b3e0ff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.tat-tagline {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.tat-tagline span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.tat-tagline i {
+  color: #4c9aff;
+}
+
+/* GRID */
+.tat-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* CARD */
+.tat-card {
+  background: rgba(12, 28, 45, 0.75);
+  backdrop-filter: blur(12px);
+  border-radius: 1.6rem;
+  padding: 1.8rem 1.5rem;
+  border: 1px solid rgba(72, 120, 184, 0.3);
+  transition: all 0.25s ease;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.35);
+}
+
+.tat-card:hover {
+  transform: translateY(-6px);
+  border-color: #4c9aff;
+  background: rgba(15, 35, 55, 0.9);
+}
+
+/* ICON */
+.tat-card-icon {
+  font-size: 2.4rem;
+  color: #5d9eff;
+  margin-bottom: 1rem;
+}
+
+/* TEXT */
+.tat-card h2 {
+  font-size: 1.5rem !important;
+  margin-bottom: 0.8rem;
+}
+
+.tat-card p {
+  font-size: 0.95rem;
+  color: #cfdef5;
+  margin-bottom: 1rem;
+}
+
+/* FEATURE LIST */
+.tat-feature-list {
+  list-style: none;
+}
+
+.tat-feature-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  margin-bottom: 0.6rem;
+  color: #e2ebff;
+}
+
+.tat-feature-list i {
+  width: 20px;
+  color: #4c9aff;
+}
+
+/* BADGE */
+.tat-badge {
+  margin-top: 1rem;
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.9rem;
+  border-radius: 50px;
+  background: rgba(76, 154, 255, 0.2);
+  color: #aac9ff;
+}
+
+/* DOUBLE SECTION */
+.tat-double-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+/* FULL CARD */
+.tat-full-card {
+  background: rgba(8, 22, 36, 0.75);
+  backdrop-filter: blur(10px);
+  padding: 1.8rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(72, 120, 184, 0.35);
+  transition: 0.3s;
+}
+
+.tat-full-card:hover {
+  background: rgba(12, 30, 48, 0.9);
+  border-color: #3e7fcb;
+}
+
+/* HEADER */
+.tat-section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+.tat-section-header i {
+  font-size: 1.8rem;
+  color: #5d9eff;
+}
+
+.tat-section-header h2 {
+  font-size: 1.5rem;
+}
+
+/* INSIGHTS */
+.tat-insight-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.tat-insight-item {
+  display: flex;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.7rem 1rem;
+  border-radius: 1rem;
+}
+
+.tat-insight-item i {
+  color: #7bafff;
+  min-width: 22px;
+}
+
+.tat-insight-item span {
+  font-size: 0.92rem;
+}
+
+/* CTA */
+.tat-explore-section {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.tat-explore-btn {
+  background: linear-gradient(105deg, #1f6392, #0f3b5c);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.9rem 2.2rem;
+  border-radius: 50px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.25s;
+}
+
+.tat-explore-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(105deg, #2c7bb0, #1f4e72);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.tat-explore-text {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* FOOTER */
+.tat-footer-note {
+  margin-top: 4rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #8aa9d4;
+  border-top: 1px solid rgba(100, 148, 200, 0.2);
+  padding-top: 2rem;
+}
+
+/* ============================================ */
+/* RESPONSIVE STYLES - Mobile & Tablet Optimized */
+/* ============================================ */
+
+/* Tablet Landscape (up to 1024px) */
+@media (max-width: 1024px) {
+  .tat-container {
+    padding: 6rem 1.5rem 3rem;
+  }
+
+  .tat-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .tat-card-grid {
+    gap: 1.5rem;
+  }
+
+  .tat-double-section {
+    gap: 1.5rem;
+  }
+}
+
+/* Tablet Portrait & Large Phones (up to 768px) */
 @media (max-width: 768px) {
-  .account-page .pricing-section,
-  .account-page .security-section {
-    padding: 50px 15px;
+  .tat-container {
+    padding: 4rem 1.25rem 2.5rem;
+  }
+
+  .tat-hero {
+    margin-bottom: 2rem;
+  }
+
+  .tat-hero h1 {
+    font-size: 2rem;
+  }
+
+  .tat-tagline {
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .tat-tagline span {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.85rem;
+    gap: 6px;
+  }
+
+  /* Cards stack more compactly */
+  .tat-card-grid {
+    gap: 1.25rem;
+  }
+
+  .tat-card {
+    padding: 1.4rem 1.2rem;
+    border-radius: 1.3rem;
+  }
+
+  .tat-card-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .tat-card h2 {
+    font-size: 1.3rem !important;
+    margin-bottom: 0.6rem;
+  }
+
+  .tat-card p {
+    font-size: 0.9rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .tat-feature-list li {
+    font-size: 0.85rem;
+    gap: 8px;
+    margin-bottom: 0.5rem;
+  }
+
+  .tat-badge {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.75rem;
+    margin-top: 0.85rem;
+  }
+
+  /* Double section */
+  .tat-double-section {
+    margin-top: 2rem;
+    gap: 1.25rem;
+  }
+
+  .tat-full-card {
+    padding: 1.4rem;
+    border-radius: 1.3rem;
+  }
+
+  .tat-section-header {
+    gap: 10px;
+    margin-bottom: 0.85rem;
+  }
+
+  .tat-section-header i {
+    font-size: 1.5rem;
+  }
+
+  .tat-section-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .tat-insight-list {
+    gap: 0.65rem;
+  }
+
+  .tat-insight-item {
+    padding: 0.6rem 0.85rem;
+    gap: 8px;
+  }
+
+  .tat-insight-item i {
+    min-width: 18px;
+    font-size: 0.9rem;
+  }
+
+  .tat-insight-item span {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  /* CTA */
+  .tat-explore-section {
+    margin-top: 2rem;
+  }
+
+  .tat-explore-btn {
+    padding: 0.75rem 1.8rem;
+    font-size: 0.9rem;
+    gap: 8px;
+  }
+
+  .tat-explore-text {
+    font-size: 0.75rem;
+    margin-top: 0.85rem;
+  }
+
+  /* Footer */
+  .tat-footer-note {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* Mobile Phones (up to 480px) */
+@media (max-width: 480px) {
+  .tat-container {
+    padding: 2rem 1rem 2rem;
+  }
+
+  .tat-hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .tat-tagline {
+    gap: 0.5rem;
+  }
+
+  .tat-tagline span {
+    padding: 0.25rem 0.65rem;
+    font-size: 0.75rem;
+    gap: 5px;
+  }
+
+  .tat-tagline i {
+    font-size: 0.75rem;
+  }
+
+  /* Full width cards on mobile */
+  .tat-card-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .tat-card {
+    padding: 1.2rem 1rem;
+  }
+
+  .tat-card-icon {
+    font-size: 1.8rem;
+  }
+
+  .tat-card h2 {
+    font-size: 1.2rem !important;
+  }
+
+  .tat-card p {
+    font-size: 0.85rem;
+  }
+
+  .tat-feature-list li {
+    font-size: 0.8rem;
+    gap: 7px;
+  }
+
+  .tat-feature-list i {
+    width: 18px;
+    font-size: 0.8rem;
+  }
+
+  /* Double section full width */
+  .tat-double-section {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .tat-full-card {
+    padding: 1.2rem;
+  }
+
+  .tat-section-header h2 {
+    font-size: 1.15rem;
+  }
+
+  .tat-section-header i {
+    font-size: 1.3rem;
+  }
+
+  .tat-insight-item {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .tat-insight-item span {
+    font-size: 0.8rem;
+  }
+
+  /* CTA button full width on smallest screens */
+  .tat-explore-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.7rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .tat-explore-text {
+    font-size: 0.7rem;
+    padding: 0 0.5rem;
+  }
+
+  .tat-footer-note {
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    font-size: 0.65rem;
+  }
+}
+
+/* Small Mobile Devices (up to 360px) */
+@media (max-width: 360px) {
+  .tat-container {
+    padding: 1.5rem 0.85rem 1.5rem;
+  }
+
+  .tat-hero h1 {
+    font-size: 1.4rem;
+  }
+
+  .tat-tagline span {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .tat-card {
+    padding: 1rem 0.85rem;
+  }
+
+  .tat-card h2 {
+    font-size: 1.1rem !important;
+  }
+
+  .tat-feature-list li {
+    font-size: 0.75rem;
+  }
+
+  .tat-badge {
+    font-size: 0.65rem;
+  }
+
+  .tat-full-card {
+    padding: 1rem;
+  }
+
+  .tat-section-header h2 {
+    font-size: 1rem;
+  }
+
+  .tat-insight-item span {
+    font-size: 0.75rem;
+  }
+}
+
+/* Maintain hover effects only on devices that support hover */
+@media (hover: hover) {
+  .tat-card:hover {
+    transform: translateY(-6px);
+  }
+
+  .tat-full-card:hover {
+    transform: translateY(-3px);
+  }
+
+  .tat-explore-btn:hover {
+    transform: scale(1.05);
+  }
+}
+
+/* Disable hover transformations on touch devices for better UX */
+@media (hover: none) {
+  .tat-card:hover {
+    transform: none;
+  }
+
+  .tat-full-card:hover {
+    transform: none;
+  }
+
+  .tat-explore-btn:active {
+    transform: scale(0.98);
   }
 }

@@ -1,15 +1,9 @@
+/* FundsHub.module.css */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-/* body {
-  font-family: "Inter", sans-serif;
-  background-color: #0a1a2f;
-  color: white;
-  overflow-x: hidden;
-} */
 
 /* ----- MAIN WRAPPER: Navy background + overlay image ----- */
 .funds-hub {
@@ -21,7 +15,11 @@
   background-blend-mode: overlay;
   backdrop-filter: brightness(0.97);
   position: relative;
-  font-family: "Segoe UI", sans-serif !important;
+  font-family:
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    sans-serif;
 }
 
 /* container for content */
@@ -73,30 +71,6 @@
   100% {
     opacity: 1;
     transform: scale(1);
-  }
-}
-
-@keyframes borderPulse {
-  0% {
-    border-color: rgba(76, 154, 255, 0.2);
-    box-shadow: 0 0 0 0 rgba(76, 154, 255, 0);
-  }
-  50% {
-    border-color: rgba(76, 154, 255, 0.7);
-    box-shadow: 0 0 0 3px rgba(76, 154, 255, 0.2);
-  }
-  100% {
-    border-color: rgba(76, 154, 255, 0.2);
-    box-shadow: 0 0 0 0 rgba(76, 154, 255, 0);
-  }
-}
-
-@keyframes shimmerFlow {
-  0% {
-    background-position: -150% 0;
-  }
-  100% {
-    background-position: 150% 0;
   }
 }
 
@@ -325,12 +299,10 @@
   padding: 1.8rem;
   border: 1px solid rgba(76, 154, 255, 0.3);
   text-align: center;
-  animation: gentleScale 0.7s forwards;
-  animation-delay: 0.3s;
-  opacity: 0;
-  transform: scale(0.97);
   animation: floatRise 0.7s forwards;
   animation-delay: 0.35s;
+  opacity: 0;
+  transform: translateY(25px);
 }
 
 .action-title {
@@ -424,30 +396,524 @@
   animation-delay: 0.6s;
 }
 
-/* responsiveness */
-@media (max-width: 760px) {
+/* ============================================ */
+/* RESPONSIVE & SPACE-EFFICIENT ADAPTATIONS     */
+/* Desktop (default) remains unchanged          */
+/* ============================================ */
+
+/* Laptops & small desktops (1024px - 1279px) */
+@media (max-width: 1279px) {
   .funds-container {
-    padding: 1.5rem 1.2rem 2.5rem;
+    padding: 7rem 1.8rem 3.5rem;
   }
+
   .hero-funds h1 {
-    font-size: 2.2rem;
+    font-size: 2.8rem;
   }
+
+  .tx-grid {
+    gap: 1.8rem;
+  }
+
+  .fund-card {
+    padding: 1.6rem 1.6rem 1.8rem;
+  }
+
   .card-header-icon h2 {
-    font-size: 1.6rem;
-  }
-  .info-tile h3 {
-    font-size: 1.1rem;
-  }
-  .action-title span {
-    font-size: 1.1rem;
+    font-size: 1.7rem !important;
   }
 }
 
-@media (max-width: 480px) {
-  .fund-card {
-    padding: 1.3rem;
+/* Tablets (768px - 1023px) */
+@media (max-width: 1023px) {
+  .funds-container {
+    padding: 6rem 1.5rem 3rem;
   }
-  .method-item span {
+
+  .hero-funds {
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-funds h1 {
+    font-size: 2.4rem;
+  }
+
+  .hero-sub {
+    gap: 1.2rem;
+  }
+
+  .hero-sub span {
+    padding: 0.4rem 1.2rem;
     font-size: 0.85rem;
+  }
+
+  .tx-grid {
+    gap: 1.5rem;
+    margin: 2rem 0 1.8rem;
+  }
+
+  .fund-card {
+    padding: 1.4rem;
+    border-radius: 1.6rem;
+  }
+
+  .card-header-icon {
+    gap: 10px;
+    margin-bottom: 1.2rem;
+  }
+
+  .card-header-icon i {
+    font-size: 2rem;
+  }
+
+  .card-header-icon h2 {
+    font-size: 1.5rem !important;
+  }
+
+  .method-list {
+    margin: 1rem 0 0.8rem;
+  }
+
+  .method-item {
+    padding: 0.6rem 0.8rem;
+    gap: 10px;
+  }
+
+  .method-item i {
+    width: 26px;
+    font-size: 1rem;
+  }
+
+  .method-item span {
+    font-size: 0.88rem;
+  }
+
+  .badge-speed {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.8rem;
+  }
+
+  .info-panel {
+    gap: 1.5rem;
+    margin: 2rem 0 1.8rem;
+  }
+
+  .info-tile {
+    padding: 1.2rem;
+    border-radius: 1.3rem;
+  }
+
+  .info-tile i {
+    font-size: 1.5rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .info-tile h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .info-tile p {
+    font-size: 0.8rem;
+  }
+
+  .action-zone {
+    margin: 2rem 0 1rem;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+  }
+
+  .action-title i {
+    font-size: 1.4rem;
+  }
+
+  .action-title span {
+    font-size: 1.15rem;
+  }
+
+  .simulate-buttons {
+    gap: 1rem;
+  }
+
+  .fund-btn {
+    padding: 0.65rem 1.4rem;
+    font-size: 0.85rem;
+  }
+
+  .toast-msg {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.9rem;
+    margin-top: 1rem;
+  }
+
+  .fund-footer {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    font-size: 0.65rem;
+  }
+}
+
+/* Mobile landscape & small tablets (480px - 767px) */
+@media (max-width: 767px) {
+  .funds-container {
+    padding: 5rem 1.2rem 2.5rem;
+  }
+
+  .hero-funds {
+    margin-bottom: 2rem;
+  }
+
+  .hero-funds h1 {
+    font-size: 2rem;
+  }
+
+  .hero-sub {
+    gap: 0.8rem;
+    margin-top: 0.8rem;
+  }
+
+  .hero-sub span {
+    padding: 0.35rem 1rem;
+    font-size: 0.75rem;
+    gap: 6px;
+  }
+
+  .hero-sub i {
+    font-size: 0.8rem;
+  }
+
+  .tx-grid {
+    gap: 1.2rem;
+    margin: 1.5rem 0 1.5rem;
+  }
+
+  .fund-card {
+    padding: 1.2rem;
+    border-radius: 1.4rem;
+  }
+
+  .card-header-icon {
+    gap: 8px;
+    margin-bottom: 1rem;
+  }
+
+  .card-header-icon i {
+    font-size: 1.6rem;
+  }
+
+  .card-header-icon h2 {
+    font-size: 1.3rem !important;
+  }
+
+  .method-list {
+    margin: 0.8rem 0 0.6rem;
+  }
+
+  .method-item {
+    padding: 0.5rem 0.7rem;
+    gap: 8px;
+    border-radius: 1rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .method-item i {
+    width: 22px;
+    font-size: 0.9rem;
+  }
+
+  .method-item span {
+    font-size: 0.82rem;
+  }
+
+  .badge-speed {
+    font-size: 0.6rem;
+    padding: 0.12rem 0.7rem;
+  }
+
+  .info-panel {
+    gap: 1rem;
+    margin: 1.5rem 0 1.5rem;
+  }
+
+  .info-tile {
+    padding: 1rem;
+    border-radius: 1.2rem;
+  }
+
+  .info-tile i {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .info-tile h3 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .info-tile p {
+    font-size: 0.72rem;
+    line-height: 1.3;
+  }
+
+  .action-zone {
+    margin: 1.5rem 0 1rem;
+    padding: 1.2rem;
+    border-radius: 1.3rem;
+  }
+
+  .action-title {
+    gap: 8px;
+    margin-bottom: 0.8rem;
+  }
+
+  .action-title i {
+    font-size: 1.2rem;
+  }
+
+  .action-title span {
+    font-size: 1rem;
+  }
+
+  .simulate-buttons {
+    gap: 0.8rem;
+    margin-top: 0.8rem;
+  }
+
+  .fund-btn {
+    padding: 0.55rem 1.2rem;
+    font-size: 0.8rem;
+    gap: 6px;
+  }
+
+  .fund-btn i {
+    font-size: 0.8rem;
+  }
+
+  .toast-msg {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.8rem;
+    margin-top: 0.9rem;
+  }
+
+  .fund-footer {
+    margin-top: 2rem;
+    padding-top: 1.2rem;
+    font-size: 0.6rem;
+  }
+}
+
+/* Mobile phones (320px - 479px) - compact but readable */
+@media (max-width: 479px) {
+  .funds-container {
+    padding: 4.5rem 1rem 2rem;
+  }
+
+  .hero-funds h1 {
+    font-size: 2rem;
+  }
+
+  .hero-sub {
+    gap: 0.6rem;
+  }
+
+  .hero-sub span {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.68rem;
+    gap: 4px;
+  }
+
+  .hero-sub i {
+    font-size: 0.7rem;
+  }
+
+  .tx-grid {
+    gap: 1rem;
+    margin: 1.2rem 0 1.2rem;
+  }
+
+  .fund-card {
+    padding: 1rem;
+    border-radius: 1.2rem;
+  }
+
+  .card-header-icon {
+    gap: 6px;
+    margin-bottom: 0.8rem;
+  }
+
+  .card-header-icon i {
+    font-size: 1.3rem;
+  }
+
+  .card-header-icon h2 {
+    font-size: 1.1rem !important;
+  }
+
+  .method-item {
+    padding: 0.4rem 0.6rem;
+    gap: 6px;
+    margin-bottom: 0.5rem;
+  }
+
+  .method-item i {
+    width: 20px;
+    font-size: 0.8rem;
+  }
+
+  .method-item span {
+    font-size: 0.74rem;
+  }
+
+  .badge-speed {
+    font-size: 0.55rem;
+    padding: 0.1rem 0.6rem;
+  }
+
+  .info-panel {
+    gap: 0.8rem;
+    margin: 1.2rem 0 1.2rem;
+  }
+
+  .info-tile {
+    padding: 0.8rem;
+    border-radius: 1rem;
+  }
+
+  .info-tile i {
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .info-tile h3 {
+    font-size: 0.9rem;
+  }
+
+  .info-tile p {
+    font-size: 0.65rem;
+  }
+
+  .action-zone {
+    margin: 1.2rem 0 0.8rem;
+    padding: 1rem;
+    border-radius: 1.1rem;
+  }
+
+  .action-title {
+    gap: 6px;
+    margin-bottom: 0.6rem;
+  }
+
+  .action-title i {
+    font-size: 1rem;
+  }
+
+  .action-title span {
+    font-size: 0.85rem;
+  }
+
+  .simulate-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+  }
+
+  .fund-btn {
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  .toast-msg {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.7rem;
+    margin-top: 0.8rem;
+  }
+
+  .fund-footer {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    font-size: 0.55rem;
+  }
+}
+
+/* Fix for very small devices (under 320px) */
+@media (max-width: 319px) {
+  .funds-container {
+    padding: 4rem 0.75rem 1.5rem;
+  }
+
+  .hero-funds h1 {
+    font-size: 1.4rem;
+  }
+
+  .hero-sub span {
+    font-size: 0.6rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .fund-card {
+    padding: 0.8rem;
+  }
+
+  .card-header-icon h2 {
+    font-size: 1rem !important;
+  }
+
+  .method-item span {
+    font-size: 0.68rem;
+  }
+
+  .info-tile h3 {
+    font-size: 0.8rem;
+  }
+
+  .info-tile p {
+    font-size: 0.6rem;
+  }
+
+  .action-title span {
+    font-size: 0.75rem;
+  }
+
+  .fund-btn {
+    font-size: 0.7rem;
+    padding: 0.45rem 0.8rem;
+  }
+}
+
+/* Improve touch targets on mobile devices */
+@media (hover: none) and (pointer: coarse) {
+  .fund-btn,
+  .hero-sub span,
+  .method-item,
+  .info-tile {
+    cursor: default;
+  }
+
+  .fund-btn:active {
+    transform: scale(0.97);
+  }
+
+  .method-item:active {
+    background: rgba(93, 158, 255, 0.15);
+    transform: translateX(4px);
+  }
+}
+
+/* Reduce motion if user prefers */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .fund-card:hover,
+  .info-tile:hover,
+  .hero-sub span:hover {
+    transform: none;
   }
 }

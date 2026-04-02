@@ -28,11 +28,11 @@ import {
   Lightbulb,
   RefreshCw,
   Smile,
+  ArrowRight,
 } from "lucide-react";
 import "./ProfitabilitySection.css";
 
 const ProfitabilitySection = () => {
-  const [activeTab, setActiveTab] = useState("metrics");
   const [calculatorInput, setCalculatorInput] = useState({
     accountSize: 10000,
     riskPercent: 2,
@@ -116,46 +116,41 @@ const ProfitabilitySection = () => {
   ];
 
   return (
-    <section className="profitability-section">
-      <div className="container">
+    <article className="profitability-blog">
+      <div className="blog-container">
         {/* Header */}
-        <div className="section-header">
-          <div className="header-badge">
-            <TrendingUp size={16} />
+        <header className="blog-header">
+          <div className="header-meta">
+            <TrendingUp size={14} />
             <span>2026 Profitability Analysis</span>
           </div>
-          <h1 className="section-title">
+          <h1 className="blog-title">
             The Profitability
             <span className="title-gradient"> Question</span>
           </h1>
-          <p className="subhead">
-            <DollarSign size={18} />
+          <p className="blog-subhead">
             What separates winners from losers · Realistic expectations · The
             path to consistency
           </p>
-        </div>
+        </header>
 
-        {/* Hero Stat Card */}
-        <div className="hero-stat-card">
-          <div className="hero-stat-content">
-            <div className="hero-stat-icon">
-              <TrendingUp size={32} />
+        {/* Hero Stat Section */}
+        <div className="stat-highlight">
+          <div className="stat-row">
+            <div className="stat-badge">
+              <TrendingUp size={24} />
             </div>
-            <div className="hero-stat-numbers">
-              <div className="hero-stat-value">70-80%</div>
-              <div className="hero-stat-label">
-                of retail traders lose money
-              </div>
+            <div className="stat-numbers">
+              <div className="stat-value">70-80%</div>
+              <div className="stat-label">of retail traders lose money</div>
             </div>
-            <div className="hero-stat-divider"></div>
-            <div className="hero-stat-numbers">
-              <div className="hero-stat-value success">20-30%</div>
-              <div className="hero-stat-label">
-                achieve consistent profitability
-              </div>
+            <div className="stat-divider"></div>
+            <div className="stat-numbers">
+              <div className="stat-value success">20-30%</div>
+              <div className="stat-label">achieve consistent profitability</div>
             </div>
           </div>
-          <p className="hero-stat-quote">
+          <p className="stat-quote">
             The difference isn't luck or insider access—it's{" "}
             <strong>
               education, discipline, risk management, and realistic expectations
@@ -164,27 +159,25 @@ const ProfitabilitySection = () => {
         </div>
 
         {/* Why Most Traders Fail */}
-        <div className="topic-card fail-card">
-          <div className="card-header">
-            <div className="icon-wrapper warning">
-              <AlertTriangle size={28} strokeWidth={1.5} />
-            </div>
+        <section className="blog-section">
+          <div className="section-heading warning">
+            <AlertTriangle size={28} />
             <h2>Why Most Traders Fail</h2>
           </div>
-          <div className="stats-grid failure-stats">
+          <div className="stats-list">
             {failureStats.map((stat, idx) => (
-              <div key={idx} className="stat-item failure-stat">
+              <div key={idx} className="stat-item-horizontal">
                 <stat.icon size={20} />
-                <span className="stat-label">{stat.label}</span>
-                <span className="stat-value-large">{stat.percentage}%</span>
+                <span className="stat-label-text">{stat.label}</span>
+                <span className="stat-percentage">{stat.percentage}%</span>
               </div>
             ))}
           </div>
-          <div className="failure-reasons">
-            <div className="reason-card">
+          <div className="reasons-list">
+            <div className="reason-item">
               <AlertTriangle size={20} />
               <div>
-                <h4>Inadequate Risk Management</h4>
+                <h3>Inadequate Risk Management</h3>
                 <p>
                   New traders risk excessive percentages on single trades,
                   leading to rapid account depletion. Overleveraging (up to
@@ -192,20 +185,20 @@ const ProfitabilitySection = () => {
                 </p>
               </div>
             </div>
-            <div className="reason-card">
+            <div className="reason-item">
               <Brain size={20} />
               <div>
-                <h4>Emotional Trading</h4>
+                <h3>Emotional Trading</h3>
                 <p>
                   Abandoning strategies after losses, chasing prices, revenge
                   trading—fear and greed override rational decision-making.
                 </p>
               </div>
             </div>
-            <div className="reason-card">
+            <div className="reason-item">
               <BookOpen size={20} />
               <div>
-                <h4>Lack of Proper Education</h4>
+                <h3>Lack of Proper Education</h3>
                 <p>
                   Entering without understanding technical analysis,
                   fundamentals, or position sizing. Following social media
@@ -213,10 +206,10 @@ const ProfitabilitySection = () => {
                 </p>
               </div>
             </div>
-            <div className="reason-card">
+            <div className="reason-item">
               <Target size={20} />
               <div>
-                <h4>Unrealistic Expectations</h4>
+                <h3>Unrealistic Expectations</h3>
                 <p>
                   Expecting to turn small accounts into fortunes quickly leads
                   to excessive risk-taking and eventual failure.
@@ -224,28 +217,28 @@ const ProfitabilitySection = () => {
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Path to Consistent Profitability */}
-        <div className="topic-card success-card">
-          <div className="card-header">
-            <div className="icon-wrapper success-icon">
-              <CheckCircle size={28} strokeWidth={1.5} />
-            </div>
+        <section className="blog-section">
+          <div className="section-heading success">
+            <CheckCircle size={28} />
             <h2>The Path to Consistent Profitability</h2>
           </div>
-          <div className="principles-grid">
+          <div className="principles-list">
             {successPrinciples.map((principle, idx) => (
-              <div key={idx} className="principle-card">
+              <div key={idx} className="principle-item">
                 <div className="principle-icon">
                   <principle.icon size={24} />
                 </div>
-                <h4>{principle.title}</h4>
-                <p>{principle.desc}</p>
+                <div>
+                  <h3>{principle.title}</h3>
+                  <p>{principle.desc}</p>
+                </div>
               </div>
             ))}
           </div>
-          <div className="golden-rule">
+          <div className="golden-rule-block">
             <Shield size={24} />
             <div>
               <strong>The Golden Rule:</strong> Never risk more than 1-2% of
@@ -255,7 +248,7 @@ const ProfitabilitySection = () => {
               </div>
             </div>
           </div>
-          <div className="journal-section">
+          <div className="journal-block">
             <BookOpen size={20} />
             <div>
               <strong>Trading Journal Required</strong>
@@ -266,41 +259,39 @@ const ProfitabilitySection = () => {
               </p>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Realistic Profitability Expectations with Calculator */}
-        <div className="topic-card expectations-card">
-          <div className="card-header">
-            <div className="icon-wrapper">
-              <Calculator size={28} strokeWidth={1.5} />
-            </div>
+        <section className="blog-section">
+          <div className="section-heading">
+            <Calculator size={28} />
             <h2>Realistic Profitability Expectations</h2>
           </div>
-          <div className="expectations-grid">
-            <div className="expectations-text">
-              <p>
-                Professional traders typically target monthly returns of{" "}
-                <strong>2-5%</strong> with consistent risk management. This
-                compounds substantially over time.
-              </p>
-              <div className="compound-example">
-                <TrendingUp size={18} />
-                <span>
-                  3% monthly returns → $10,000 → $14,000+ in one year (40%
-                  annual return)
-                </span>
-              </div>
-              <p className="journey-note">
-                The journey to profitability typically takes{" "}
-                <strong>1-3 years</strong> of dedicated practice. Most
-                successful traders lost money initially—view it as tuition.
-              </p>
+          <div className="expectations-content">
+            <p>
+              Professional traders typically target monthly returns of{" "}
+              <strong>2-5%</strong> with consistent risk management. This
+              compounds substantially over time.
+            </p>
+            <div className="compound-note">
+              <TrendingUp size={18} />
+              <span>
+                3% monthly returns → $10,000 → $14,000+ in one year (40% annual
+                return)
+              </span>
             </div>
+            <p className="journey-note">
+              The journey to profitability typically takes{" "}
+              <strong>1-3 years</strong> of dedicated practice. Most successful
+              traders lost money initially—view it as tuition.
+            </p>
+          </div>
 
-            <div className="calculator-card">
-              <h4>📊 Profitability Calculator</h4>
-              <div className="calculator-inputs">
-                <div className="input-group">
+          <div className="calculator-blog">
+            <h3>Profitability Calculator</h3>
+            <div className="calculator-grid">
+              <div className="calc-inputs">
+                <div className="input-row">
                   <label>Account Size ($)</label>
                   <input
                     type="number"
@@ -310,7 +301,7 @@ const ProfitabilitySection = () => {
                     }
                   />
                 </div>
-                <div className="input-group">
+                <div className="input-row">
                   <label>Risk per Trade (%)</label>
                   <input
                     type="number"
@@ -321,7 +312,7 @@ const ProfitabilitySection = () => {
                     }
                   />
                 </div>
-                <div className="input-group">
+                <div className="input-row">
                   <label>Target Monthly Return (%)</label>
                   <input
                     type="number"
@@ -333,34 +324,32 @@ const ProfitabilitySection = () => {
                   />
                 </div>
               </div>
-              <div className="calculator-results">
-                <div className="result-item">
+              <div className="calc-results">
+                <div className="result-row">
                   <span>Risk per Trade:</span>
                   <strong>${calculatorResult.riskPerTrade.toFixed(2)}</strong>
                 </div>
-                <div className="result-item">
+                <div className="result-row">
                   <span>Yearly Return:</span>
-                  <strong className="profit-value">
+                  <strong className="profit-highlight">
                     ${calculatorResult.yearlyReturn.toFixed(2)}
                   </strong>
                 </div>
-                <div className="result-item">
+                <div className="result-row">
                   <span>Yearly Percentage:</span>
-                  <strong className="profit-value">
+                  <strong className="profit-highlight">
                     {calculatorResult.yearlyPercent.toFixed(2)}%
                   </strong>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Technology and Profitability */}
-        <div className="topic-card tech-card">
-          <div className="card-header">
-            <div className="icon-wrapper">
-              <Zap size={28} strokeWidth={1.5} />
-            </div>
+        <section className="blog-section">
+          <div className="section-heading">
+            <Zap size={28} />
             <h2>Technology and Profitability in 2026</h2>
           </div>
           <p>
@@ -369,9 +358,9 @@ const ProfitabilitySection = () => {
             institutional algorithms execute trades in milliseconds—success
             requires focusing on strategies where human judgment excels.
           </p>
-          <div className="tech-grid">
+          <div className="tech-list">
             {techTools.map((tool, idx) => (
-              <div key={idx} className="tech-item">
+              <div key={idx} className="tech-item-blog">
                 <tool.icon size={20} />
                 <div>
                   <strong>{tool.name}</strong>
@@ -380,7 +369,7 @@ const ProfitabilitySection = () => {
               </div>
             ))}
           </div>
-          <div className="best-approach">
+          <div className="best-approach-block">
             <Lightbulb size={20} />
             <span>
               The most profitable approach combines human strategic thinking
@@ -388,19 +377,17 @@ const ProfitabilitySection = () => {
               final decisions based on comprehensive analysis.
             </span>
           </div>
-        </div>
+        </section>
 
         {/* Choosing the Right Broker */}
-        <div className="topic-card broker-card">
-          <div className="card-header">
-            <div className="icon-wrapper">
-              <Settings size={28} strokeWidth={1.5} />
-            </div>
+        <section className="blog-section">
+          <div className="section-heading">
+            <Settings size={28} />
             <h2>Choosing the Right Broker & Setup</h2>
           </div>
-          <div className="broker-grid">
-            <div className="broker-tips">
-              <h4>Essential Criteria</h4>
+          <div className="broker-content">
+            <div className="broker-tips-blog">
+              <h3>Essential Criteria</h3>
               <ul>
                 <li>
                   <CheckCircle size={16} /> Competitive spreads & commissions
@@ -418,17 +405,17 @@ const ProfitabilitySection = () => {
                 </li>
               </ul>
             </div>
-            <div className="capital-requirements">
-              <h4>Capital Requirements</h4>
-              <div className="req-item">
-                <span className="req-type">Day Traders:</span>
-                <span className="req-amount">$5,000 - $10,000 minimum</span>
+            <div className="capital-reqs-blog">
+              <h3>Capital Requirements</h3>
+              <div className="req-row">
+                <span className="req-label">Day Traders:</span>
+                <span className="req-value">$5,000 - $10,000 minimum</span>
               </div>
-              <div className="req-item">
-                <span className="req-type">Swing Traders:</span>
-                <span className="req-amount">$2,000 - $5,000 recommended</span>
+              <div className="req-row">
+                <span className="req-label">Swing Traders:</span>
+                <span className="req-value">$2,000 - $5,000 recommended</span>
               </div>
-              <div className="warning-note">
+              <div className="warning-note-blog">
                 <AlertTriangle size={14} />
                 <small>
                   Undercapitalization causes failure even with sound strategies
@@ -436,18 +423,16 @@ const ProfitabilitySection = () => {
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* The Verdict */}
-        <div className="topic-card verdict-card">
-          <div className="card-header">
-            <div className="icon-wrapper verdict-icon">
-              <Award size={28} strokeWidth={1.5} />
-            </div>
+        <section className="blog-section">
+          <div className="section-heading verdict">
+            <Award size={28} />
             <h2>The Verdict</h2>
           </div>
-          <div className="verdict-content">
-            <div className="verdict-positive">
+          <div className="verdict-blocks">
+            <div className="verdict-positive-block">
               <CheckCircle size={28} />
               <div>
                 <strong>Yes, forex trading is profitable in 2026</strong>
@@ -459,7 +444,7 @@ const ProfitabilitySection = () => {
                 </p>
               </div>
             </div>
-            <div className="verdict-negative">
+            <div className="verdict-negative-block">
               <XCircle size={28} />
               <div>
                 <strong>However, those expecting quick riches</strong>
@@ -473,10 +458,10 @@ const ProfitabilitySection = () => {
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Key Takeaway Bar */}
-        <div className="key-takeaway">
+        <div className="key-takeaway-blog">
           <Rocket size={20} />
           <span>
             The difference between profitable and unprofitable traders isn't
@@ -485,7 +470,7 @@ const ProfitabilitySection = () => {
           </span>
         </div>
 
-        <footer className="section-footer">
+        <footer className="blog-footer">
           <BarChart3 size={14} />
           <span>
             Data-driven profitability insights 2026 | Education + Discipline =
@@ -493,7 +478,7 @@ const ProfitabilitySection = () => {
           </span>
         </footer>
       </div>
-    </section>
+    </article>
   );
 };
 

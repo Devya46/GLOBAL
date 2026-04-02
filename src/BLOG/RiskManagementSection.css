@@ -1,9 +1,8 @@
-/* RiskManagementSection.css - Premium Dark Navy Theme */
+/* RiskManagementSection.css - Clean Dark Navy Theme */
 
 .risk-management-section {
-  background: radial-gradient(circle at 10% 80%, #0a0f2a, #030614);
-  background-color: #07122b;
-  padding: 8rem 1.5rem 5rem 1.5rem;
+  background-color: #0a0f2a;
+  padding: 4rem 16.5rem;
   width: 100%;
   font-family:
     "Inter",
@@ -19,33 +18,25 @@
   margin: 0 auto;
 }
 
-/* Header */
+/* Header - Centered, Clean */
 .section-header {
   text-align: center;
   margin-bottom: 3rem;
-}
-
-.header-badge {
-  display: inline-flex;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
-  background: rgba(59, 130, 246, 0.15);
-  backdrop-filter: blur(8px);
-  padding: 0.5rem 1.2rem;
-  border-radius: 100px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: #60a5fa;
-  margin-bottom: 1.5rem;
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  justify-content: center;
 }
 
 .section-title {
-  font-size: 3.2rem;
+  font-size: 2.8rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  margin-bottom: 1rem;
   line-height: 1.2;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 60px;
 }
 
 .title-gradient {
@@ -56,29 +47,10 @@
   display: inline-block;
 }
 
-.subhead {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: #a9c1ff;
-  background: rgba(59, 130, 246, 0.05);
-  border-radius: 0 12px 12px 0;
-  padding: 0.6rem 1.2rem;
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 /* Hero Statement */
 .hero-statement {
-  background: linear-gradient(
-    135deg,
-    rgba(81, 207, 102, 0.12),
-    rgba(59, 130, 246, 0.08)
-  );
-  border-radius: 1.5rem;
+  background: rgba(81, 207, 102, 0.08);
+  border-radius: 1rem;
   padding: 1.5rem;
   margin-bottom: 2rem;
   display: flex;
@@ -98,70 +70,36 @@
   margin: 0;
 }
 
-/* Topic Cards */
-.topic-card {
-  background: rgba(12, 25, 55, 0.65);
-  backdrop-filter: blur(8px);
-  border-radius: 1.75rem;
-  padding: 1.8rem;
-  margin-bottom: 1.75rem;
-  border: 1px solid rgba(59, 130, 246, 0.2);
-  transition: all 0.35s ease;
+/* Topic Blocks - Simple sections */
+.topic-block {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(59, 130, 246, 0.15);
 }
 
-.topic-card:hover {
-  border-color: rgba(96, 165, 250, 0.5);
-  transform: translateY(-4px);
-  box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.5);
+.topic-block:last-of-type {
+  border-bottom: none;
 }
 
-.card-header {
+.block-header {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.25rem;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
 }
 
-.icon-wrapper {
-  background: linear-gradient(
-    135deg,
-    rgba(59, 130, 246, 0.2),
-    rgba(139, 92, 246, 0.15)
-  );
-  padding: 0.75rem;
-  border-radius: 1rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(59, 130, 246, 0.3);
+.block-header svg {
+  color: #60a5fa;
 }
 
-.icon-wrapper.warning {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 107, 107, 0.2),
-    rgba(255, 71, 87, 0.15)
-  );
-  border-color: rgba(255, 71, 87, 0.3);
-}
-
-.icon-wrapper.success-icon {
-  background: linear-gradient(
-    135deg,
-    rgba(81, 207, 102, 0.2),
-    rgba(64, 192, 87, 0.15)
-  );
-  border-color: rgba(81, 207, 102, 0.3);
-}
-
-.card-header h2 {
-  font-size: 1.65rem;
+.block-header h2 {
+  font-size: 1.5rem;
   font-weight: 600;
   color: #f0f4ff;
   margin: 0;
 }
 
-.card-description {
+.block-description {
   color: #dfe7ff;
   line-height: 1.55;
   margin-bottom: 1rem;
@@ -175,18 +113,17 @@
   margin: 1.5rem 0;
 }
 
-.risk-card {
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 1rem;
+.risk-item {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 0.75rem;
   padding: 1rem;
   text-align: center;
   border: 1px solid rgba(59, 130, 246, 0.2);
-  transition: all 0.2s;
 }
 
-.risk-card.highlight {
+.risk-item.highlight {
   border-color: #51cf66;
-  background: rgba(81, 207, 102, 0.08);
+  background: rgba(81, 207, 102, 0.05);
 }
 
 .risk-percent {
@@ -195,13 +132,13 @@
   color: #ff6b6b;
 }
 
-.risk-card.highlight .risk-percent {
+.risk-item.highlight .risk-percent {
   color: #51cf66;
 }
 
 .risk-losses {
   display: block;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: white;
 }
@@ -213,7 +150,7 @@
 
 .example-box {
   background: rgba(59, 130, 246, 0.08);
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
   padding: 0.75rem;
   display: flex;
   align-items: center;
@@ -253,12 +190,17 @@
 }
 
 .input-field input {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.4);
   border: 1px solid rgba(59, 130, 246, 0.3);
   border-radius: 0.5rem;
   padding: 0.5rem;
   color: white;
   font-family: inherit;
+}
+
+.input-field input:focus {
+  outline: none;
+  border-color: #60a5fa;
 }
 
 .calculator-results {
@@ -268,19 +210,15 @@
   justify-content: center;
 }
 
-.result-card {
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 0.75rem;
+.result-item {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 0.5rem;
   padding: 0.75rem;
   text-align: center;
 }
 
-.result-card.highlight {
-  background: linear-gradient(
-    135deg,
-    rgba(81, 207, 102, 0.15),
-    rgba(64, 192, 87, 0.08)
-  );
+.result-item.highlight {
+  background: rgba(81, 207, 102, 0.08);
   border: 1px solid #51cf66;
 }
 
@@ -304,8 +242,8 @@
 .formula-note {
   text-align: center;
   padding: 0.75rem;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 0.75rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
   font-family: monospace;
   font-size: 0.85rem;
 }
@@ -347,12 +285,12 @@
   }
 }
 
-.rrr-card {
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 1rem;
+.rrr-item {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 0.75rem;
   padding: 1rem;
   text-align: center;
-  border-left: 4px solid;
+  border-left: 4px solid #60a5fa;
 }
 
 .rrr-stats {
@@ -369,12 +307,14 @@
 .rrr-value {
   font-size: 1.2rem;
   font-weight: 700;
+  color: #60a5fa;
 }
 
 .rrr-result {
   font-size: 1.5rem;
   font-weight: 800;
   margin: 0.5rem 0;
+  color: #51cf66;
 }
 
 .rrr-explanation {
@@ -384,7 +324,7 @@
 
 .rrr-principle {
   background: rgba(250, 204, 21, 0.08);
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
   padding: 0.75rem;
   display: flex;
   gap: 0.75rem;
@@ -404,7 +344,7 @@
   display: flex;
   gap: 0.75rem;
   padding: 0.75rem;
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
   align-items: flex-start;
 }
 
@@ -440,7 +380,7 @@
 
 .portfolio-limit {
   background: rgba(59, 130, 246, 0.08);
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
   padding: 0.75rem;
   display: flex;
   gap: 0.75rem;
@@ -467,7 +407,7 @@
   display: flex;
   gap: 0.75rem;
   padding: 1rem;
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   align-items: flex-start;
 }
 
@@ -492,7 +432,7 @@
 .leverage-formula {
   text-align: center;
   padding: 0.5rem;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.2);
   border-radius: 0.5rem;
   font-family: monospace;
   font-size: 0.8rem;
@@ -510,8 +450,8 @@
   display: flex;
   gap: 0.75rem;
   padding: 0.75rem;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 0.75rem;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 0.5rem;
 }
 
 .pitfall svg {
@@ -531,7 +471,7 @@
 
 .discipline-tip {
   background: rgba(59, 130, 246, 0.08);
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
   padding: 0.75rem;
   display: flex;
   gap: 0.75rem;
@@ -560,38 +500,44 @@
 }
 
 .tracking-metrics {
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 0.75rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
   padding: 0.75rem;
   display: flex;
   align-items: center;
   gap: 0.75rem;
   font-size: 0.8rem;
+  flex-wrap: wrap;
 }
 
 /* Conclusion */
-.verdict-card {
-  background: linear-gradient(
-    135deg,
-    rgba(12, 25, 55, 0.8),
-    rgba(20, 35, 70, 0.9)
-  );
+.verdict-block {
+  background: rgba(12, 25, 55, 0.5);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border: 1px solid rgba(59, 130, 246, 0.2);
 }
 
 .conclusion-quote {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
   padding: 1rem;
   background: rgba(59, 130, 246, 0.08);
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   margin-top: 1rem;
   font-weight: 500;
+  text-align: center;
+  flex-wrap: wrap;
 }
 
 /* Key Takeaway */
 .key-takeaway {
   background: linear-gradient(
     135deg,
-    rgba(59, 130, 246, 0.2),
+    rgba(59, 130, 246, 0.15),
     rgba(139, 92, 246, 0.1)
   );
   border-radius: 2rem;
@@ -601,9 +547,10 @@
   justify-content: center;
   gap: 1rem;
   text-align: center;
-  margin: 1.5rem 0;
+  margin: 2rem 0 1.5rem;
   border: 1px solid rgba(59, 130, 246, 0.3);
   font-weight: 500;
+  flex-wrap: wrap;
 }
 
 /* Footer */
@@ -612,36 +559,51 @@
   align-items: center;
   justify-content: center;
   gap: 0.8rem;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   opacity: 0.6;
   margin-top: 2rem;
   padding-top: 1rem;
-  border-top: 1px solid rgba(59, 130, 246, 0.2);
+  border-top: 1px solid rgba(59, 130, 246, 0.15);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .risk-management-section {
-    padding: 2rem 1rem 3rem;
+    padding: 2rem 1rem;
   }
 
   .section-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
 
-  .subhead {
-    font-size: 0.9rem;
+  .block-header h2 {
+    font-size: 1.25rem;
   }
 
-  .card-header h2 {
-    font-size: 1.35rem;
-  }
-
-  .topic-card {
-    padding: 1.2rem;
+  .topic-block {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
   }
 
   .calculator-inputs {
     grid-template-columns: 1fr;
+  }
+
+  .risk-comparison {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .risk-comparison {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-statement {
+    flex-direction: column;
+  }
+
+  .block-header {
+    flex-wrap: wrap;
   }
 }

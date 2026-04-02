@@ -168,13 +168,16 @@ const ForexStrategies = () => {
             </p>
             <div className="info-box info-box-rose">
               <i className="fas fa-chart-simple"></i>
-              <strong>Tools:</strong> 1-min / 5-min charts, stochastic
-              oscillator, moving averages. Trade during
-              <span className="rose-highlight">
-                {" "}
-                London-New York overlap
-              </span>{" "}
-              for tight spreads.
+              <p>
+                <strong>Tools:</strong> 1-min / 5-min charts, stochastic
+                oscillator, moving averages. Trade during
+                <span className="rose-highlight">
+                  {" "}
+                  <br />
+                  London-New York overlap
+                </span>{" "}
+                for tight spreads.
+              </p>
             </div>
             <p>
               Avoid major news announcements when spreads widen dramatically.

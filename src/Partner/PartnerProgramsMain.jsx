@@ -1,3 +1,4 @@
+// PartnerProgramsMain.jsx
 import React, { useState } from "react";
 import "./PartnerProgramsMain.css";
 

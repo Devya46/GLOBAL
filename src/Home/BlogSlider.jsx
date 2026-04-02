@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import "./BlogSlider.css";
 
 export default function BlogSlider() {
@@ -13,6 +13,9 @@ export default function BlogSlider() {
   const [dragStartTranslate, setDragStartTranslate] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
   const [hasMoved, setHasMoved] = useState(false);
+  const [slidesToShow, setSlidesToShow] = useState(1);
+  const [autoSlideEnabled, setAutoSlideEnabled] = useState(true);
+  const [wrapperWidth, setWrapperWidth] = useState(0);
 
   const gap = 24;
 
@@ -68,63 +71,95 @@ export default function BlogSlider() {
   ];
 
   const handleCardClick = (slug, e) => {
-    // Don't navigate if this was a drag/swipe
     if (hasMoved) {
       e?.stopPropagation();
       return;
     }
-
-    // Navigate to blog page
     window.location.href = `/BLOG/${slug}`;
   };
 
-  const updateMetrics = () => {
+  const updateMetrics = useCallback(() => {
     const track = trackRef.current;
     const wrapper = wrapperRef.current;
-
     if (!track || !wrapper) return;
 
     const firstCard = track.children[0];
     if (!firstCard) return;
 
-    const width = firstCard.offsetWidth + gap;
-    setCardWidth(width);
+    const cardFullWidth = firstCard.offsetWidth + gap;
+    setCardWidth(cardFullWidth);
 
-    const max = track.scrollWidth - wrapper.offsetWidth;
-    setMaxScroll(max > 0 ? max : 0);
-  };
+    const wrapperWidthValue = wrapper.offsetWidth;
+    setWrapperWidth(wrapperWidthValue);
 
-  const getTranslateX = () => {
+    let newSlidesToShow = 1;
+    if (wrapperWidthValue >= 1200) newSlidesToShow = 3;
+    else if (wrapperWidthValue >= 900) newSlidesToShow = 2.5;
+    else if (wrapperWidthValue >= 768) newSlidesToShow = 2;
+    else if (wrapperWidthValue >= 560) newSlidesToShow = 1.2;
+    else newSlidesToShow = 1;
+    setSlidesToShow(newSlidesToShow);
+
+    // Calculate max scroll based on visible cards
+    const totalWidth = cards.length * cardFullWidth;
+    let visibleWidth = wrapperWidthValue;
+
+    // For responsive, adjust visible width based on slidesToShow
+    if (newSlidesToShow < 2) {
+      // When showing 1 card, we want to center it
+      visibleWidth = cardFullWidth;
+    }
+
+    const max = Math.max(0, totalWidth - visibleWidth);
+    setMaxScroll(max);
+
+    // Adjust current index if out of bounds
+    const maxIndex = Math.ceil(max / cardFullWidth);
+    if (currentIndex > maxIndex && maxIndex >= 0) {
+      setCurrentIndex(Math.max(0, maxIndex));
+    }
+  }, [cards.length, gap, currentIndex]);
+
+  const getTranslateX = useCallback(() => {
     let target = currentIndex * cardWidth;
-    if (target > maxScroll) target = maxScroll;
-    if (target < 0) target = 0;
+
+    // For mobile (showing 1 card), we need to center the card
+    if (slidesToShow <= 1.2 && wrapperWidth > 0) {
+      // Center the current card by adding offset
+      const centerOffset = (wrapperWidth - cardWidth) / 2;
+      target = currentIndex * cardWidth - centerOffset;
+    }
+
+    target = Math.min(Math.max(target, 0), maxScroll);
     return target;
-  };
+  }, [currentIndex, cardWidth, maxScroll, slidesToShow, wrapperWidth]);
 
-  const next = () => {
-    if (currentIndex * cardWidth >= maxScroll) {
-      setCurrentIndex(0);
-    } else {
-      setCurrentIndex((prev) => prev + 1);
+  const next = useCallback(() => {
+    setAutoSlideEnabled(true);
+    let nextIndex = currentIndex + 1;
+    const maxIndex = Math.ceil(maxScroll / cardWidth);
+    if (nextIndex > maxIndex) {
+      nextIndex = 0;
     }
-  };
+    setCurrentIndex(nextIndex);
+  }, [currentIndex, maxScroll, cardWidth]);
 
-  const prev = () => {
-    if (currentIndex <= 0) {
+  const prev = useCallback(() => {
+    setAutoSlideEnabled(true);
+    let prevIndex = currentIndex - 1;
+    if (prevIndex < 0) {
       const maxIndex = Math.ceil(maxScroll / cardWidth);
-      setCurrentIndex(maxIndex > 0 ? maxIndex : 0);
-    } else {
-      setCurrentIndex((prev) => prev - 1);
+      prevIndex = maxIndex > 0 ? maxIndex : 0;
     }
-  };
+    setCurrentIndex(prevIndex);
+  }, [currentIndex, maxScroll, cardWidth]);
 
   // Drag handlers
   const handleDragStart = (e) => {
-    // Only start drag on slider wrapper, not on buttons or links
     if (e.target.closest("button") || e.target.closest(".arrow")) {
       return;
     }
-
+    setAutoSlideEnabled(true);
     setIsDragging(true);
     setHasMoved(false);
     const startX = e.type === "mousedown" ? e.clientX : e.touches[0].clientX;
@@ -133,77 +168,86 @@ export default function BlogSlider() {
     setDragOffset(0);
   };
 
-  const handleDragMove = (e) => {
-    if (!isDragging) return;
+  const handleDragMove = useCallback(
+    (e) => {
+      if (!isDragging) return;
 
-    const currentX = e.type === "mousemove" ? e.clientX : e.touches[0].clientX;
-    const diff = currentX - dragStartX;
+      const currentX =
+        e.type === "mousemove" ? e.clientX : e.touches[0].clientX;
+      const diff = currentX - dragStartX;
 
-    // Mark as moved if drag distance is significant
-    if (Math.abs(diff) > 5) {
-      setHasMoved(true);
-    }
+      if (Math.abs(diff) > 5) {
+        setHasMoved(true);
+      }
 
-    const newOffset = dragStartTranslate - diff;
-    setDragOffset(diff);
+      const newOffset = dragStartTranslate - diff;
+      setDragOffset(diff);
 
-    // Apply temporary transform during drag
-    if (trackRef.current) {
-      let newTranslate = newOffset;
-      if (newTranslate > maxScroll) newTranslate = maxScroll;
-      if (newTranslate < 0) newTranslate = 0;
-      trackRef.current.style.transform = `translateX(-${newTranslate}px)`;
-      trackRef.current.style.transition = "none";
-    }
-  };
+      if (trackRef.current) {
+        let newTranslate = Math.min(Math.max(newOffset, 0), maxScroll);
+        trackRef.current.style.transform = `translateX(-${newTranslate}px)`;
+        trackRef.current.style.transition = "none";
+      }
+    },
+    [isDragging, dragStartX, dragStartTranslate, maxScroll],
+  );
 
-  const handleDragEnd = () => {
+  const handleDragEnd = useCallback(() => {
     if (!isDragging) return;
     setIsDragging(false);
 
-    // Calculate new index based on drag distance
     const dragDistance = Math.abs(dragOffset);
     if (dragDistance > 50) {
       if (dragOffset > 0) {
-        // Swipe left -> next
         next();
       } else if (dragOffset < 0) {
-        // Swipe right -> prev
         prev();
       }
     }
 
-    // Reset track transition and position
     if (trackRef.current) {
       trackRef.current.style.transition = "";
       trackRef.current.style.transform = `translateX(-${getTranslateX()}px)`;
     }
     setDragOffset(0);
 
-    // Reset moved flag after a short delay
     setTimeout(() => {
       setHasMoved(false);
     }, 100);
-  };
+  }, [isDragging, dragOffset, next, prev, getTranslateX]);
 
   useEffect(() => {
     updateMetrics();
     window.addEventListener("resize", updateMetrics);
     return () => window.removeEventListener("resize", updateMetrics);
-  }, []);
+  }, [updateMetrics]);
 
   useEffect(() => {
-    // Update track position when index changes
     if (trackRef.current && !isDragging) {
       trackRef.current.style.transform = `translateX(-${getTranslateX()}px)`;
     }
-  }, [currentIndex, cardWidth, maxScroll, isDragging]);
+  }, [
+    currentIndex,
+    cardWidth,
+    maxScroll,
+    isDragging,
+    getTranslateX,
+    slidesToShow,
+    wrapperWidth,
+  ]);
 
-  // Auto-slide
+  // Auto-slide with hover pause
   useEffect(() => {
-    const interval = setInterval(next, 4000);
+    if (!autoSlideEnabled) return;
+    const interval = setInterval(() => {
+      next();
+    }, 4000);
     return () => clearInterval(interval);
-  }, [currentIndex, next]);
+  }, [next, autoSlideEnabled]);
+
+  // Pause auto-slide on hover
+  const handleMouseEnter = () => setAutoSlideEnabled(false);
+  const handleMouseLeave = () => setAutoSlideEnabled(true);
 
   // Add/remove drag event listeners
   useEffect(() => {
@@ -225,7 +269,31 @@ export default function BlogSlider() {
       window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("touchend", handleTouchEnd);
     };
-  }, [isDragging, dragStartX, dragStartTranslate, dragOffset, hasMoved]);
+  }, [isDragging, handleDragMove, handleDragEnd]);
+
+  // Calculate pagination dots based on actual number of slides
+  const getPaginationCount = () => {
+    if (slidesToShow >= 2) {
+      return Math.ceil(cards.length / Math.floor(slidesToShow));
+    }
+    return cards.length;
+  };
+
+  const getActiveDotIndex = () => {
+    if (slidesToShow >= 2) {
+      return Math.floor(currentIndex / Math.floor(slidesToShow));
+    }
+    return currentIndex;
+  };
+
+  const handleDotClick = (idx) => {
+    setAutoSlideEnabled(true);
+    if (slidesToShow >= 2) {
+      setCurrentIndex(idx * Math.floor(slidesToShow));
+    } else {
+      setCurrentIndex(idx);
+    }
+  };
 
   return (
     <section className="blog-section-wrapper">
@@ -241,7 +309,11 @@ export default function BlogSlider() {
           </h2>
         </div>
 
-        <div className="blog-slider">
+        <div
+          className="blog-slider"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <button
             className="slider-arrow arrow-left"
             onClick={(e) => {
@@ -302,9 +374,7 @@ export default function BlogSlider() {
               className="blog-track"
               ref={trackRef}
               style={{
-                transform: `translateX(-${getTranslateX()}px)`,
                 cursor: isDragging ? "grabbing" : "grab",
-                transition: isDragging ? "none" : "transform 0.3s ease-out",
               }}
             >
               {cards.map((card, i) => (
@@ -339,13 +409,13 @@ export default function BlogSlider() {
 
           {/* Pagination indicators */}
           <div className="slider-pagination">
-            {cards.map((_, idx) => (
+            {Array.from({ length: getPaginationCount() }).map((_, idx) => (
               <button
                 key={idx}
-                className={`pagination-dot ${Math.round(getTranslateX() / cardWidth) === idx ? "active" : ""}`}
+                className={`pagination-dot ${getActiveDotIndex() === idx ? "active" : ""}`}
                 onClick={(e) => {
                   e.stopPropagation();
-                  setCurrentIndex(idx);
+                  handleDotClick(idx);
                 }}
                 aria-label={`Go to slide ${idx + 1}`}
               />

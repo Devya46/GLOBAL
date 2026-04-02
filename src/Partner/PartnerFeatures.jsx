@@ -1,3 +1,4 @@
+// PartnerFeatures.jsx
 import React, { useState, useEffect } from "react";
 import styles from "./PartnerFeatures.module.css";
 
@@ -28,7 +29,7 @@ const FeatureItem = ({
 
 const PartnerFeatures = () => {
   const [lastUpdateMsg, setLastUpdateMsg] = useState(
-    "✨ Live: New partner milestone tools active",
+    "Live: New partner milestone tools active",
   );
   const [paymentKey, setPaymentKey] = useState(0);
   const [rippleEffect, setRippleEffect] = useState(false);
@@ -36,14 +37,14 @@ const PartnerFeatures = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       const updates = [
-        "🚀 Real-time: +127 new QR scans this hour",
-        "💸 Recurring payment sent: $342.80 to wallet",
-        "📈 Partner conversion rate +8.2% (last 24h)",
-        "🔔 Important: Instant withdrawal feature upgraded",
-        "🎯 Your unique QR code is trending in dashboard",
+        "Real-time: +127 new QR scans this hour",
+        "Recurring payment sent: $342.80 to wallet",
+        "Partner conversion rate +8.2% (last 24h)",
+        "Important: Instant withdrawal feature upgraded",
+        "Your unique QR code is trending in dashboard",
       ];
       const randomMsg = updates[Math.floor(Math.random() * updates.length)];
-      setLastUpdateMsg(`✨ ${randomMsg}`);
+      setLastUpdateMsg(randomMsg);
     }, 11000);
 
     return () => clearInterval(interval);
@@ -59,13 +60,13 @@ const PartnerFeatures = () => {
 
   const handleManualNotif = () => {
     const msgs = [
-      "✅ Partner alert: New promotion assets ready",
-      "⚡ Instant payout triggered: 0.015 ETH to trading account",
-      "📱 Notification: Referral commission updated",
+      "Partner alert: New promotion assets ready",
+      "Instant payout triggered: 0.015 ETH to trading account",
+      "Notification: Referral commission updated",
     ];
 
     const msg = msgs[Math.floor(Math.random() * msgs.length)];
-    setLastUpdateMsg(`🔔 ${msg}`);
+    setLastUpdateMsg(msg);
 
     setRippleEffect(true);
     setTimeout(() => setRippleEffect(false), 300);
@@ -74,7 +75,10 @@ const PartnerFeatures = () => {
   const RecurringExtra = () => (
     <div className={styles.liveIndicator} key={`rec-${paymentKey}`}>
       <span className={styles.blinkDot}></span>
-      <span>⚡ Real-time payouts · Auto-settlement active</span>
+      <span>
+        <i className="fas fa-bolt"></i> Real-time payouts · Auto-settlement
+        active
+      </span>
     </div>
   );
 
@@ -92,7 +96,7 @@ const PartnerFeatures = () => {
         style={rippleEffect ? { background: "#4f46e5" } : {}}
       >
         <i className="fas fa-bell"></i>
-        <span>{lastUpdateMsg}</span>
+        <span className={styles.toastText}>{lastUpdateMsg}</span>
       </div>
 
       <button onClick={handleManualNotif} className={styles.simulateBtn}>

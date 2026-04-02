@@ -30,6 +30,7 @@ import {
 
 export default function AffiliatePartner() {
   const trackRef = useRef(null);
+  const containerRef = useRef(null);
   const [currentIdx, setCurrentIdx] = useState(0);
 
   const slides = [
@@ -71,25 +72,29 @@ export default function AffiliatePartner() {
     },
   ];
 
+  // Update carousel position when window resizes or index changes
   useEffect(() => {
-    const update = () => {
-      const width = trackRef.current?.parentElement?.clientWidth || 500;
-      trackRef.current.style.transform = `translateX(-${currentIdx * width}px)`;
+    const updatePosition = () => {
+      if (trackRef.current && containerRef.current) {
+        const containerWidth = containerRef.current.clientWidth;
+        trackRef.current.style.transform = `translateX(-${currentIdx * containerWidth}px)`;
+      }
     };
 
-    update();
+    updatePosition();
 
+    // Auto slide
     const interval = setInterval(() => {
       setCurrentIdx((prev) => (prev + 1) % slides.length);
     }, 5500);
 
-    window.addEventListener("resize", update);
+    window.addEventListener("resize", updatePosition);
 
     return () => {
       clearInterval(interval);
-      window.removeEventListener("resize", update);
+      window.removeEventListener("resize", updatePosition);
     };
-  }, [currentIdx]);
+  }, [currentIdx, slides.length]);
 
   const next = () => setCurrentIdx((p) => (p + 1) % slides.length);
   const prev = () =>
@@ -248,7 +253,7 @@ export default function AffiliatePartner() {
           <p>Become Our Partner — Flip to discover exclusive benefits</p>
         </div>
 
-        {/* CARDS */}
+        {/* CARDS GRID */}
         <div className="partnerX-grid">
           {cards.map((card, i) => (
             <div key={i} className="partnerX-flip">
@@ -276,34 +281,57 @@ export default function AffiliatePartner() {
           ))}
         </div>
 
-        {/* SLIDER */}
+        {/* CAROUSEL / SLIDER */}
         <div className="partnerX-carousel">
-          <button onClick={prev}>
+          <button
+            onClick={prev}
+            className="partnerX-nav-btn"
+            aria-label="Previous slide"
+          >
             <FaChevronLeft />
           </button>
 
           <div className="partnerX-track-wrap">
-            <div ref={trackRef} className="partnerX-track">
-              {slides.map((s, i) => (
-                <div key={i} className="partnerX-slide">
-                  <div>{s.icon}</div>
-                  <h4>{s.title}</h4>
-                  <p>{s.desc}</p>
-                  <div>
-                    {s.tags.map((t, idx) => (
-                      <span key={idx}>
-                        {t.icon} {t.text}
-                      </span>
-                    ))}
+            <div ref={containerRef} className="partnerX-track-container">
+              <div ref={trackRef} className="partnerX-track">
+                {slides.map((s, i) => (
+                  <div key={i} className="partnerX-slide">
+                    <div className="partnerX-slide-icon">{s.icon}</div>
+                    <h4>{s.title}</h4>
+                    <p>{s.desc}</p>
+                    <div className="partnerX-slide-tags">
+                      {s.tags.map((t, idx) => (
+                        <span key={idx}>
+                          {t.icon && <span className="tag-icon">{t.icon}</span>}
+                          <span>{t.text}</span>
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 
-          <button onClick={next}>
+          <button
+            onClick={next}
+            className="partnerX-nav-btn"
+            aria-label="Next slide"
+          >
             <FaChevronRight />
           </button>
+        </div>
+
+        {/* Carousel Dots */}
+        <div className="partnerX-dots">
+          {slides.map((_, idx) => (
+            <button
+              key={idx}
+              className={`partnerX-dot ${idx === currentIdx ? "active" : ""}`}
+              onClick={() => setCurrentIdx(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>

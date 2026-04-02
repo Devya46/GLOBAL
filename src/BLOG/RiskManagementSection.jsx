@@ -10,16 +10,13 @@ import {
   BarChart3,
   Brain,
   Target,
-  Sliders,
   Zap,
-  Activity,
   DollarSign,
-  PieChart,
-  Lock,
   Scale,
   Percent,
   Layers,
-  LineChart,
+  Lock,
+  Activity,
   Timer,
 } from "lucide-react";
 import "./RiskManagementSection.css";
@@ -73,28 +70,15 @@ const RiskManagementSection = () => {
     },
   ];
 
-  const rrrComparison = [
-    { winRate: 40, rrr: "1:3", result: "+$60", bg: "#51cf66" },
-    { winRate: 60, rrr: "1:1", result: "+$20", bg: "#60a5fa" },
-  ];
-
   return (
     <section className="risk-management-section">
       <div className="container">
-        {/* Header */}
+        {/* Header - Centered */}
         <div className="section-header">
-          <div className="header-badge">
-            <Shield size={16} />
-            <span>Foundation of Success</span>
-          </div>
           <h1 className="section-title">
-            Why Risk Management
-            <span className="title-gradient"> Trumps Strategy</span>
+            Why Risk Management <br />
+            <span className="title-gradient">Trumps Strategy</span>
           </h1>
-          <p className="subhead">
-            <Scale size={18} />
-            Protect capital · Survive losing streaks · Compound consistently
-          </p>
         </div>
 
         {/* Hero Statement */}
@@ -109,14 +93,12 @@ const RiskManagementSection = () => {
         </div>
 
         {/* The 1-2% Rule */}
-        <div className="topic-card">
-          <div className="card-header">
-            <div className="icon-wrapper">
-              <Percent size={28} strokeWidth={1.5} />
-            </div>
+        <div className="topic-block">
+          <div className="block-header">
+            <Percent size={24} />
             <h2>The 1-2% Rule: Your Account's Safety Net</h2>
           </div>
-          <p className="card-description">
+          <p className="block-description">
             Never risk more than <strong>1-2%</strong> of your total account
             capital on any single trade. This protects you from catastrophic
             losses and ensures survival through extended losing streaks.
@@ -126,7 +108,7 @@ const RiskManagementSection = () => {
             {riskComparison.map((item, idx) => (
               <div
                 key={idx}
-                className={`risk-card ${item.risk === "1%" ? "highlight" : ""}`}
+                className={`risk-item ${item.risk === "1%" ? "highlight" : ""}`}
               >
                 <div className="risk-percent">{item.risk}</div>
                 <div className="risk-metrics">
@@ -147,11 +129,9 @@ const RiskManagementSection = () => {
         </div>
 
         {/* Position Sizing Calculator */}
-        <div className="topic-card">
-          <div className="card-header">
-            <div className="icon-wrapper">
-              <Calculator size={28} strokeWidth={1.5} />
-            </div>
+        <div className="topic-block">
+          <div className="block-header">
+            <Calculator size={24} />
             <h2>Position Sizing Calculator</h2>
           </div>
 
@@ -199,13 +179,13 @@ const RiskManagementSection = () => {
             </div>
 
             <div className="calculator-results">
-              <div className="result-card">
+              <div className="result-item">
                 <span className="result-label">Risk Amount</span>
                 <span className="result-value">
                   ${calcResult.riskAmount.toFixed(2)}
                 </span>
               </div>
-              <div className="result-card highlight">
+              <div className="result-item highlight">
                 <span className="result-label">Position Size</span>
                 <span className="result-value-large">
                   {calcResult.positionSize.toFixed(2)} lots
@@ -222,11 +202,9 @@ const RiskManagementSection = () => {
         </div>
 
         {/* Stop-Loss Orders */}
-        <div className="topic-card">
-          <div className="card-header">
-            <div className="icon-wrapper">
-              <Lock size={28} strokeWidth={1.5} />
-            </div>
+        <div className="topic-block">
+          <div className="block-header">
+            <Lock size={24} />
             <h2>Stop-Loss Orders: Non-Negotiable</h2>
           </div>
           <p>
@@ -250,43 +228,39 @@ const RiskManagementSection = () => {
             </div>
             <div className="guide-item warning">
               <XCircle size={16} />
-              <span>
-                ❌ Never: "I'll manually exit" — emotions override logic
-              </span>
+              <span>Never: "I'll manually exit" — emotions override logic</span>
             </div>
           </div>
         </div>
 
         {/* Risk-to-Reward Ratios */}
-        <div className="topic-card">
-          <div className="card-header">
-            <div className="icon-wrapper">
-              <Target size={28} strokeWidth={1.5} />
-            </div>
+        <div className="topic-block">
+          <div className="block-header">
+            <Target size={24} />
             <h2>Risk-to-Reward: Trading the Odds</h2>
           </div>
 
           <div className="rrr-comparison">
-            {rrrComparison.map((item, idx) => (
-              <div
-                key={idx}
-                className="rrr-card"
-                style={{ borderColor: item.bg }}
-              >
-                <div className="rrr-stats">
-                  <span className="win-rate">{item.winRate}% Win Rate</span>
-                  <span className="rrr-value">{item.rrr}</span>
-                </div>
-                <div className="rrr-result" style={{ color: item.bg }}>
-                  {item.result} per 100 trades
-                </div>
-                <div className="rrr-explanation">
-                  {item.rrr === "1:3"
-                    ? "Lower win rate, higher profitability"
-                    : "Higher win rate, lower overall profit"}
-                </div>
+            <div className="rrr-item">
+              <div className="rrr-stats">
+                <span className="win-rate">40% Win Rate</span>
+                <span className="rrr-value">1:3</span>
               </div>
-            ))}
+              <div className="rrr-result">+$60 per 100 trades</div>
+              <div className="rrr-explanation">
+                Lower win rate, higher profitability
+              </div>
+            </div>
+            <div className="rrr-item">
+              <div className="rrr-stats">
+                <span className="win-rate">60% Win Rate</span>
+                <span className="rrr-value">1:1</span>
+              </div>
+              <div className="rrr-result">+$20 per 100 trades</div>
+              <div className="rrr-explanation">
+                Higher win rate, lower overall profit
+              </div>
+            </div>
           </div>
 
           <div className="rrr-principle">
@@ -300,11 +274,9 @@ const RiskManagementSection = () => {
         </div>
 
         {/* Correlation Risk */}
-        <div className="topic-card">
-          <div className="card-header">
-            <div className="icon-wrapper">
-              <Layers size={28} strokeWidth={1.5} />
-            </div>
+        <div className="topic-block">
+          <div className="block-header">
+            <Layers size={24} />
             <h2>Correlation Risk & Portfolio Management</h2>
           </div>
           <p>
@@ -316,14 +288,14 @@ const RiskManagementSection = () => {
             <div className="correlation-bad">
               <TrendingDown size={20} />
               <div>
-                <strong>❌ EUR/USD + GBP/USD (0.85 correlation)</strong>
+                <strong>EUR/USD + GBP/USD (0.85 correlation)</strong>
                 <span>Same risk exposure—both move together</span>
               </div>
             </div>
             <div className="correlation-good">
               <TrendingUp size={20} />
               <div>
-                <strong>✅ EUR/USD + USD/JPY (-0.70 correlation)</strong>
+                <strong>EUR/USD + USD/JPY (-0.70 correlation)</strong>
                 <span>True diversification—often move opposite</span>
               </div>
             </div>
@@ -338,12 +310,10 @@ const RiskManagementSection = () => {
           </div>
         </div>
 
-        {/* Leverage: Double-Edged Sword */}
-        <div className="topic-card">
-          <div className="card-header">
-            <div className="icon-wrapper warning">
-              <Zap size={28} strokeWidth={1.5} />
-            </div>
+        {/* Leverage */}
+        <div className="topic-block">
+          <div className="block-header">
+            <Zap size={24} />
             <h2>Leverage: The Double-Edged Sword</h2>
           </div>
           <div className="leverage-grid">
@@ -370,11 +340,9 @@ const RiskManagementSection = () => {
         </div>
 
         {/* Emotional Discipline */}
-        <div className="topic-card">
-          <div className="card-header">
-            <div className="icon-wrapper">
-              <Brain size={28} strokeWidth={1.5} />
-            </div>
+        <div className="topic-block">
+          <div className="block-header">
+            <Brain size={24} />
             <h2>Emotional Discipline</h2>
           </div>
 
@@ -414,11 +382,9 @@ const RiskManagementSection = () => {
         </div>
 
         {/* Practical Implementation */}
-        <div className="topic-card">
-          <div className="card-header">
-            <div className="icon-wrapper">
-              <Activity size={28} strokeWidth={1.5} />
-            </div>
+        <div className="topic-block">
+          <div className="block-header">
+            <Activity size={24} />
             <h2>Practical Implementation</h2>
           </div>
 
@@ -451,14 +417,12 @@ const RiskManagementSection = () => {
         </div>
 
         {/* Conclusion */}
-        <div className="topic-card verdict-card">
-          <div className="card-header">
-            <div className="icon-wrapper success-icon">
-              <Shield size={28} strokeWidth={1.5} />
-            </div>
+        <div className="topic-block verdict-block">
+          <div className="block-header">
+            <Shield size={24} />
             <h2>Risk Management = Competitive Advantage</h2>
           </div>
-          <p className="card-description">
+          <p className="block-description">
             While novice traders chase the perfect entry strategy, professionals
             focus on <strong>surviving bad periods</strong> and{" "}
             <strong>protecting capital</strong> for high-probability
@@ -466,8 +430,9 @@ const RiskManagementSection = () => {
             success far more than any specific strategy.
           </p>
           <div className="conclusion-quote">
+            <Target size={18} />
             <span>
-              🎯 Master risk management. Implement with discipline. Join the
+              Master risk management. Implement with discipline. Join the
               minority who achieve consistent profitability.
             </span>
           </div>

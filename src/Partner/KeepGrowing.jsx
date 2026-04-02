@@ -1,5 +1,78 @@
+// KeepGrowing.jsx
 import React from "react";
 import "./KeepGrowing.css";
+
+// Icons as components for better scalability and styling
+const TrendingUpIcon = () => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <polyline points="23 6 13.5 15.5 8 10 1 18"></polyline>
+    <polyline points="17 6 23 6 23 12"></polyline>
+  </svg>
+);
+
+const DiamondIcon = () => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+  </svg>
+);
+
+const ZapIcon = () => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+  </svg>
+);
+
+const TargetIcon = () => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <circle cx="12" cy="12" r="10"></circle>
+    <circle cx="12" cy="12" r="6"></circle>
+    <circle cx="12" cy="12" r="2"></circle>
+  </svg>
+);
+
+const UsersIcon = () => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="9" cy="7" r="4"></circle>
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+  </svg>
+);
 
 const InvestorSection = () => {
   return (
@@ -64,17 +137,18 @@ const InvestorSection = () => {
         </div>
       </div>
 
-      {/* Section 2: Introducer - Full width */}
+      {/* Section 2: Introducer - Updated with Dark Navy Blue, White/Blue, Green Highlights */}
       <div className="section-two">
         <div className="section-two-container">
           <div className="introducer-content">
             <div className="introducer-header">
               <div className="card-badge introducer-badge">
-                Introducer Program
+                <UsersIcon />
+                <span>Introducer Program</span>
               </div>
               <h2 className="introducer-title">
                 We Built a Market{" "}
-                <span className="highlight-gold">They Trade, You Earn!</span>
+                <span className="highlight-green">They Trade, You Earn!</span>
               </h2>
               <p className="introducer-subtitle">
                 Refer clients to us and earn rebates on the volumes they trade.
@@ -84,19 +158,48 @@ const InvestorSection = () => {
             <div className="earn-showcase">
               <div className="earn-card main-card">
                 <div className="percentage-display">
-                  <div className="percentage-ring">
-                    <span className="percentage-number">55%</span>
-                    <span className="percentage-label">Revenue Share</span>
+                  <div className="percentage-ring-wrapper">
+                    <svg className="percentage-ring-svg" viewBox="0 0 120 120">
+                      <circle
+                        className="ring-bg"
+                        cx="60"
+                        cy="60"
+                        r="54"
+                        fill="none"
+                        stroke="rgba(255,255,255,0.08)"
+                        strokeWidth="8"
+                      />
+                      <circle
+                        className="ring-fill"
+                        cx="60"
+                        cy="60"
+                        r="54"
+                        fill="none"
+                        stroke="#2ecc71"
+                        strokeWidth="8"
+                        strokeDasharray="339.292"
+                        strokeDashoffset="152.681"
+                        strokeLinecap="round"
+                        transform="rotate(-90 60 60)"
+                      />
+                    </svg>
+                    <div className="percentage-number">
+                      <span className="percent-value">55</span>
+                      <span className="percent-symbol">%</span>
+                    </div>
                   </div>
                   <div className="percentage-desc">
-                    <h4>Earn up to 55%</h4>
+                    <h4>Revenue Share</h4>
                     <p>of our revenue from every active trader you introduce</p>
+                    <div className="earn-highlight">Up to 55% earnings</div>
                   </div>
                 </div>
               </div>
 
               <div className="earn-card scale-card">
-                <div className="scale-icon">📈</div>
+                <div className="scale-icon">
+                  <TrendingUpIcon />
+                </div>
                 <h4>Scale Your Income</h4>
                 <p>
                   The more clients you introduce, the higher your income grows.
@@ -139,21 +242,27 @@ const InvestorSection = () => {
               <div className="earn-card benefits-card">
                 <div className="benefits-list">
                   <div className="benefit-item">
-                    <div className="benefit-icon">💎</div>
+                    <div className="benefit-icon">
+                      <DiamondIcon />
+                    </div>
                     <div>
                       <h5>Lifetime Rebates</h5>
                       <p>Earn as long as your referred clients trade</p>
                     </div>
                   </div>
                   <div className="benefit-item">
-                    <div className="benefit-icon">⚡</div>
+                    <div className="benefit-icon">
+                      <ZapIcon />
+                    </div>
                     <div>
                       <h5>Real-Time Tracking</h5>
                       <p>Monitor your earnings and volume instantly</p>
                     </div>
                   </div>
                   <div className="benefit-item">
-                    <div className="benefit-icon">🎯</div>
+                    <div className="benefit-icon">
+                      <TargetIcon />
+                    </div>
                     <div>
                       <h5>Dedicated Support</h5>
                       <p>Personal account manager for introducers</p>
@@ -164,8 +273,10 @@ const InvestorSection = () => {
             </div>
 
             <div className="introducer-cta">
-              <button className="btn-gold">Become an Introducer →</button>
-              <button className="btn-glass">View Commission Structure</button>
+              <button className="btn-green">Become an Introducer →</button>
+              <button className="btn-outline-light">
+                View Commission Structure
+              </button>
             </div>
           </div>
         </div>

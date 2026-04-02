@@ -499,7 +499,7 @@
 /* responsive */
 @media (max-width: 780px) {
   .rimX-container {
-    padding: 1.5rem 1.2rem 2.5rem;
+    padding: 5.5rem 1.2rem 2.5rem;
   }
   .rimX-hero h1 {
     font-size: 2.3rem;
