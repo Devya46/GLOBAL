@@ -14,34 +14,35 @@ export default function MainHome() {
   ];
 
   return (
-    <div>
-      <div className="hero">
-        <div className="gradient-overlay"></div>
-        <div className="floating-element floating-1"></div>
-        <div className="floating-element floating-2"></div>
-        <div className="hero-grid"></div>
-        <div className="hero-image-glow"></div>
+    <div className="trading-home">
+      <div className="trading-hero">
+        <div className="trading-hero__gradient-overlay"></div>
+        <div className="trading-hero__floating trading-hero__floating--1"></div>
+        <div className="trading-hero__floating trading-hero__floating--2"></div>
+        <div className="trading-hero__grid"></div>
+        <div className="trading-hero__image-glow"></div>
 
         <Header />
 
-        <div className="hero-content">
-          <p className="tag">SMART TRADING SOLUTION</p>
+        <div className="trading-hero__content">
+          <p className="trading-hero__tag">SMART TRADING SOLUTION</p>
 
-          <div className="flip-box">
-            <h1 className="cube-text">
-              The world's <span className="hero-accent">#1</span> Broker
+          <div className="trading-hero__flip-box">
+            <h1 className="trading-hero__title">
+              The world's <span className="trading-hero__accent">#1</span>{" "}
+              Broker
               <br />
               for Modern Trading
             </h1>
 
-            <p className="desc">{desc}</p>
-            <div className="hero-actions">
-              <button className="cta">{btn}</button>
+            <p className="trading-hero__desc">{desc}</p>
+            <div className="trading-hero__actions">
+              <button className="trading-hero__cta">{btn}</button>
             </div>
 
-            <div className="hero-trust-row">
+            <div className="trading-hero__trust-row">
               {trustPoints.map((point) => (
-                <span key={point} className="trust-pill">
+                <span key={point} className="trading-hero__trust-pill">
                   {point}
                 </span>
               ))}

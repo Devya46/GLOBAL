@@ -1,6 +1,6 @@
 /* main section – classic dark/light elegant */
 .account-section {
-  background: #f8fafd; /* soft off-white, classic foundation */
+  background: #f8fafd;
   background-image:
     radial-gradient(
       circle at 10% 20%,
@@ -52,7 +52,7 @@
 }
 
 .account-tag {
-  color: #006699; /* classic deep blue */
+  color: #006699;
   font-weight: 600;
   font-size: 12px;
   letter-spacing: 2px;
@@ -65,10 +65,8 @@
   backdrop-filter: blur(2px);
 }
 
-/* heading exactly as requested: white, 50px, specific margin */
 .account-left h2 {
   color: #000000;
-  /* background: rgba(255, 255, 255, 0.4); */
   padding: 10px;
   border-radius: 10px;
   font-size: 50px;
@@ -80,7 +78,7 @@
 }
 
 .account-left h2 span {
-  color: #1cff95; /* fresh accent (same as original) */
+  color: #1cff95;
   font-weight: 700;
   background: linear-gradient(145deg, #16d9aa, #0acf9c);
   -webkit-background-clip: text;
@@ -89,7 +87,7 @@
 }
 
 .account-left > p {
-  color: #5a6f8c; /* muted elegant */
+  color: #5a6f8c;
   font-size: 1.1rem;
   margin-bottom: 3rem;
   max-width: 450px;
@@ -102,13 +100,13 @@
 }
 
 /* steps container – relative for timeline */
-.steps {
+.account-steps {
   position: relative;
   margin-top: 1rem;
 }
 
 /* vertical line – classic refined (left side of icon column) */
-.steps::before {
+.account-steps::before {
   content: "";
   position: absolute;
   left: 144px;
@@ -124,14 +122,14 @@
 }
 
 /* each step row */
-.step {
+.account-step {
   display: grid;
-  grid-template-columns: 110px 70px 1fr; /* name | icon area | text */
+  grid-template-columns: 110px 70px 1fr;
   align-items: center;
   margin-bottom: 2.5rem;
   position: relative;
   z-index: 5;
-  opacity: 0; /* hidden until animate */
+  opacity: 0;
   transform: translateX(-15px);
   transition:
     opacity 0.4s ease,
@@ -139,26 +137,26 @@
 }
 
 /* animation class (triggered by Intersection Observer) */
-.step.reveal-step {
+.account-step.account-reveal-step {
   opacity: 1;
   transform: translateX(0);
 }
 
 /* staggered delays */
-.step:nth-child(1).reveal-step {
+.account-step:nth-child(1).account-reveal-step {
   transition-delay: 0.1s;
 }
-.step:nth-child(2).reveal-step {
+.account-step:nth-child(2).account-reveal-step {
   transition-delay: 0.25s;
 }
-.step:nth-child(3).reveal-step {
+.account-step:nth-child(3).account-reveal-step {
   transition-delay: 0.4s;
 }
-.step:nth-child(4).reveal-step {
+.account-step:nth-child(4).account-reveal-step {
   transition-delay: 0.55s;
 }
 
-.step-name {
+.account-step-name {
   font-weight: 600;
   color: #0f2b45;
   font-size: 14px;
@@ -174,13 +172,13 @@
   backdrop-filter: blur(2px);
 }
 
-.step-center {
+.account-step-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.step-icon {
+.account-step-icon {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -199,14 +197,14 @@
   background: white;
 }
 
-.step:hover .step-icon {
+.account-step:hover .account-step-icon {
   transform: scale(1.1);
   border-color: #0066aa;
   box-shadow: 0 0 0 5px rgba(0, 160, 220, 0.2);
   color: #004466;
 }
 
-.step-text {
+.account-step-text {
   color: #3e556e;
   background: #d8dcff29;
   border-radius: 3px;
@@ -217,7 +215,7 @@
   border-left: 2px dotted #a0d0e0;
 }
 
-/* right image – classic, professional, replaced with a refined business/trading vibe */
+/* right image – classic, professional */
 .account-right {
   display: flex;
   justify-content: center;
@@ -243,40 +241,101 @@
   box-shadow: 0 40px 60px -20px #00668880;
 }
 
-/* responsive */
+/* ========= RESPONSIVE (override-proof) ========= */
 @media (max-width: 1000px) {
   .account-container {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
   }
   .account-left h2 {
-    font-size: 42px;
+    font-size: 42px !important;
   }
-  .steps::before {
-    left: 60px;
+  .account-steps::before {
+    left: 60px !important;
+  }
+  .account-step {
+    grid-template-columns: 110px 70px 1fr !important;
+    margin-bottom: 2rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .account-section {
+    padding: 4rem 1.5rem !important;
+  }
+  .account-step {
+    grid-template-columns: 100px 60px 1fr !important;
+    gap: 0.5rem !important;
+  }
+  .account-step-name {
+    font-size: 12px !important;
+    min-width: 80px !important;
+  }
+  .account-step-icon {
+    width: 45px !important;
+    height: 45px !important;
+    font-size: 1.1rem !important;
+  }
+  .account-steps::before {
+    left: 50px !important;
+  }
+  .account-step-text {
+    font-size: 0.85rem !important;
+    padding-left: 0.6rem !important;
   }
 }
 
 @media (max-width: 600px) {
   .account-section {
-    padding: 4rem 1.5rem;
-  }
-  .step {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 0.6rem;
-  }
-  .step-name {
-    margin: 0 auto;
-  }
-  .steps::before {
-    display: none;
-  }
-  .step-text {
-    border-left: none;
-    padding-left: 0;
+    padding: 3rem 1rem !important;
   }
   .account-left h2 {
-    font-size: 38px;
+    font-size: 34px !important;
+  }
+  .account-left > p {
+    font-size: 1rem !important;
+    margin-bottom: 2rem !important;
+  }
+  .account-step {
+    grid-template-columns: 1fr !important;
+    text-align: center !important;
+    gap: 0.6rem !important;
+    margin-bottom: 2rem !important;
+  }
+  .account-step-name {
+    margin: 0 auto !important;
+    font-size: 13px !important;
+  }
+  .account-step-center {
+    justify-content: center !important;
+  }
+  .account-steps::before {
+    display: none !important;
+  }
+  .account-step-text {
+    border-left: none !important;
+    padding-left: 0 !important;
+    text-align: center !important;
+    background: transparent !important;
+  }
+  .account-right img {
+    max-width: 90% !important;
+    margin: 0 auto !important;
+  }
+}
+
+/* extra small devices */
+@media (max-width: 480px) {
+  .account-left h2 {
+    font-size: 28px !important;
+  }
+  .account-tag {
+    font-size: 10px !important;
+    padding: 0.3rem 1rem !important;
+  }
+  .account-step-icon {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 1rem !important;
   }
 }

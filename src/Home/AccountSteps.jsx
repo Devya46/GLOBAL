@@ -38,15 +38,15 @@ export default function AccountSteps() {
     const container = stepsRef.current;
     if (!container) return;
 
-    const steps = container.querySelectorAll(".step");
+    const steps = container.querySelectorAll(".account-step");
 
     const observer = new IntersectionObserver(
-      (entries, observer) => {
+      (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             steps.forEach((step, index) => {
               setTimeout(() => {
-                step.classList.add("reveal-step");
+                step.classList.add("account-reveal-step");
               }, index * 120);
             });
             observer.unobserve(container);
@@ -63,7 +63,7 @@ export default function AccountSteps() {
       setTimeout(() => {
         steps.forEach((step, idx) => {
           setTimeout(() => {
-            step.classList.add("reveal-step");
+            step.classList.add("account-reveal-step");
           }, idx * 120);
         });
       }, 200);
@@ -86,16 +86,16 @@ export default function AccountSteps() {
 
           <p>Instant account opening & funding. Trade within minutes!</p>
 
-          <div className="steps" ref={stepsRef}>
+          <div className="account-steps" ref={stepsRef}>
             {stepsData.map((step, index) => (
-              <div className="step" key={index}>
-                <div className="step-name">{step.name}</div>
+              <div className="account-step" key={index}>
+                <div className="account-step-name">{step.name}</div>
 
-                <div className="step-center">
-                  <div className="step-icon">{step.icon}</div>
+                <div className="account-step-center">
+                  <div className="account-step-icon">{step.icon}</div>
                 </div>
 
-                <div className="step-text">{step.text}</div>
+                <div className="account-step-text">{step.text}</div>
               </div>
             ))}
           </div>
